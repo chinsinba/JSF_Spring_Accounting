@@ -21,9 +21,76 @@
 					</p:toolbarGroup>
 				</p:toolbar>
 				<h:form id="form">
-items
-				</h:form>
+					<p:panel header="Item Info">
+						<h:panelGrid columns="5">
+							<h:outputText value="Item Code: " />
+							<p:inputText id="itemCod" />
+							<p:spacer width="15" />
+							<h:outputText value="Item Name " />
+							<p:inputText id="itemNam" />
+							<h:outputText value="Item Group: " />
+							<p:selectOneMenu value="#{buttonBean.number}">
+								<f:selectItem itemLabel="Select One" itemValue="" />
+								<f:selectItem itemLabel="Proprietary" itemValue="1" />
+								<f:selectItem itemLabel="Pvt ltd Co" itemValue="2" />
+								<f:selectItem itemLabel="Public ltd Co" itemValue="3" />
+								<f:selectItem itemLabel="Govt Enterprise" itemValue="4" />
+							</p:selectOneMenu>
+							<p:spacer width="15" />
+							<h:outputText value="Opening Stock : " />
+							<p:inputText id="opStck" />
+							<h:outputText value="Account :" />
+							<p:selectOneMenu value="#{buttonBean.number}">
+								<f:selectItem itemLabel="Select One" itemValue="" />
+								<f:selectItem itemLabel="Proprietary" itemValue="1" />
+								<f:selectItem itemLabel="Pvt ltd Co" itemValue="2" />
+								<f:selectItem itemLabel="Public ltd Co" itemValue="3" />
+								<f:selectItem itemLabel="Govt Enterprise" itemValue="4" />
+							</p:selectOneMenu>
+							<p:spacer width="15" />
+							<h:outputText value="Brand Name :" />
+							<p:inputText id="brandName" />
+						</h:panelGrid>
+					</p:panel>
+					<p:panel header="Tax Details">
+						<h:panelGrid columns="5">
+							<h:outputText value="Purchase/Inward Tax: " />
+							<p:selectOneMenu value="#{buttonBean.number}">
+								<f:selectItem itemLabel="Select One" itemValue="" />
+								<f:selectItem itemLabel="Proprietary" itemValue="1" />
+								<f:selectItem itemLabel="Pvt ltd Co" itemValue="2" />
+								<f:selectItem itemLabel="Public ltd Co" itemValue="3" />
+								<f:selectItem itemLabel="Govt Enterprise" itemValue="4" />
+							</p:selectOneMenu>
+							<p:spacer width="15" />
+							<h:outputText value="Sales/Outward Tax: " />
+							<p:selectOneMenu value="#{buttonBean.number}">
+								<f:selectItem itemLabel="Select One" itemValue="" />
+								<f:selectItem itemLabel="Proprietary" itemValue="1" />
+								<f:selectItem itemLabel="Pvt ltd Co" itemValue="2" />
+								<f:selectItem itemLabel="Public ltd Co" itemValue="3" />
+								<f:selectItem itemLabel="Govt Enterprise" itemValue="4" />
+							</p:selectOneMenu>
+						</h:panelGrid>
+					</p:panel>
 
+					<p:panel header="Required Details">
+						<h:panelGrid columns="5">
+							<h:outputText value="Batch No : " />
+							<p:inputText id="batch" />
+							<p:spacer />
+							<p:spacer />
+							<p:spacer />
+							<h:outputText value="Mfg Date : " />
+							<p:calendar id="mfgDat" showButtonPanel="true"
+								pattern="dd/MM/yyyy" />
+							<p:spacer width="15" />
+							<h:outputText value="Exp Date : " />
+							<p:calendar id="expDat" showButtonPanel="true"
+								pattern="dd/MM/yyyy" />
+						</h:panelGrid>
+					</p:panel>
+				</h:form>
 
 
 				<p:toolbar>

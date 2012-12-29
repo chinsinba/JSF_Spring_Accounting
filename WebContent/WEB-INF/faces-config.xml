@@ -16,18 +16,18 @@
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 	<navigation-rule>
-		<display-name>Login.xhtml</display-name>
-		<from-view-id>/Login.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>Welcome</from-outcome>
-			<to-view-id>/MainPage.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-	<navigation-rule>
 		<display-name>template/header.xhtml</display-name>
 		<from-view-id>/template/header.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>Company</from-outcome>
+			<to-view-id>/Company.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>Login.xhtml</display-name>
+		<from-view-id>/Login.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>Welcome</from-outcome>
 			<to-view-id>/Company.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
