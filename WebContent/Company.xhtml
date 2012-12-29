@@ -1,0 +1,189 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="template/Welcome.xhtml">
+
+	<ui:define name="metadata">
+	</ui:define>
+	<ui:define name="content">
+		<body>
+			<div>
+				<p:toolbar>
+					<p:toolbarGroup align="right">
+						<p:commandButton type="button" title="Save" value="Save"
+							icon="ui-icon-disk" />
+						<p:commandButton type="button" title="Delete" value="Delete"
+							icon="ui-icon-trash" />
+						<p:commandButton type="button" title="Clear" value="Cancel"
+							icon="ui-icon-clear" />
+					</p:toolbarGroup>
+				</p:toolbar>
+				<h:form id="form">
+
+					<p:panel header="Company Info">
+						<h:panelGrid columns="5">
+							<h:outputText value="Company Name: " />
+							<p:inputText id="companyName" />
+							<p:spacer width="15" />
+							<h:outputText value="PAN: " />
+							<p:inputText id="pan" />
+							<h:outputText value="Address1: " />
+							<p:inputText id="address1" />
+							<p:spacer width="15" />
+							<h:outputText value="Address2: " />
+							<p:inputText id="address2" />
+							<h:outputText value="Address3: " />
+							<p:inputText id="address3" />
+							<p:spacer width="15" />
+							<h:outputText value="Address4: " />
+							<p:inputText id="address4" />
+							<h:outputText value="City: " />
+							<p:inputText id="city" />
+							<p:spacer width="15" />
+							<h:outputText value="District: " />
+							<p:inputText id="district" />
+							<h:outputText value="Hobli/Gram : " />
+							<p:inputText id="hobli" />
+							<p:spacer width="15" />
+							<h:outputText value="State : " />
+							<p:inputText id="state" />
+							<h:outputText value="Country : " />
+							<p:inputText id="country" />
+							<p:spacer width="15" />
+							<h:outputText value="Contact No : " />
+							<p:inputText id="contact" />
+							<h:outputText value="Email : " />
+							<p:inputText id="email" />
+
+						</h:panelGrid>
+					</p:panel>
+
+					<p:spacer height="10" />
+
+					<p:panel header="Registration Info">
+						<h:panelGrid columns="2" id="matchGrid">
+							<h:outputText value="Company Type: " />
+							<p:selectOneMenu value="#{buttonBean.number}">
+								<f:selectItem itemLabel="Select One" itemValue="" />
+								<f:selectItem itemLabel="Proprietary" itemValue="1" />
+								<f:selectItem itemLabel="Pvt ltd Co" itemValue="2" />
+								<f:selectItem itemLabel="Public ltd Co" itemValue="3" />
+								<f:selectItem itemLabel="Govt Enterprise" itemValue="4" />
+							</p:selectOneMenu>
+
+							<h:outputText value="Reg Name : " />
+							<p:inputText id="regName" />
+
+							<h:outputText value="Reg No : " />
+							<p:inputText id="regNo" />
+
+							<h:outputText value="Reg Date:" />
+							<p:calendar id="cal" showButtonPanel="true" pattern="dd/MM/yyyy" />
+						</h:panelGrid>
+
+						<p:spacer height="10" />
+
+						<p:dataTable id="dataTable" var="car" value="#{tableBean.cars}"
+							paginator="true" rows="10"
+							paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+							rowsPerPageTemplate="5,10,15">
+							<f:facet name="header"> Stakeholder Info </f:facet>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Name" />
+								</f:facet>
+								<h:outputText value="#{car.model}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="DOB" />
+								</f:facet>
+								<h:outputText value="#{car.year}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Address" />
+								</f:facet>
+								<h:outputText value="#{car.manufacturer}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Contact No" />
+								</f:facet>
+								<h:outputText value="#{car.color}" />
+							</p:column>
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Email" />
+								</f:facet>
+								<h:outputText value="#{car.color}" />
+							</p:column>
+							
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="PAN" />
+								</f:facet>
+								<h:outputText value="#{car.color}" />
+							</p:column>
+							
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Partner Type" />
+								</f:facet>
+								<h:outputText value="#{car.color}" />
+							</p:column>
+							
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="User Name" />
+								</f:facet>
+								<h:outputText value="#{car.color}" />
+							</p:column>
+							
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Password" />
+								</f:facet>
+								<h:outputText value="#{car.color}" />
+							</p:column>
+						</p:dataTable>
+
+					</p:panel>
+					<p:panel header="Financial Year">
+						<h:panelGrid columns="5">
+							<h:outputText value="Financial Year Start Date:" />
+							<p:calendar id="finstartDate" showButtonPanel="true"
+								pattern="dd/MM/yyyy" />
+							<p:spacer width="15" />
+							<h:outputText value="Financial Year End Date:" />
+							<p:calendar id="finEndDate" showButtonPanel="true"
+								pattern="dd/MM/yyyy" />
+
+							<h:outputText value="Books Start Date:" />
+							<p:calendar id="booksStartDate" showButtonPanel="true"
+								pattern="dd/MM/yyyy" />
+						</h:panelGrid>
+
+					</p:panel>
+
+				</h:form>
+				<p:toolbar>
+					<p:toolbarGroup align="right">
+						<p:commandButton type="button" title="Save" value="Save"
+							icon="ui-icon-disk" />
+						<p:commandButton type="button" title="Delete" value="Delete"
+							icon="ui-icon-trash" />
+						<p:commandButton type="button" title="Clear" value="Cancel"
+							icon="ui-icon-clear" />
+					</p:toolbarGroup>
+				</p:toolbar>
+			</div>
+		</body>
+	</ui:define>
+</ui:composition>

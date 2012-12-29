@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Login</title>
+</h:head>
+<body>
+	<h:form>
+
+		<p:growl id="messages" autoUpdate="true" />
+
+		<p:panelMenu>
+			<p:submenu label="Masters">
+				<p:submenu label="Item">
+					<p:menuitem value="Item Creation" icon="ui-icon-disk" />
+					<p:menuitem value="Item Category" icon="ui-icon-arrowrefresh-1-w" />
+				</p:submenu>
+				<p:submenu label="Accounts">
+					<p:menuitem value="Bank" icon="ui-icon-disk" />
+					<p:menuitem value="Ledger" icon="ui-icon-disk" />
+					<p:menuitem value="Ledger Group" icon="ui-icon-disk" />
+					<p:menuitem value="Customer" icon="ui-icon-disk"
+						outcome="CustomerAccount" />
+					<p:menuitem value="Supplier" icon="ui-icon-disk"
+						outcome="SupplierAccount" />
+					<p:menuitem value="Other" icon="ui-icon-disk" />
+
+				</p:submenu>
+				<p:menuitem value="Other Settings" />
+				<p:menuitem value="Ledger Opening Balance" />
+				<p:menuitem value="Stock Opening Balance" />
+			</p:submenu>
+			<p:separator />
+			<p:submenu label="Entries/Trans">
+				<p:menuitem value="Reciepts" icon="ui-icon-disk" />
+				<p:menuitem value="Payments" icon="ui-icon-arrowrefresh-1-w" />
+				<p:menuitem value="Journal" icon="ui-icon-disk" />
+				<p:menuitem value="Contra" icon="ui-icon-disk" />
+				<p:menuitem value="Debit Note" icon="ui-icon-disk" />
+				<p:menuitem value="Credit Note" icon="ui-icon-disk" />
+			</p:submenu>
+			<p:separator />
+			<p:submenu label="Ledgers">
+				<p:menuitem value="Cash Books" icon="ui-icon-disk" />
+				<p:menuitem value="Bank Ledgers" icon="ui-icon-arrowrefresh-1-w" />
+				<p:menuitem value="Ledgers" icon="ui-icon-disk" />
+				<p:menuitem value="Trial Balance" icon="ui-icon-disk" />
+				<p:menuitem value="Profit/Loss Account" icon="ui-icon-disk" />
+				<p:menuitem value="Balance" icon="ui-icon-disk" />
+				<p:menuitem value="Register" icon="ui-icon-disk" />
+			</p:submenu>
+			<p:separator />
+			<p:submenu label="Inventories">
+				<p:menuitem value="Stock" icon="ui-icon-disk" />
+				<p:menuitem value="Branch Wise" icon="ui-icon-arrowrefresh-1-w" />
+				<p:menuitem value="Item Wise" icon="ui-icon-disk" />
+			</p:submenu>
+		</p:panelMenu>
+
+	</h:form>
+</body>
+</html>

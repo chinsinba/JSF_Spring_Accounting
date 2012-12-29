@@ -1,0 +1,155 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="template/Welcome.xhtml">
+
+	<ui:define name="metadata">
+	</ui:define>
+	<ui:define name="content">
+		<body>
+			<div>
+				<p:toolbar>
+					<p:toolbarGroup align="right">
+						<p:commandButton type="button" title="Save" value="Save"
+							icon="ui-icon-disk" />
+						<p:commandButton type="button" title="Delete" value="Delete"
+							icon="ui-icon-trash" />
+						<p:commandButton type="button" title="Clear" value="Cancel"
+							icon="ui-icon-clear" />
+					</p:toolbarGroup>
+				</p:toolbar>
+				<h:form id="form">
+					<p:panel header="Customer Info">
+						<h:panelGrid columns="5">
+							<h:outputText value="Company Name/Br: " />
+							<p:inputText id="companyName" />
+							<p:spacer width="15" />
+							<h:outputText value="Customer Name " />
+							<p:inputText id="supName" />
+							<h:outputText value="Code: " />
+							<p:inputText id="code" />
+							<p:spacer width="15" />
+
+							<h:outputText value="Group: " />
+							<p:selectOneMenu value="#{buttonBean.number}">
+								<f:selectItem itemLabel="Select One" itemValue="" />
+								<f:selectItem itemLabel="Proprietary" itemValue="1" />
+								<f:selectItem itemLabel="Pvt ltd Co" itemValue="2" />
+								<f:selectItem itemLabel="Public ltd Co" itemValue="3" />
+								<f:selectItem itemLabel="Govt Enterprise" itemValue="4" />
+							</p:selectOneMenu>
+							<h:outputText value="Opening Balance: " />
+							<p:inputText id="opBal" />
+							<p:spacer width="15" />
+							<h:outputText value="Type: " />
+							<p:selectOneMenu value="#{buttonBean.number}">
+								<f:selectItem itemLabel="Select One" itemValue="" />
+								<f:selectItem itemLabel="Proprietary" itemValue="1" />
+								<f:selectItem itemLabel="Pvt ltd Co" itemValue="2" />
+								<f:selectItem itemLabel="Public ltd Co" itemValue="3" />
+								<f:selectItem itemLabel="Govt Enterprise" itemValue="4" />
+							</p:selectOneMenu>
+
+						</h:panelGrid>
+					</p:panel>
+					<p:panel header="Personal Details">
+						<h:panelGrid columns="5">
+							<h:outputText value="Contact Person : " />
+							<p:inputText id="contPerson" />
+							<p:spacer width="15" />
+							<h:outputText value="Contact No : " />
+							<p:inputText id="contact" />
+							<h:outputText value="Email : " />
+							<p:inputText id="email" />
+							<p:spacer width="15" />
+							<h:outputText value="Address Line 1: " />
+							<p:inputText id="address1" />
+
+							<h:outputText value="Address Line 2: " />
+							<p:inputText id="address2" />
+							<p:spacer width="15" />
+							<h:outputText value="Address Line 3: " />
+							<p:inputText id="address3" />
+
+							<h:outputText value="Address Line 4: " />
+							<p:inputText id="address4" />
+							<p:spacer width="15" />
+							<h:outputText value="City: " />
+							<p:inputText id="city" />
+
+							<h:outputText value="District: " />
+							<p:inputText id="district" />
+							<p:spacer width="15" />
+							<h:outputText value="Hobli/Gram : " />
+							<p:inputText id="hobli" />
+
+							<h:outputText value="State : " />
+							<p:inputText id="state" />
+							<p:spacer width="15" />
+							<h:outputText value="Country : " />
+							<p:inputText id="country" />
+
+
+						</h:panelGrid>
+					</p:panel>
+
+					<p:panel header="Bank Details">
+						<h:panelGrid columns="4">
+							<h:outputText value="Bank Account Name: " />
+							<p:inputText id="BankAcName" />
+							<p:spacer />
+							<p:spacer />
+
+							<h:outputText value="Bank Account No: " />
+							<p:inputText id="BankAcNo" />
+							<h:outputText value="Branch: " />
+							<p:inputText id="branch" />
+							<h:outputText value="IFSC Code: " />
+							<p:inputText id="IfscCod" />
+							<h:outputText value="Branch Code: " />
+							<p:inputText id="BranchCod" />
+						</h:panelGrid>
+					</p:panel>
+
+
+					<p:panel header="Tax Details">
+						<h:panelGrid columns="4">
+							<h:outputText value="TIN/VAT: " />
+							<p:inputText id="tinVat" />
+							<p:spacer />
+							<p:spacer />
+							<h:outputText value="CST: " />
+							<p:inputText id="cst" />
+							<h:outputText value="PAN: " />
+							<p:inputText id="custPAN" />
+
+							<h:outputText value="Credit Limit: " />
+							<p:selectBooleanCheckbox />
+							<h:outputText value="Credit Days: " />
+							<p:inputText id="custCrDat" />
+							<h:outputText value="Customer Since : " />
+							<p:calendar id="custStDate" showButtonPanel="true"
+								pattern="dd/MM/yyyy" />
+
+						</h:panelGrid>
+					</p:panel>
+				</h:form>
+
+
+
+				<p:toolbar>
+					<p:toolbarGroup align="right">
+						<p:commandButton type="button" title="Save" value="Save"
+							icon="ui-icon-disk" />
+						<p:commandButton type="button" title="Delete" value="Delete"
+							icon="ui-icon-trash" />
+						<p:commandButton type="button" title="Clear" value="Cancel"
+							icon="ui-icon-clear" />
+					</p:toolbarGroup>
+				</p:toolbar>
+			</div>
+		</body>
+	</ui:define>
+</ui:composition>

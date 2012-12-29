@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf13561130930810" configfile="/accc/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="Login.xhtml" x="224" y="120" id="pf13561540132690" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf13562476789890" path="/Login.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="MainPage.xhtml" x="400" y="48" id="pf13562480652822" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf13562476789890" path="/MainPage.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="Company.xhtml" x="672" y="60" id="pf13564574341801" inlinks="pf13564574341800" path="/Company.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="template/header.xhtml" x="400" y="241" id="pf13564577230852" outlinks="pf13564574341800" path="/template/header.xhtml"/>
+  <links id="pf13562476789890" target="pf13562480652822" source="pf13561540132690" outcome="Welcome"/>
+  <links id="pf13564574341800" target="pf13564574341801" source="pf13564577230852" outcome="Company"/>
+</pageflow:Pageflow>

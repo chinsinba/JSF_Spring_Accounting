@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Login</title>
+</h:head>
+<body>
+	<div align="center" >
+		<h:form id="form">
+
+			<p:panel id="panel">
+				<p:messages id="messages" />
+				<h:panelGrid id="grid" columns="3">
+					<h:outputLabel for="firstname" value="User Name *" />
+					<p:inputText id="firstname" value="#{userLogin.username}"
+						required="true" label="Firstname">
+						<f:validateLength minimum="2" />
+					</p:inputText>
+					<p:message for="firstname" />
+
+
+					<h:outputLabel for="password" value="Password *" />
+					<p:password id="password" value="#{userLogin.password}"
+						required="true">
+						<f:validateLength minimum="6"></f:validateLength>
+					</p:password>
+					<p:message for="password" />
+
+					<p:commandButton value="Login" update="panel" action="#{userLogin.validate}" />
+				</h:panelGrid>
+			</p:panel>
+
+		</h:form>
+	</div>
+</body>
+</html>
