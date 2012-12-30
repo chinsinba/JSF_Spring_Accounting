@@ -69,7 +69,7 @@
 						<p:panel header="Registration Info">
 							<h:panelGrid columns="2">
 								<h:outputText value="Company Type: " />
-								<p:selectOneMenu value="#{buttonBean.number}">
+								<p:selectOneMenu>
 									<f:selectItem itemLabel="Select One" itemValue="" />
 									<f:selectItem itemLabel="Proprietary" itemValue="1" />
 									<f:selectItem itemLabel="Pvt ltd Co" itemValue="2" />
@@ -95,7 +95,7 @@
 								paginator="true" rows="10"
 								paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 								rowsPerPageTemplate="5,10,15">
-								<f:facet name="header"> Stakeholder Info </f:facet>
+								<f:facet name="header"> Stakeholder </f:facet>
 
 								<p:column>
 									<f:facet name="header">
@@ -168,7 +168,30 @@
 								</f:facet>
 							</p:dataTable>
 
+							<p:separator />
+
+							<h:panelGrid id="display" columns="5">
+								<h:outputText value="Stakeholder Name: " />
+								<p:inputText id="stkHldName" />
+								<p:spacer width="15" />
+								<h:outputText value="DOB: " />
+								<p:calendar id="stlDob" showButtonPanel="true"
+									pattern="dd/MM/yyyy" />
+								<h:outputText value="Address : " />
+								<p:inputTextarea id="stkaddr" />
+								<p:spacer width="15" />
+								<h:outputText value="Contact No : " />
+								<p:inputText id="stkcont" />
+								<h:outputText value="Email : " />
+								<p:inputText id="stkemail" />
+								<p:spacer width="15" />
+								<h:outputText value="PAN : " />
+								<p:inputText id="stkpan" />
+							</h:panelGrid>
+
 						</p:panel>
+
+
 						<p:panel header="Financial Year">
 							<h:panelGrid columns="5">
 								<h:outputText value="Financial Year Start Date:" />
