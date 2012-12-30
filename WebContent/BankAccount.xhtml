@@ -21,7 +21,63 @@
 					</p:toolbarGroup>
 				</p:toolbar>
 				<h:form id="form">
-bankaccout
+					<p:panel header="Bank Account">
+						<h:panelGrid columns="5">
+							<h:outputText value=" Bank Name : " />
+							<p:inputText id="bnkName" />
+							<p:spacer width="15" />
+							<h:outputText value="Code : " />
+							<p:inputText id="code" />
+
+
+							<h:outputText value="Group : " />
+							<p:selectOneMenu value="#{buttonBean.number}">
+								<f:selectItem itemLabel="Select One" itemValue="" />
+								<f:selectItem itemLabel="Income" itemValue="1" />
+								<f:selectItem itemLabel="Expenditure" itemValue="2" />
+								<f:selectItem itemLabel="Asset" itemValue="3" />
+								<f:selectItem itemLabel="Liability" itemValue="4" />
+							</p:selectOneMenu>
+							<p:spacer width="15" />
+
+							<h:outputText value="Account Type : " />
+							<p:selectOneMenu value="#{buttonBean.number}">
+								<f:selectItem itemLabel="Select One" itemValue="" />
+								<f:selectItem itemLabel="Income" itemValue="1" />
+								<f:selectItem itemLabel="Expenditure" itemValue="2" />
+								<f:selectItem itemLabel="Asset" itemValue="3" />
+								<f:selectItem itemLabel="Liability" itemValue="4" />
+							</p:selectOneMenu>
+							<h:outputText value=" Acc No : " />
+							<p:inputText id="accNo" />
+							<p:spacer width="15" />
+							<h:outputText value="Branch : " />
+							<p:inputText id="branch" />
+
+							<h:outputText value="Address : " />
+							<p:inputTextarea id="adrs" />
+							<p:spacer width="15" />
+
+							<h:outputText value="Contact No : " />
+							<p:inputText id="cont" />
+							<h:outputText value="Contact Person : " />
+							<p:inputText id="contPrs" />
+							<p:spacer width="15" />
+							<p:spacer width="15" />
+
+							<p:spacer width="15" />
+
+							<h:outputText value="Opening Balance : " />
+							<p:inputText id="opBal" />
+
+							<h:outputText value="Type : " />
+							<p:selectOneMenu value="#{buttonBean.number}">
+								<f:selectItem itemLabel="Select One" itemValue="" />
+								<f:selectItem itemLabel="Credit" itemValue="1" />
+								<f:selectItem itemLabel="Debit" itemValue="2" />
+							</p:selectOneMenu>
+						</h:panelGrid>
+					</p:panel>
 				</h:form>
 
 

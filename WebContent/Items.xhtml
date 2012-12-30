@@ -20,8 +20,71 @@
 							icon="ui-icon-clear" />
 					</p:toolbarGroup>
 				</p:toolbar>
+
 				<h:form id="form">
-					<p:panel header="Item Info">
+
+					<p:panel >
+
+						<p:dataTable id="dataTable" var="car" value="#{tableBean.cars}"
+							paginator="true" rows="10"
+							paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+							rowsPerPageTemplate="5,10,15"  resizableColumns="true">
+							<f:facet name="header"> Items</f:facet>
+
+							<p:column headerText="Name">
+								<h:outputText value="#{car.model}" />
+							</p:column>
+
+							<p:column headerText="Code">
+								<h:outputText value="#{car.year}" />
+							</p:column>
+
+							<p:column headerText="Op Stock Unit">
+								<h:outputText value="#{car.manufacturer}" />
+							</p:column>
+
+							<p:column headerText="Op Stock Qty">
+								<h:outputText value="#{car.color}" />
+							</p:column>
+
+							<p:column headerText="Value">
+								<h:outputText value="#{car.color}" />
+							</p:column>
+
+							<p:column headerText="Acc Name">
+								<h:outputText value="#{car.color}" />
+							</p:column>
+
+							<p:column headerText="Inward Tax Acc">
+								<h:outputText value="#{car.color}" />
+							</p:column>
+
+							<p:column headerText="Outward Tax Acc">
+								<h:outputText value="#{car.color}" />
+							</p:column>
+
+							<p:column headerText="Batch No">
+								<h:outputText value="#{car.color}" />
+							</p:column>
+
+							<p:column headerText="Mfg Date">
+								<h:outputText value="#{car.color}" />
+							</p:column>
+
+							<p:column headerText="Exp Date">
+								<h:outputText value="#{car.color}" />
+							</p:column>
+
+							<f:facet name="footer">
+								<p:commandButton id="viewButton" value="Edit"
+									icon="ui-icon-edit" />
+								<p:commandButton id="addButton" value="New" icon="ui-icon-edit" />
+								<p:commandButton id="delButton" value="Delete"
+									icon="ui-icon-clear" />
+							</f:facet>
+						</p:dataTable>
+						<p:separator ></p:separator>
+
 						<h:panelGrid columns="5">
 							<h:outputText value="Item Code: " />
 							<p:inputText id="itemCod" />
@@ -41,7 +104,7 @@
 								<f:selectItem itemLabel="Public ltd Co" itemValue="3" />
 								<f:selectItem itemLabel="Govt Enterprise" itemValue="4" />
 							</p:selectOneMenu>
-							
+
 							<h:outputText value="Opening Stock : " />
 							<p:inputText id="opStck" />
 							<p:spacer width="15" />

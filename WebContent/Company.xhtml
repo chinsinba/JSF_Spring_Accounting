@@ -67,7 +67,7 @@
 						<p:spacer height="10" />
 
 						<p:panel header="Registration Info">
-							<h:panelGrid columns="2" id="matchGrid">
+							<h:panelGrid columns="2">
 								<h:outputText value="Company Type: " />
 								<p:selectOneMenu value="#{buttonBean.number}">
 									<f:selectItem itemLabel="Select One" itemValue="" />
@@ -76,10 +76,11 @@
 									<f:selectItem itemLabel="Public ltd Co" itemValue="3" />
 									<f:selectItem itemLabel="Govt Enterprise" itemValue="4" />
 								</p:selectOneMenu>
-
+							</h:panelGrid>
+							<h:panelGrid columns="5">
 								<h:outputText value="Reg Name : " />
 								<p:inputText id="regName" />
-
+								<p:spacer width="15" />
 								<h:outputText value="Reg No : " />
 								<p:inputText id="regNo" />
 
@@ -87,7 +88,8 @@
 								<p:calendar id="cal" showButtonPanel="true" pattern="dd/MM/yyyy" />
 							</h:panelGrid>
 
-							<p:spacer height="10" />
+
+							<p:separator></p:separator>
 
 							<p:dataTable id="dataTable" var="car" value="#{tableBean.cars}"
 								paginator="true" rows="10"
@@ -156,6 +158,14 @@
 									</f:facet>
 									<h:outputText value="#{car.color}" />
 								</p:column>
+
+								<f:facet name="footer">
+									<p:commandButton id="viewButton" value="Edit"
+										icon="ui-icon-edit" />
+									<p:commandButton id="addButton" value="New" icon="ui-icon-edit" />
+									<p:commandButton id="delButton" value="Delete"
+										icon="ui-icon-clear" />
+								</f:facet>
 							</p:dataTable>
 
 						</p:panel>

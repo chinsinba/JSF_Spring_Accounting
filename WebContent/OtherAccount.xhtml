@@ -21,14 +21,12 @@
 					</p:toolbarGroup>
 				</p:toolbar>
 				<h:form id="form">
-					<p:panel header="Supplier Info" >
-					
-					
+					<p:panel header="General Info" >
 					<p:dataTable id="dataTable" var="car" value="#{tableBean.cars}"
 								paginator="true" rows="10"
 								paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 								rowsPerPageTemplate="5,10,15" resizableColumns="true">
-								<f:facet name="header"> Supplier Accounts</f:facet>
+								<f:facet name="header"> Other Accounts</f:facet>
 	
 								<p:column headerText="Comp Name">
 									<h:outputText value="#{car.model}" />
@@ -83,13 +81,12 @@
 								</f:facet>
 							</p:dataTable>
 							<p:separator></p:separator>
-					
 						<h:panelGrid columns="5">
 							<h:outputText value="Company Name/Br: " />
 							<p:inputText id="companyName" />
 							<p:spacer width="15" />
-							<h:outputText value="Supplier Name " />
-							<p:inputText id="supName" />
+							<h:outputText value="Other Name: " />
+							<p:inputText id="othName" />
 							<h:outputText value="Code: " />
 							<p:inputText id="code" />
 							<p:spacer width="15" />
