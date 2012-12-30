@@ -26,7 +26,7 @@
 							<h:outputText value="Company Name/Br: " />
 							<p:inputText id="companyName" />
 							<p:spacer width="15" />
-							<h:outputText value="Customer Name " />
+							<h:outputText value="Customer Nam:" />
 							<p:inputText id="supName" />
 							<h:outputText value="Code: " />
 							<p:inputText id="code" />
@@ -54,87 +54,92 @@
 
 						</h:panelGrid>
 					</p:panel>
-					<p:panel header="Personal Details">
-						<h:panelGrid columns="5">
-							<h:outputText value="Contact Person : " />
-							<p:inputText id="contPerson" />
-							<p:spacer width="15" />
-							<h:outputText value="Contact No : " />
-							<p:inputText id="contact" />
-							<h:outputText value="Email : " />
-							<p:inputText id="email" />
-							<p:spacer width="15" />
-							<h:outputText value="Address Line 1: " />
-							<p:inputText id="address1" />
+					<p:tabView id="tabView">
 
-							<h:outputText value="Address Line 2: " />
-							<p:inputText id="address2" />
-							<p:spacer width="15" />
-							<h:outputText value="Address Line 3: " />
-							<p:inputText id="address3" />
+						<p:tab id="tab1" title="Contact Details">
+							<h:panelGrid columns="5">
+								<h:outputText value="Contact Person : " />
+								<p:inputText id="contPerson" />
+								<p:spacer width="15" />
+								<p:spacer width="15" />
+								<p:spacer width="15" />
+								<h:outputText value="Contact No : " />
+								<p:inputText id="contact" />
+								<h:outputText value="Email : " />
+								<p:inputText id="email" />
+								<p:spacer width="15" />
 
-							<h:outputText value="Address Line 4: " />
-							<p:inputText id="address4" />
-							<p:spacer width="15" />
-							<h:outputText value="City: " />
-							<p:inputText id="city" />
+								<h:outputText value="Address Line 1: " />
+								<p:inputText id="address1" />
 
-							<h:outputText value="District: " />
-							<p:inputText id="district" />
-							<p:spacer width="15" />
-							<h:outputText value="Hobli/Gram : " />
-							<p:inputText id="hobli" />
+								<h:outputText value="Address Line 2: " />
+								<p:inputText id="address2" />
+								<p:spacer width="15" />
+								<h:outputText value="Address Line 3: " />
+								<p:inputText id="address3" />
 
-							<h:outputText value="State : " />
-							<p:inputText id="state" />
-							<p:spacer width="15" />
-							<h:outputText value="Country : " />
-							<p:inputText id="country" />
+								<h:outputText value="Address Line 4: " />
+								<p:inputText id="address4" />
+								<p:spacer width="15" />
+								<h:outputText value="City: " />
+								<p:inputText id="city" />
 
+								<h:outputText value="District: " />
+								<p:inputText id="district" />
+								<p:spacer width="15" />
+								<h:outputText value="Hobli/Gram : " />
+								<p:inputText id="hobli" />
 
-						</h:panelGrid>
-					</p:panel>
-
-					<p:panel header="Bank Details">
-						<h:panelGrid columns="4">
-							<h:outputText value="Bank Account Name: " />
-							<p:inputText id="BankAcName" />
-							<p:spacer />
-							<p:spacer />
-
-							<h:outputText value="Bank Account No: " />
-							<p:inputText id="BankAcNo" />
-							<h:outputText value="Branch: " />
-							<p:inputText id="branch" />
-							<h:outputText value="IFSC Code: " />
-							<p:inputText id="IfscCod" />
-							<h:outputText value="Branch Code: " />
-							<p:inputText id="BranchCod" />
-						</h:panelGrid>
-					</p:panel>
+								<h:outputText value="State : " />
+								<p:inputText id="state" />
+								<p:spacer width="15" />
+								<h:outputText value="Country : " />
+								<p:inputText id="country" />
 
 
-					<p:panel header="Tax Details">
-						<h:panelGrid columns="4">
-							<h:outputText value="TIN/VAT: " />
-							<p:inputText id="tinVat" />
-							<p:spacer />
-							<p:spacer />
-							<h:outputText value="CST: " />
-							<p:inputText id="cst" />
-							<h:outputText value="PAN: " />
-							<p:inputText id="custPAN" />
+							</h:panelGrid>
+						</p:tab>
 
-							<h:outputText value="Credit Limit: " />
-							<p:selectBooleanCheckbox />
-							<h:outputText value="Credit Days: " />
-							<p:inputText id="custCrDat" />
-							<h:outputText value="Customer Since : " />
-							<p:calendar id="custStDate" showButtonPanel="true"
-								pattern="dd/MM/yyyy" />
+						<p:tab id="tab2" title="Bank Details">
+							<h:panelGrid columns="4">
+								<h:outputText value="Bank Account Name: " />
+								<p:inputText id="BankAcName" />
+								<p:spacer />
+								<p:spacer />
 
-						</h:panelGrid>
-					</p:panel>
+								<h:outputText value="Bank Account No: " />
+								<p:inputText id="BankAcNo" />
+								<h:outputText value="Branch: " />
+								<p:inputText id="branch" />
+								<h:outputText value="IFSC Code: " />
+								<p:inputText id="IfscCod" />
+								<h:outputText value="Branch Code: " />
+								<p:inputText id="BranchCod" />
+							</h:panelGrid>
+						</p:tab>
+
+						<p:tab id="tab3" title="Tax Details">
+							<h:panelGrid columns="4">
+								<h:outputText value="TIN/VAT: " />
+								<p:inputText id="tinVat" />
+								<p:spacer />
+								<p:spacer />
+								<h:outputText value="CST: " />
+								<p:inputText id="cst" />
+								<h:outputText value="PAN: " />
+								<p:inputText id="custPAN" />
+
+								<h:outputText value="Credit Limit: " />
+								<p:selectBooleanCheckbox />
+								<h:outputText value="Credit Days: " />
+								<p:inputText id="custCrDat" />
+								<h:outputText value="Customer Since : " />
+								<p:calendar id="custStDate" showButtonPanel="true"
+									pattern="dd/MM/yyyy" />
+
+							</h:panelGrid>
+						</p:tab>
+					</p:tabView>
 				</h:form>
 
 

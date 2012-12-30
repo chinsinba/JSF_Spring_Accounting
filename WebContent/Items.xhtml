@@ -26,8 +26,13 @@
 							<h:outputText value="Item Code: " />
 							<p:inputText id="itemCod" />
 							<p:spacer width="15" />
+							<p:spacer width="15" />
+							<p:spacer width="15" />
 							<h:outputText value="Item Name " />
 							<p:inputText id="itemNam" />
+							<h:outputText value="Brand Name :" />
+							<p:inputText id="brandName" />
+							<p:spacer width="15" />
 							<h:outputText value="Item Group: " />
 							<p:selectOneMenu value="#{buttonBean.number}">
 								<f:selectItem itemLabel="Select One" itemValue="" />
@@ -36,9 +41,10 @@
 								<f:selectItem itemLabel="Public ltd Co" itemValue="3" />
 								<f:selectItem itemLabel="Govt Enterprise" itemValue="4" />
 							</p:selectOneMenu>
-							<p:spacer width="15" />
+							
 							<h:outputText value="Opening Stock : " />
 							<p:inputText id="opStck" />
+							<p:spacer width="15" />
 							<h:outputText value="Account :" />
 							<p:selectOneMenu value="#{buttonBean.number}">
 								<f:selectItem itemLabel="Select One" itemValue="" />
@@ -48,8 +54,6 @@
 								<f:selectItem itemLabel="Govt Enterprise" itemValue="4" />
 							</p:selectOneMenu>
 							<p:spacer width="15" />
-							<h:outputText value="Brand Name :" />
-							<p:inputText id="brandName" />
 						</h:panelGrid>
 					</p:panel>
 					<p:panel header="Tax Details">
