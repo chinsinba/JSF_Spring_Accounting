@@ -77,13 +77,13 @@
 									<f:selectItem itemLabel="Govt Enterprise" itemValue="4" />
 								</p:selectOneMenu>
 							</h:panelGrid>
-							<h:panelGrid columns="5">
+							<h:panelGrid columns="8">
 								<h:outputText value="Reg Name : " />
 								<p:inputText id="regName" />
 								<p:spacer width="15" />
 								<h:outputText value="Reg No : " />
 								<p:inputText id="regNo" />
-
+								<p:spacer width="15" />
 								<h:outputText value="Reg Date:" />
 								<p:calendar id="cal" showButtonPanel="true" pattern="dd/MM/yyyy" />
 							</h:panelGrid>
@@ -91,6 +91,29 @@
 
 							<p:separator></p:separator>
 
+
+
+
+
+							<h:panelGrid id="display" columns="5">
+								<h:outputText value="Stakeholder Name: " />
+								<p:inputText id="stkHldName" />
+								<p:spacer width="15" />
+								<h:outputText value="DOB: " />
+								<p:calendar id="stlDob" showButtonPanel="true"
+									pattern="dd/MM/yyyy" />
+								<h:outputText value="Address : " />
+								<p:inputTextarea id="stkaddr" />
+								<p:spacer width="15" />
+								<h:outputText value="Contact No : " />
+								<p:inputText id="stkcont" />
+								<h:outputText value="Email : " />
+								<p:inputText id="stkemail" />
+								<p:spacer width="15" />
+								<h:outputText value="PAN : " />
+								<p:inputText id="stkpan" />
+							</h:panelGrid>
+							<p:separator />
 							<p:dataTable id="dataTable" var="car" value="#{tableBean.cars}"
 								paginator="true" rows="10"
 								paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -167,27 +190,6 @@
 										icon="ui-icon-clear" />
 								</f:facet>
 							</p:dataTable>
-
-							<p:separator />
-
-							<h:panelGrid id="display" columns="5">
-								<h:outputText value="Stakeholder Name: " />
-								<p:inputText id="stkHldName" />
-								<p:spacer width="15" />
-								<h:outputText value="DOB: " />
-								<p:calendar id="stlDob" showButtonPanel="true"
-									pattern="dd/MM/yyyy" />
-								<h:outputText value="Address : " />
-								<p:inputTextarea id="stkaddr" />
-								<p:spacer width="15" />
-								<h:outputText value="Contact No : " />
-								<p:inputText id="stkcont" />
-								<h:outputText value="Email : " />
-								<p:inputText id="stkemail" />
-								<p:spacer width="15" />
-								<h:outputText value="PAN : " />
-								<p:inputText id="stkpan" />
-							</h:panelGrid>
 
 						</p:panel>
 

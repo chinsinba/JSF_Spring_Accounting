@@ -157,48 +157,81 @@
 							rowsPerPageTemplate="5,10,15" resizableColumns="true">
 							<f:facet name="header"> Customers</f:facet>
 
-							<p:column headerText="Comp Name">
-								<h:outputText value="#{car.model}" />
-							</p:column>
-
-							<p:column headerText="Cust Name">
-								<h:outputText value="#{car.year}" />
-							</p:column>
-
-							<p:column headerText="Code">
-								<h:outputText value="#{car.manufacturer}" />
-							</p:column>
-
-							<p:column headerText="Cont Person">
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Comp Name" />
+								</f:facet>
 								<h:outputText value="#{car.color}" />
 							</p:column>
 
-							<p:column headerText="Cont No">
+							<p:column >
+								<f:facet name="header">
+									<h:outputText value="Cust Name" />
+								</f:facet>
 								<h:outputText value="#{car.color}" />
 							</p:column>
 
-							<p:column headerText="PAN">
+							<p:column >
+								<f:facet name="header">
+									<h:outputText value="Code" />
+								</f:facet>
 								<h:outputText value="#{car.color}" />
 							</p:column>
 
-							<p:column headerText="Email">
+							<p:column >
+								<f:facet name="header">
+									<h:outputText value="Cont Person" />
+								</f:facet>
 								<h:outputText value="#{car.color}" />
 							</p:column>
 
-							<p:column headerText="Acc Name">
+							<p:column >
+								<f:facet name="header">
+									<h:outputText value="Cont No" />
+								</f:facet>
 								<h:outputText value="#{car.color}" />
 							</p:column>
 
-							<p:column headerText="Grp Name">
+							<p:column >
+								<f:facet name="header">
+									<h:outputText value="PAN" />
+								</f:facet>
 								<h:outputText value="#{car.color}" />
 							</p:column>
 
-							<p:column headerText="Op Balance">
+							<p:column >
+								<f:facet name="header">
+									<h:outputText value="Email" />
+								</f:facet>
 								<h:outputText value="#{car.color}" />
 							</p:column>
 
-							<p:column headerText="Cr Days">
+							<p:column >
+								<f:facet name="header">
+									<h:outputText value="Acc Name" />
+								</f:facet>
 								<h:outputText value="#{car.color}" />
+							</p:column>
+
+							<p:column >
+								<f:facet name="header">
+									<h:outputText value="Grp Name" />
+								</f:facet>
+								<h:outputText value="#{car.color}" />
+							</p:column>
+
+							<p:column >
+								<f:facet name="header">
+									<h:outputText value="Op Balance" />
+								</f:facet>
+								<h:outputText value="#{car.color}" />
+							</p:column>
+
+							<p:column >
+								<f:facet name="header">
+									<h:outputText value="Cr Days" />
+								</f:facet>
+								
 							</p:column>
 
 							<f:facet name="footer">
