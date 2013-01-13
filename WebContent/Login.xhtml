@@ -3,7 +3,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core"
-	template="template/Login_Template.xhtml">
+	template="/views/template/Login_Template.xhtml">
 
 	<ui:define name="metadata">
 	</ui:define>
@@ -14,23 +14,23 @@
 					<p:panel id="panel">
 						<p:messages id="messages" />
 						<h:panelGrid columns="3">
-							<h:outputLabel for="firstname" value="User Name *" />
-							<p:inputText id="firstname" value="#{userLogin.username}"
+							<h:outputLabel for="j_username" value="User Name *" />
+							<p:inputText id="j_username" value="#{loginBean.userName}"
 								required="true" label="Firstname">
 								<f:validateLength minimum="2" />
 							</p:inputText>
-							<p:message for="firstname" />
+							<p:message for="j_username" />
 
-							<h:outputLabel for="password" value="Password *" />
-							<p:password id="password" value="#{userLogin.password}"
+							<h:outputLabel for="j_password" value="Password *" />
+							<p:password id="j_password" value="#{loginBean.password}"
 								required="true">
-								<f:validateLength minimum="6"></f:validateLength>
+								<f:validateLength minimum="4"></f:validateLength>
 							</p:password>
-							<p:message for="password" />
+							<p:message for="j_password" />
 
 							<f:facet name="footer">
 								<p:commandButton value="Login" update="panel"
-									action="#{userLogin.addUser}" />
+									action="#{loginBean.login}" />
 									<p:commandLink value="Forgot Password" />
 							</f:facet>
 						</h:panelGrid>
