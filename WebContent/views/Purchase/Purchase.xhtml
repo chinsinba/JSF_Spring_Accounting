@@ -1,0 +1,141 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/views/template/Welcome.xhtml">
+
+	<ui:define name="metadata">
+	</ui:define>
+	<ui:define name="menu">
+	Coming Soon..
+	</ui:define>
+	<ui:define name="content">
+		<body>
+			<div>
+				<p:toolbar>
+					<p:toolbarGroup align="right">
+						<p:commandButton type="button" title="Save" value="Save"
+							icon="ui-icon-disk" />
+						<p:commandButton type="button" title="Delete" value="Delete"
+							icon="ui-icon-trash" />
+						<p:commandButton type="button" title="Clear" value="Cancel"
+							icon="ui-icon-clear" />
+					</p:toolbarGroup>
+				</p:toolbar>
+				<div>
+					<h:form id="form">
+
+						<p:panel header="Purchase Entry">
+							<h:panelGrid columns="5">
+								<h:outputText value="Company Name :" />
+								<p:inputText id="compNam" />
+								<p:spacer width="15" />
+								<h:outputText value="Code :" />
+								<p:inputText id="CompCode" />
+
+							</h:panelGrid>
+							<p:separator></p:separator>
+							<h:panelGrid columns="5">
+								<h:outputText value="Purchase Order :" />
+								<p:inputText id="purOrd" />
+								<p:spacer width="15" />
+								<h:outputText value="Purchase Date:" />
+								<p:calendar id="cal" showButtonPanel="true" pattern="dd/MM/yyyy" />
+								<h:outputText value="Supplier Code :" />
+								<p:inputText id="supCode" />
+								<p:spacer width="15" />
+								<h:outputText value="Address :" />
+								<p:inputTextArea id="supAddr" />
+								<h:outputText value="Sipplier Name :" />
+								<p:inputText id="supName" />
+
+							</h:panelGrid>
+						</p:panel>
+
+
+						<p:panel header="Required Details">
+							<h:panelGrid columns="5">
+
+							</h:panelGrid>
+							<p:separator></p:separator>
+							<p:dataTable id="dataTable" var="car" value="#{tableBean.cars}"
+								paginator="true" rows="10"
+								paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+								rowsPerPageTemplate="5,10,15" resizableColumns="true">
+								<f:facet name="header"> Items</f:facet>
+
+								<p:column headerText="Name">
+									<h:outputText value="#{car.model}" />
+								</p:column>
+
+								<p:column headerText="Code">
+									<h:outputText value="#{car.year}" />
+								</p:column>
+
+								<p:column headerText="Op Stock Unit">
+									<h:outputText value="#{car.manufacturer}" />
+								</p:column>
+
+								<p:column headerText="Op Stock Qty">
+									<h:outputText value="#{car.color}" />
+								</p:column>
+
+								<p:column headerText="Value">
+									<h:outputText value="#{car.color}" />
+								</p:column>
+
+								<p:column headerText="Acc Name">
+									<h:outputText value="#{car.color}" />
+								</p:column>
+
+								<p:column headerText="Inward Tax Acc">
+									<h:outputText value="#{car.color}" />
+								</p:column>
+
+								<p:column headerText="Outward Tax Acc">
+									<h:outputText value="#{car.color}" />
+								</p:column>
+
+								<p:column headerText="Batch No">
+									<h:outputText value="#{car.color}" />
+								</p:column>
+
+								<p:column headerText="Mfg Date">
+									<h:outputText value="#{car.color}" />
+								</p:column>
+
+								<p:column headerText="Exp Date">
+									<h:outputText value="#{car.color}" />
+								</p:column>
+
+								<f:facet name="footer">
+									<p:commandButton id="viewButton" value="Edit"
+										icon="ui-icon-edit" />
+									<p:commandButton id="addButton" value="New" icon="ui-icon-edit" />
+									<p:commandButton id="delButton" value="Delete"
+										icon="ui-icon-clear" />
+								</f:facet>
+							</p:dataTable>
+
+
+						</p:panel>
+					</h:form>
+
+				</div>
+
+
+				<p:toolbar>
+					<p:toolbarGroup align="right">
+						<p:commandButton type="button" title="Save" value="Save"
+							icon="ui-icon-disk" />
+						<p:commandButton type="button" title="Delete" value="Delete"
+							icon="ui-icon-trash" />
+						<p:commandButton type="button" title="Clear" value="Cancel"
+							icon="ui-icon-clear" />
+					</p:toolbarGroup>
+				</p:toolbar>
+			</div>
+		</body>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="/WEB-INF/config/gaadi-env.properties" />
+	</bean>
+
+	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+		id="dataSource" p:driverClassName="${jdbc.driverClass}" p:password="${jdbc.password}"
+		p:url="${jdbc.url}" p:username="${jdbc.username}">
+	</bean>
+
+
+
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceUnitName" value="sample" />
+		<property name="dataSource" ref="dataSource" />
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="databasePlatform" value="org.hibernate.dialect.MySQLDialect" />
+				<property name="showSql" value="${jdbc.showSql}" />
+				<property name="generateDdl" value="false" />
+			</bean>
+		</property>
+		<property name="jpaProperties">
+			<value>
+				hibernate.cache.provider_class=net.sf.ehcache.hibernate.SingletonEhCacheProvider
+				hibernate.cache.use_query_cache=true
+				hibernate.cache.use_second_level_cache=true
+				net.sf.ehcache.configurationResourceName=../config/ehcache.xml
+			</value>
+		</property>
+	</bean>
+
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+
+	<bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="${mailHost}" />
+		<property name="port" value="465" />
+		<property name="username" value="${mailUsername}" />
+		<property name="password" value="${mailPassword}" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.debug">${mailDebug}</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>
+				<prop key="mail.smtp.socketFactory.fallback">false</prop>
+				<prop key="mail.smtp.socketFactory.port">465</prop>
+				<prop key="mail.from">${mailFrom}</prop>
+			</props>
+		</property>
+	</bean>
+
+	<tx:annotation-driven />
+
+	<!-- needed is for @Configurable -->
+	<context:component-scan base-package="accounts" />
+
+	<!-- Spring security -->
+	<import resource="config/sample-security.xml" />
+</beans>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+             http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+
+	<global-method-security secured-annotations="enabled">
+	</global-method-security>
+	<http access-denied-page="/denied.html" auto-config="false">
+		<remember-me key="JSFUserMgmtExample" />
+		<form-login authentication-failure-url="/Login.xhtml"
+			default-target-url="/Login.xhtml" login-page="/Login.xhtml"
+			login-processing-url="/j_spring_security_check" />
+		<logout logout-success-url="/Login.xhtml" logout-url="/logout.html" />
+		<intercept-url pattern="/auth/**" access="ROLE_user"
+			requires-channel="any" /><!-- access="ROLE_USER" -->
+	</http>
+
+
+
+	<authentication-manager alias="authenticationManager">
+		<authentication-provider>
+			<user-service>
+                <user name="admin" password="admin" authorities="ROLE_USER, ROLE_ADMIN" />
+                <user name="user1" password="user1" authorities="ROLE_USER" />
+            </user-service>
+		</authentication-provider>
+	</authentication-manager>
+
+	<!--<beans:bean id="myUserDetailsService" class="com.pariyani.dao.impl.SpringCustomJdbcDaoImpl"> 
+		<beans:property name="dataSource" ref="dataSource"/> <beans:property name="usersByUsernameQuery" 
+		value="select username, password, true,id from user_sample where username 
+		= ?"></beans:property> <beans:property name="authoritiesByUsernameQuery" 
+		value="SELECT ij.id, r.name FROM role r INNER JOIN (SELECT u.id, ur.roleId 
+		FROM user_role ur, user u WHERE ur.userId=u.id AND u.userName=?) ij ON r.id=ij.roleId"></beans:property> 
+		<beans:property name="rolePrefix" value="ROLE_"/> </beans:bean> -->
+
+	<beans:bean
+		class="org.springframework.security.authentication.event.LoggerListener"
+		id="loggerListener" />
+
+</beans:beans>
