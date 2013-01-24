@@ -17,19 +17,15 @@ import accounts.app.user.User;
  * 
  * {@link http://pariyani.com} pariyani
  */
-@Repository
-@Component
 public class UserDaoImpl implements UserDao {
 
     private EntityManager entityManagerFactory;
 
-    @PersistenceContext
     void setEntityManager(EntityManager entityManager) {
         this.entityManagerFactory = entityManager;
     }
 
     
-    @Transactional(readOnly = true, propagation = Propagation.REQUIRED)
     public User getUser(int id) {
         return (User) this.entityManagerFactory.find(User.class, id);
     }

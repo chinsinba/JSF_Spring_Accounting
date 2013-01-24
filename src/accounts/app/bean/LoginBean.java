@@ -34,112 +34,118 @@ import accounts.app.user.User;
 @Scope("request")
 public class LoginBean {
 
-    private final AuthenticationManager am;
+	private final AuthenticationManager am;
 
-    private String nameError;
+	private String nameError;
 
-    private PreferencesBean preferencesBean;
+	private PreferencesBean preferencesBean;
 
-    private UserService userService;
+	private UserService userService;
 
-    /**
-     * XXX Returns <code>nameError</code>.
-     * 
-     * @return Returns the {@link #nameError}.
-     */
-    public String getNameError() {
-        return nameError;
-    }
+	/**
+	 * XXX Returns <code>nameError</code>.
+	 * 
+	 * @return Returns the {@link #nameError}.
+	 */
+	public String getNameError() {
+		return nameError;
+	}
 
-    /**
-     * XXX Set <code>nameError</code>.
-     * 
-     * @param nameError The {@link #nameError} to set.
-     */
-    public void setNameError(String nameError) {
-        this.nameError = nameError;
-    }
+	/**
+	 * XXX Set <code>nameError</code>.
+	 * 
+	 * @param nameError The {@link #nameError} to set.
+	 */
+	public void setNameError(String nameError) {
+		this.nameError = nameError;
+	}
 
-    @Inject
-    public LoginBean(@Named("authenticationManager") AuthenticationManager am,
-            final PreferencesBean preferencesBean, final UserService service) {
-        this.am = am;
-        this.preferencesBean = preferencesBean;
-        this.userService = service;
-    }
+	public LoginBean()
+	{
+		this.am= null;
+	}
 
-    public String login() {
+	public LoginBean(@Named("authenticationManager") AuthenticationManager am,
+			final PreferencesBean preferencesBean, final UserService service) {
+		this.am = am;
+		this.preferencesBean = preferencesBean;
+		this.userService = service;
+	}
 
-        try {
+	public String login() {
+		return "/Company.xhtml";
+		/*
 
-            if (this.preferencesBean.isAuthenticated()) {
-                return "/Company.xhtml";
-            }
+		try {
 
-            Authentication request = new UsernamePasswordAuthenticationToken(this.getUserName(), getPassword());
-            Authentication result = am.authenticate(request);
-            result.getAuthorities();
-            SecurityContextHolder.getContext().setAuthentication(result);
-            this.preferencesBean.setAuthData(result);
-            ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
-            ApplicationContext appContext = WebApplicationContextUtils.getWebApplicationContext(servletContext);
-            //javax.servlet.http.HttpServletRequest req=(javax.servlet.http.HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
-           /* User user = this.userService.getUser(1);
-            this.preferencesBean.setUser(user);*/
-            return "/Company.xhtml";
+			if (this.preferencesBean.isAuthenticated()) {
+				return "/Company.xhtml";
+			}
 
-        } catch (AuthenticationException e) {
-            FacesUtils.addErrorString(null, "login.failed");
-            return "Login.xhtml";
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new FacesException(e);
-        }
-    }
+			Authentication request = new UsernamePasswordAuthenticationToken(this.getUserName(), getPassword());
+			Authentication result = am.authenticate(request);
+			result.getAuthorities();
+			SecurityContextHolder.getContext().setAuthentication(result);
+			this.preferencesBean.setAuthData(result);
+			ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
+			ApplicationContext appContext = WebApplicationContextUtils.getWebApplicationContext(servletContext);
+			//javax.servlet.http.HttpServletRequest req=(javax.servlet.http.HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
+			 User user = this.userService.getUser(1);
+            this.preferencesBean.setUser(user);
+			return "/Company.xhtml";
 
-    private String userName;
+		} catch (AuthenticationException e) {
+			FacesUtils.addErrorString(null, "login.failed");
+			return "Login.xhtml";
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new FacesException(e);
+		}
+	*/}
 
-    private String password;
+	private String userName;
 
-    public String getUserName() {
-        return userName;
-    }
+	private String password;
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+	public String getUserName() {
+		return userName;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    public void validateName(ValueChangeEvent e) {
-        // UIInput nameInput = e.getComponent();
-        String name = (String) e.getNewValue();
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-        if (name.contains("_"))
-            nameError = "Name cannot contain underscores";
-        else if (name.equals(""))
-            nameError = "Name cannot be blank";
-        else
-            nameError = "";
-    }
+	public void validateName(ValueChangeEvent e) {
+		// UIInput nameInput = e.getComponent();
+		String name = (String) e.getNewValue();
 
-    
-    
-    public void validate(ComponentSystemEvent e) {
-        UIComponent form = e.getComponent();
+		if (name.contains("_"))
+			nameError = "Name cannot contain underscores";
+		else if (name.equals(""))
+			nameError = "Name cannot be blank";
+		else
+			nameError = "";
+	}
 
-        FacesContext fc = FacesContext.getCurrentInstance();
-        UIInput newPass = (UIInput) form.findComponent("newPass");
 
-        if (true)
-            fc.renderResponse();
-    }
-  
+
+	public void validate(ComponentSystemEvent e) {
+		UIComponent form = e.getComponent();
+
+		FacesContext fc = FacesContext.getCurrentInstance();
+		UIInput newPass = (UIInput) form.findComponent("newPass");
+
+		if (true)
+			fc.renderResponse();
+	}
+
 
 }

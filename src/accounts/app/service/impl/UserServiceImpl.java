@@ -20,14 +20,12 @@ import accounts.app.user.User;
  * 
  * {@link http://pariyani.com} pariyani
  */
-@Service
 public class UserServiceImpl implements UserService {
 
     private final UserDao userDao;
 
     private JavaMailSender javaMailSender;
     
-    @Inject
     UserServiceImpl(UserDao userDao,JavaMailSender javaMailSender) {
         this.userDao = userDao;
         this.javaMailSender = javaMailSender;
@@ -38,7 +36,6 @@ public class UserServiceImpl implements UserService {
 
     private ExecutorService sendMailExeService;
 
-    @Transactional(readOnly = true)
     public User getUser(int userId) {
         return userDao.getUser(userId);
     }
