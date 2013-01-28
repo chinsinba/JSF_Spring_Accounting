@@ -1,0 +1,153 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/views/template/Welcome.xhtml">
+
+	<ui:define name="metadata">
+	</ui:define>
+	<ui:define name="content">
+		<body>
+			<div>
+				<p:toolbar>
+					<p:toolbarGroup align="right">
+						<p:commandButton type="button" title="Save" value="Save"
+							icon="ui-icon-disk" />
+						<p:commandButton type="button" title="Delete" value="Delete"
+							icon="ui-icon-trash" />
+						<p:commandButton type="button" title="Clear" value="Cancel"
+							icon="ui-icon-clear" />
+					</p:toolbarGroup>
+				</p:toolbar>
+
+				<h:form id="form">
+
+					<p:panel header="Journal Entry">
+						<h:panelGrid columns="5">
+							<h:outputText value="Company Name :" />
+							<p:inputText id="compNam" />
+							<p:spacer width="15" />
+							<h:outputText value="Code :" />
+							<p:inputText id="CompCode" />
+
+						</h:panelGrid>
+						<p:separator></p:separator>
+						<h:panelGrid columns="8">
+
+							<h:outputText value="Trans No : " />
+							<p:inputText id="transNo" />
+							<p:spacer width="15" />
+
+							<h:outputText value="Trans type : " />
+							<p:selectOneMenu value="#{buttonBean.number}">
+								<f:selectItem itemLabel="Select One" itemValue="" />
+								<f:selectItem itemLabel="Proprietary" itemValue="1" />
+								<f:selectItem itemLabel="Pvt ltd Co" itemValue="2" />
+								<f:selectItem itemLabel="Public ltd Co" itemValue="3" />
+								<f:selectItem itemLabel="Govt Enterprise" itemValue="4" />
+							</p:selectOneMenu>
+							<p:spacer width="15" />
+
+							<h:outputText value="Trans Date: " />
+							<p:calendar id="transDate" showButtonPanel="true"
+								pattern="dd/MM/yyyy" />
+						</h:panelGrid>
+						<p:spacer height="10"></p:spacer>
+						<p:fieldset>
+							<h:panelGrid columns="5">
+								<h:outputText value="Reference :" />
+								<p:inputText id="reference" />
+								<p:spacer width="15" />
+								<h:outputText value="Account Name :" />
+								<p:selectOneMenu value="#{buttonBean.number}">
+									<f:selectItem itemLabel="Select One" itemValue="" />
+									<f:selectItem itemLabel="Proprietary" itemValue="1" />
+									<f:selectItem itemLabel="Pvt ltd Co" itemValue="2" />
+									<f:selectItem itemLabel="Public ltd Co" itemValue="3" />
+									<f:selectItem itemLabel="Govt Enterprise" itemValue="4" />
+								</p:selectOneMenu>
+								<h:outputText value="Debit :" />
+								<p:inputText id="debit" />
+								<p:spacer width="15" />
+								<h:outputText value="Credit :" />
+								<p:inputText id="credit" />
+								<h:outputText value="Narration :" />
+								<p:inputTextarea id="naration" />
+								<p:spacer width="15" />
+								<p:commandButton value="Insert"></p:commandButton>
+							</h:panelGrid>
+							<h:panelGrid columns="1">
+								<p:dataTable id="dataTable" var="car" value="#{tableBean.cars}"
+									paginator="true" rows="5"
+									paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+									rowsPerPageTemplate="5,10,15" resizableColumns="true">
+									<f:facet name="header"></f:facet>
+
+									<p:column headerText="Sl No">
+										<h:outputText value="#{car.model}" />
+									</p:column>
+
+									<p:column headerText="Reference">
+										<h:outputText value="#{car.year}" />
+									</p:column>
+
+									<p:column headerText="Account Name">
+										<h:outputText value="#{car.manufacturer}" />
+									</p:column>
+
+									<p:column headerText="Debit">
+										<h:outputText value="#{car.color}" />
+									</p:column>
+
+									<p:column headerText="Credit">
+										<h:outputText value="#{car.color}" />
+									</p:column>
+
+									<p:column headerText="Narration">
+										<h:outputText value="#{car.color}" />
+									</p:column>
+
+									<f:facet name="footer">
+										<p:commandButton id="viewButton" value="Edit" />
+										<p:commandButton id="delButton" value="Delete" />
+									</f:facet>
+								</p:dataTable>
+							</h:panelGrid>
+							<h:panelGrid cellpadding="5">
+								<h:panelGroup>
+									<h:outputText value="Total : " />
+									<p:inputText id="journTotcrd"  />
+									<p:spacer width="15" />
+									<p:inputText id="journTotdbt" />
+								</h:panelGroup>
+
+								<h:panelGroup>
+									<h:outputText value="Difference : " />
+									<p:inputText id="journDiff" />
+								</h:panelGroup>
+							</h:panelGrid>
+
+						</p:fieldset>
+						<p:spacer height="10"></p:spacer>
+
+						<h:outputText value="Note : " />
+						<p:inputTextarea id="journNote" style="width:100%" />
+					</p:panel>
+				</h:form>
+
+
+				<p:toolbar>
+					<p:toolbarGroup align="right">
+						<p:commandButton type="button" title="Save" value="Save"
+							icon="ui-icon-disk" />
+						<p:commandButton type="button" title="Delete" value="Delete"
+							icon="ui-icon-trash" />
+						<p:commandButton type="button" title="Clear" value="Cancel"
+							icon="ui-icon-clear" />
+					</p:toolbarGroup>
+				</p:toolbar>
+			</div>
+		</body>
+	</ui:define>
+</ui:composition>
