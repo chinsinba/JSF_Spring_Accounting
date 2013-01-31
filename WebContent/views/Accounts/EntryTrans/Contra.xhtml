@@ -77,47 +77,45 @@
 								<p:spacer width="15" />
 								<p:commandButton value="Insert"></p:commandButton>
 							</h:panelGrid>
-							<h:panelGrid columns="1">
-								<p:dataTable id="dataTable" var="car" value="#{tableBean.cars}"
-									paginator="true" rows="5"
-									paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-									rowsPerPageTemplate="5,10,15" resizableColumns="true">
-									<f:facet name="header"></f:facet>
+							<p:dataTable id="dataTable" var="car" value="#{tableBean.cars}"
+								paginator="true" rows="5"
+								paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+								rowsPerPageTemplate="5,10,15">
+								<f:facet name="header"></f:facet>
 
-									<p:column headerText="Sl No">
-										<h:outputText value="#{car.model}" />
-									</p:column>
+								<p:column headerText="Sl No">
+									<h:outputText value="#{car.model}" />
+								</p:column>
 
-									<p:column headerText="Reference">
-										<h:outputText value="#{car.year}" />
-									</p:column>
+								<p:column headerText="Reference">
+									<h:outputText value="#{car.year}" />
+								</p:column>
 
-									<p:column headerText="Account Name">
-										<h:outputText value="#{car.manufacturer}" />
-									</p:column>
+								<p:column headerText="Account Name">
+									<h:outputText value="#{car.manufacturer}" />
+								</p:column>
 
-									<p:column headerText="Debit">
-										<h:outputText value="#{car.color}" />
-									</p:column>
+								<p:column headerText="Debit">
+									<h:outputText value="#{car.color}" />
+								</p:column>
 
-									<p:column headerText="Credit">
-										<h:outputText value="#{car.color}" />
-									</p:column>
+								<p:column headerText="Credit">
+									<h:outputText value="#{car.color}" />
+								</p:column>
 
-									<p:column headerText="Narration">
-										<h:outputText value="#{car.color}" />
-									</p:column>
+								<p:column headerText="Narration">
+									<h:outputText value="#{car.color}" />
+								</p:column>
 
-									<f:facet name="footer">
-										<p:commandButton id="viewButton" value="Edit" />
-										<p:commandButton id="delButton" value="Delete" />
-									</f:facet>
-								</p:dataTable>
-							</h:panelGrid>
+								<f:facet name="footer">
+									<p:commandButton id="viewButton" value="Edit" />
+									<p:commandButton id="delButton" value="Delete" />
+								</f:facet>
+							</p:dataTable>
 							<h:panelGrid cellpadding="5">
 								<h:panelGroup>
 									<h:outputText value="Total : " />
-									<p:inputText id="contraTotcrd"  />
+									<p:inputText id="contraTotcrd" />
 									<p:spacer width="15" />
 									<p:inputText id="contraTotdbt" />
 								</h:panelGroup>

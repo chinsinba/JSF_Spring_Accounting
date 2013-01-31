@@ -120,46 +120,44 @@
 							</h:panelGrid>
 
 
-							<h:panelGrid columns="1">
-								<p:dataTable id="dataTable" var="car" value="#{tableBean.cars}"
-									paginator="true" rows="5"
-									paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-									rowsPerPageTemplate="5,10,15" resizableColumns="true">
-									<f:facet name="header"></f:facet>
+							<p:dataTable id="dataTable" var="car" value="#{tableBean.cars}"
+								paginator="true" rows="5"
+								paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+								rowsPerPageTemplate="5,10,15">
+								<f:facet name="header"></f:facet>
 
-									<p:column headerText="Sl No">
-										<h:outputText value="#{car.model}" />
-									</p:column>
+								<p:column headerText="Sl No">
+									<h:outputText value="#{car.model}" />
+								</p:column>
 
-									<p:column headerText="Party/Accont.Name">
-										<h:outputText value="#{car.year}" />
-									</p:column>
+								<p:column headerText="Party/Accont.Name">
+									<h:outputText value="#{car.year}" />
+								</p:column>
 
-									<p:column headerText="Amount">
-										<h:outputText value="#{car.manufacturer}" />
-									</p:column>
+								<p:column headerText="Amount">
+									<h:outputText value="#{car.manufacturer}" />
+								</p:column>
 
-									<p:column headerText="Chq/DD No">
-										<h:outputText value="#{car.color}" />
-									</p:column>
+								<p:column headerText="Chq/DD No">
+									<h:outputText value="#{car.color}" />
+								</p:column>
 
-									<p:column headerText="Bank Name">
-										<h:outputText value="#{car.color}" />
-									</p:column>
+								<p:column headerText="Bank Name">
+									<h:outputText value="#{car.color}" />
+								</p:column>
 
-									<p:column headerText="Chq/DD Date">
-										<h:outputText value="#{car.color}" />
-									</p:column>
-									<p:column headerText="Ref/Narration">
-										<h:outputText value="#{car.color}" />
-									</p:column>
+								<p:column headerText="Chq/DD Date">
+									<h:outputText value="#{car.color}" />
+								</p:column>
+								<p:column headerText="Ref/Narration">
+									<h:outputText value="#{car.color}" />
+								</p:column>
 
-									<f:facet name="footer">
-										<p:commandButton id="viewButton" value="Edit" />
-										<p:commandButton id="delButton" value="Delete" />
-									</f:facet>
-								</p:dataTable>
-							</h:panelGrid>
+								<f:facet name="footer">
+									<p:commandButton id="viewButton" value="Edit" />
+									<p:commandButton id="delButton" value="Delete" />
+								</f:facet>
+							</p:dataTable>
 							<h:panelGrid cellpadding="5">
 								<h:panelGroup>
 									<strong> <h:outputText value="Total : " /></strong>
