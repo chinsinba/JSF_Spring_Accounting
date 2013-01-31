@@ -12,13 +12,35 @@
 	<h:form>
 
 		<p:growl id="messages" />
-		<p:toolbar >
-			<p:toolbarGroup align="right" >
-				<p:button  value="Company" outcome="/Company.xhtml"  />
-				<p:button type="button" value="Accounts" outcome="/views/Accounts/Masters/Items.xhtml"/>
-				<p:button type="button" value="Purchase" outcome="/views/Purchase/Purchase.xhtml"/>
-				<p:button type="button" value="Sales" outcome="/views/Sales/Sales.xhtml"/>
-				<p:button type="button" value="HRMS" outcome="/views/HRMS/HRMS.xhtml"/>
+		<p:toolbar>
+			<p:toolbarGroup align="right">
+				<!-- <p:commandLink id="company" action="/Company.xhtml">
+					<h:outputText value="Company" />
+				</p:commandLink>
+
+				<p:commandLink id="Accounts"
+					action="/views/Accounts/Masters/Items.xhtml">
+					<h:outputText value="Accounts" />
+				</p:commandLink>
+				<p:commandLink id="Purchase" action="/views/Purchase/Purchase.xhtml">
+					<h:outputText value="Purchase" />
+				</p:commandLink>
+				<p:commandLink id="Sales" action="/views/Sales/Sales.xhtml">
+					<h:outputText value="Sales" />
+				</p:commandLink>
+				<p:commandLink id="HRMS" action="//views/HRMS/HRMS.xhtml">
+					<h:outputText value="HRMS" />
+				</p:commandLink>
+				 -->
+				<p:button value="Company" outcome="/Company.xhtml" />
+				<p:button type="button" value="Accounts"
+					outcome="/views/Accounts/Masters/Items.xhtml" />
+				<p:button type="button" value="Purchase"
+					outcome="/views/Purchase/Purchase.xhtml" />
+				<p:button type="button" value="Sales"
+					outcome="/views/Sales/Sales.xhtml" />
+				<p:button type="button" value="HRMS"
+					outcome="/views/HRMS/HRMS.xhtml" />
 			</p:toolbarGroup>
 		</p:toolbar>
 	</h:form>

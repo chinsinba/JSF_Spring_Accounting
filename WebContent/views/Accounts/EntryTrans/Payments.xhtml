@@ -23,7 +23,7 @@
 
 				<h:form id="form">
 
-					<p:panel header="Contra Entry">
+					<p:panel header="Payments">
 						<h:panelGrid columns="5">
 							<h:outputText value="Company Name :" />
 							<p:inputText id="compNam" />
@@ -35,11 +35,11 @@
 						<p:separator></p:separator>
 						<h:panelGrid columns="8">
 
-							<h:outputText value="Trans No : " />
+							<h:outputText value="Pay No : " />
 							<p:inputText id="transNo" />
 							<p:spacer width="15" />
 
-							<h:outputText value="Trans type : " />
+							<h:outputText value="Pay Head : " />
 							<p:selectOneMenu value="#{buttonBean.number}">
 								<f:selectItem itemLabel="Select One" itemValue="" />
 								<f:selectItem itemLabel="Proprietary" itemValue="1" />
@@ -49,17 +49,48 @@
 							</p:selectOneMenu>
 							<p:spacer width="15" />
 
-							<h:outputText value="Trans Date: " />
-							<p:calendar id="transDate" showButtonPanel="true"
+							<h:outputText value="Pay Date: " />
+							<p:calendar id="recDate" showButtonPanel="true"
 								pattern="dd/MM/yyyy" />
 						</h:panelGrid>
+
+						<h:panelGrid columns="2" cellpadding="5">
+							<h:outputText value="Pay Type : " />
+							<p:selectOneMenu value="#{buttonBean.number}">
+								<f:selectItem itemLabel="Select One" itemValue="" />
+								<f:selectItem itemLabel="Proprietary" itemValue="1" />
+								<f:selectItem itemLabel="Pvt ltd Co" itemValue="2" />
+								<f:selectItem itemLabel="Public ltd Co" itemValue="3" />
+								<f:selectItem itemLabel="Govt Enterprise" itemValue="4" />
+							</p:selectOneMenu>
+						</h:panelGrid>
+						<h:panelGrid columns="5" cellpadding="5">
+
+
+							<h:outputText value="Bank Name : " />
+							<p:selectOneMenu value="#{buttonBean.number}">
+								<f:selectItem itemLabel="Select One" itemValue="" />
+								<f:selectItem itemLabel="Proprietary" itemValue="1" />
+								<f:selectItem itemLabel="Pvt ltd Co" itemValue="2" />
+								<f:selectItem itemLabel="Public ltd Co" itemValue="3" />
+								<f:selectItem itemLabel="Govt Enterprise" itemValue="4" />
+							</p:selectOneMenu>
+							<p:spacer width="15" />
+							<h:outputText value="Bank A/c No : " />
+							<p:selectOneMenu value="#{buttonBean.number}">
+								<f:selectItem itemLabel="Select One" itemValue="" />
+								<f:selectItem itemLabel="Proprietary" itemValue="1" />
+								<f:selectItem itemLabel="Pvt ltd Co" itemValue="2" />
+								<f:selectItem itemLabel="Public ltd Co" itemValue="3" />
+								<f:selectItem itemLabel="Govt Enterprise" itemValue="4" />
+							</p:selectOneMenu>
+
+
+						</h:panelGrid>
 						<p:spacer height="10"></p:spacer>
-						<p:fieldset>
-							<h:panelGrid columns="5">
-								<h:outputText value="Reference :" />
-								<p:inputText id="reference" />
-								<p:spacer width="15" />
-								<h:outputText value="Account Name :" />
+						<p:panel header="Payment Details">
+							<h:panelGrid columns="5" cellpadding="5">
+								<h:outputText value="Party/Accout Name :" />
 								<p:selectOneMenu value="#{buttonBean.number}">
 									<f:selectItem itemLabel="Select One" itemValue="" />
 									<f:selectItem itemLabel="Proprietary" itemValue="1" />
@@ -67,16 +98,28 @@
 									<f:selectItem itemLabel="Public ltd Co" itemValue="3" />
 									<f:selectItem itemLabel="Govt Enterprise" itemValue="4" />
 								</p:selectOneMenu>
-								<h:outputText value="Debit :" />
-								<p:inputText id="debit" />
-								<p:spacer width="15" />
-								<h:outputText value="Credit :" />
-								<p:inputText id="credit" />
-								<h:outputText value="Narration :" />
-								<p:inputTextarea id="naration" />
+								<p:spacer width="5" />
+								<h:outputText value="Amount :" />
+								<p:inputText id="amount" />
+
+								<h:outputText value="Reference/Narration :" />
+								<p:inputText id="RefNar" style="width:300%" />
+								<p:spacer width="5" />
+								<p:spacer width="5" />
+								<p:spacer width="5" />
+								<h:outputText value="Chq/DD :" />
+								<p:inputText id="chqDd" />
+								<p:spacer width="5" />
+								<h:outputText value="Chq./DD Bank Name :" />
+								<p:inputText id="chqDdBnkNam" />
+								<h:outputText value="Chq/DD Date :" />
+								<p:calendar id="chqDdDat" showButtonPanel="true"
+									pattern="dd/MM/yyyy" />
 								<p:spacer width="15" />
 								<p:commandButton value="Insert"></p:commandButton>
 							</h:panelGrid>
+
+
 							<h:panelGrid columns="1">
 								<p:dataTable id="dataTable" var="car" value="#{tableBean.cars}"
 									paginator="true" rows="5"
@@ -88,23 +131,26 @@
 										<h:outputText value="#{car.model}" />
 									</p:column>
 
-									<p:column headerText="Reference">
+									<p:column headerText="Party/Accont.Name">
 										<h:outputText value="#{car.year}" />
 									</p:column>
 
-									<p:column headerText="Account Name">
+									<p:column headerText="Amount">
 										<h:outputText value="#{car.manufacturer}" />
 									</p:column>
 
-									<p:column headerText="Debit">
+									<p:column headerText="Chq/DD No">
 										<h:outputText value="#{car.color}" />
 									</p:column>
 
-									<p:column headerText="Credit">
+									<p:column headerText="Bank Name">
 										<h:outputText value="#{car.color}" />
 									</p:column>
 
-									<p:column headerText="Narration">
+									<p:column headerText="Chq/DD Date">
+										<h:outputText value="#{car.color}" />
+									</p:column>
+									<p:column headerText="Ref/Narration">
 										<h:outputText value="#{car.color}" />
 									</p:column>
 
@@ -116,23 +162,13 @@
 							</h:panelGrid>
 							<h:panelGrid cellpadding="5">
 								<h:panelGroup>
-									<h:outputText value="Total : " />
-									<p:inputText id="contraTotcrd"  />
-									<p:spacer width="15" />
-									<p:inputText id="contraTotdbt" />
-								</h:panelGroup>
-
-								<h:panelGroup>
-									<h:outputText value="Difference : " />
-									<p:inputText id="contraDiff" />
+									<strong> <h:outputText value="Total : " />
+									</strong>
+									<p:inputText id="recTot" />
 								</h:panelGroup>
 							</h:panelGrid>
 
-						</p:fieldset>
-						<p:spacer height="10"></p:spacer>
-
-						<h:outputText value="Note : " />
-						<p:inputTextarea id="contraNote" style="width:100%" />
+						</p:panel>
 					</p:panel>
 				</h:form>
 
