@@ -1,11 +1,30 @@
 package accounts.model;
 import java.sql.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.TableGenerator;
 
-
+@Entity
 public class CompanyDetails {
-
+	
+	
+	@Id
+	@TableGenerator(name = "CompanyDetails_GEN", table = "ID_GEN", pkColumnName = "GEN_NAME", valueColumnName = "GEN_VAL", allocationSize = 1)
+	@GeneratedValue(strategy= GenerationType.TABLE, generator = "CompanyDetails_GEN")
+	private long id;
+	
+	public long getId() {
+		return id;
+	}
+	
+	public void setId(long id) {
+		this.id = id;
+	}
+	
 	private String companyName;
 	
 	@Lob

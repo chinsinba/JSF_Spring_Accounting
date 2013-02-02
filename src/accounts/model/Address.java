@@ -1,5 +1,6 @@
 package accounts.model;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,14 +10,23 @@ import javax.persistence.TableGenerator;
 
 
 
+
 @Entity
-@Table(name = "Address")
+@Table(name="Address")
 public class Address {
 	
 	@Id
 	@TableGenerator(name = "ADDRESS_GEN", table = "ID_GEN", pkColumnName = "GEN_NAME", valueColumnName = "GEN_VAL", allocationSize = 1)
 	@GeneratedValue(strategy= GenerationType.TABLE, generator = "ADDRESS_GEN")
 	private long id;
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 
 	private String addressLine1;
 	

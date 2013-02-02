@@ -1,9 +1,30 @@
 package accounts.model;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.TableGenerator;
 
+import org.hibernate.annotations.Entity;
+
+@Entity
+@Table(name = "BankAccount")
 public class BankAccount {
 
+	@Id
+	@TableGenerator(name = "BankAccount_GEN", table = "ID_GEN", pkColumnName = "GEN_NAME", valueColumnName = "GEN_VAL", allocationSize = 1)
+	@GeneratedValue(strategy= GenerationType.TABLE, generator = "BankAccount_GEN")
+	private long id;
 	
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
 	private CompanyDetails company;
 	
 	private BankDetails bankDetails;

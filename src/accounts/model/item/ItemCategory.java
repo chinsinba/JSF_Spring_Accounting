@@ -1,15 +1,35 @@
 package accounts.model.item;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.TableGenerator;
+
 import accounts.model.CompanyDetails;
 
+@Entity
 public class ItemCategory {
+
+	@Id
+	@TableGenerator(name = "ItemCategory_GEN", table = "ID_GEN", pkColumnName = "GEN_NAME", valueColumnName = "GEN_VAL", allocationSize = 1)
+	@GeneratedValue(strategy= GenerationType.TABLE, generator = "ItemCategory_GEN")
+	private long id;
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 
 	private CompanyDetails company;
 
 	private String categoryName;
 
 	private ItemCategory belongsToCategory;
-	
+
 	private String internalCode;
 
 	public CompanyDetails getCompany() {
@@ -43,8 +63,8 @@ public class ItemCategory {
 	public void setInternalCode(String internalCode) {
 		this.internalCode = internalCode;
 	}
-	
-	
+
+
 
 }
 

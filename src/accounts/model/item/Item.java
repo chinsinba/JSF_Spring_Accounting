@@ -2,41 +2,60 @@ package accounts.model.item;
 
 import java.sql.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.TableGenerator;
 
 import accounts.model.CompanyDetails;
 import accounts.model.LedgerAccount;
 import accounts.model.Unit;
 
+@Entity
 public class Item {
 
+	@Id
+	@TableGenerator(name = "Item_GEN", table = "ID_GEN", pkColumnName = "GEN_NAME", valueColumnName = "GEN_VAL", allocationSize = 1)
+	@GeneratedValue(strategy= GenerationType.TABLE, generator = "Item_GEN")
+	private long id;
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
 	private CompanyDetails company;
-	
+
 	private String itemName;
-	
+
 	private ItemCategory category;
-	
+
 	private String code;
-	
+
 	@Lob
 	private byte itemLogo;
-	
+
 	private Unit openingStockUnit;
-	
+
 	private String quantity;
-	
+
 	private long valuation;
-	
+
 	private LedgerAccount accountName;
-	
+
 	private LedgerAccount inwardTaxAccount;
-	
+
 	private LedgerAccount outwardTaxAccount;
-	
+
 	private boolean reqBatchNo;
-	
+
 	private Date manufacturingDate;
-	
+
 	private Date expiryDate;
 
 	public CompanyDetails getCompany() {
@@ -150,8 +169,8 @@ public class Item {
 	public void setExpiryDate(Date expiryDate) {
 		this.expiryDate = expiryDate;
 	}
-	
-	
-	
-	
+
+
+
+
 }
