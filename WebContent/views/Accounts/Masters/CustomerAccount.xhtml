@@ -23,7 +23,7 @@
 				</p:toolbar>
 				<h:form id="form">
 					<p:panel header="Customer Info">
-						<h:panelGrid columns="5">
+						<h:panelGrid columns="5" cellpadding="5">
 							<h:outputText value="Company Name :" />
 							<p:inputText id="compNam" />
 							<p:spacer width="15" />
@@ -33,7 +33,7 @@
 						</h:panelGrid>
 						<p:separator></p:separator>
 
-						<h:panelGrid columns="5">
+						<h:panelGrid columns="5" cellpadding="5">
 
 							<h:outputText value="Customer Name:" />
 							<p:inputText id="custName" />
@@ -67,7 +67,7 @@
 						<p:tabView id="tabView">
 
 							<p:tab id="tab1" title="Contact Details">
-								<h:panelGrid columns="5">
+								<h:panelGrid columns="5" cellpadding="5">
 									<h:outputText value="Contact Person : " />
 									<p:inputText id="contPerson" />
 									<h:outputText value="Mobile No : " />
@@ -111,7 +111,7 @@
 							</p:tab>
 
 							<p:tab id="tab2" title="Bank Details">
-								<h:panelGrid columns="4">
+								<h:panelGrid columns="4" cellpadding="5">
 									<h:outputText value="Bank Account Name: " />
 									<p:inputText id="BankAcName" />
 									<p:spacer />
@@ -129,7 +129,7 @@
 							</p:tab>
 
 							<p:tab id="tab3" title="Tax Details">
-								<h:panelGrid columns="4">
+								<h:panelGrid columns="4" cellpadding="5">
 									<h:outputText value="TIN/VAT: " />
 									<p:inputText id="tinVat" />
 									<p:spacer />
@@ -150,7 +150,6 @@
 								</h:panelGrid>
 							</p:tab>
 						</p:tabView>
-						<p:separator></p:separator>
 						<p:dataTable id="dataTable" var="car" value="#{tableBean.cars}"
 							paginator="true" rows="10"
 							paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"

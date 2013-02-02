@@ -24,7 +24,7 @@
 				<h:form id="form">
 
 					<p:panel header="Item Creation">
-						<h:panelGrid columns="5">
+						<h:panelGrid columns="5" cellpadding="5">
 							<h:outputText value="Company Name :" />
 							<p:inputText id="compNam" />
 							<p:spacer width="15" />
@@ -33,7 +33,7 @@
 
 						</h:panelGrid>
 						<p:separator></p:separator>
-						<h:panelGrid columns="5">
+						<h:panelGrid columns="5" cellpadding="5">
 
 							<h:outputText value="Item Name " />
 							<p:inputText id="itemNam" />
@@ -76,7 +76,7 @@
 						</h:panelGrid>
 					</p:panel>
 					<p:panel header="Tax Details">
-						<h:panelGrid columns="5">
+						<h:panelGrid columns="5" cellpadding="5">
 							<h:outputText value="Purchase/Inward Tax: " />
 							<p:selectOneMenu value="#{buttonBean.number}">
 								<f:selectItem itemLabel="Select One" itemValue="" />
@@ -104,7 +104,7 @@
 					</p:panel>
 
 					<p:panel header="Required Details">
-						<h:panelGrid columns="5">
+						<h:panelGrid columns="5" cellpadding="5">
 							<h:outputText value="Batch No : " />
 							<p:inputText id="batch" />
 							<p:spacer />

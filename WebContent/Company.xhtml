@@ -27,7 +27,7 @@
 				<h:form id="form">
 					<div align="left">
 						<p:panel header="Company Info">
-							<h:panelGrid columns="5">
+							<h:panelGrid columns="5" cellpadding="5">
 								<h:outputText value="Company Name: " />
 								<p:inputText id="companyName" />
 								<p:spacer width="15" />
@@ -67,7 +67,7 @@
 						<p:spacer height="10" />
 
 						<p:panel header="Registration Info">
-							<h:panelGrid columns="2">
+							<h:panelGrid columns="2" cellpadding="5">
 								<h:outputText value="Company Type: " />
 								<p:selectOneMenu>
 									<f:selectItem itemLabel="Select One" itemValue="" />
@@ -77,7 +77,7 @@
 									<f:selectItem itemLabel="Govt Enterprise" itemValue="4" />
 								</p:selectOneMenu>
 							</h:panelGrid>
-							<h:panelGrid columns="8">
+							<h:panelGrid columns="8" cellpadding="5">
 								<h:outputText value="Reg Name : " />
 								<p:inputText id="regName" />
 								<p:spacer width="15" />
@@ -95,7 +95,7 @@
 
 
 
-							<h:panelGrid id="display" columns="5">
+							<h:panelGrid id="display" columns="5" cellpadding="5">
 								<h:outputText value="Stakeholder Name: " />
 								<p:inputText id="stkHldName" />
 								<p:spacer width="15" />
@@ -195,7 +195,7 @@
 
 
 						<p:panel header="Financial Year">
-							<h:panelGrid columns="8">
+							<h:panelGrid columns="8" cellpadding="5">
 								<h:outputText value="Financial Year Start Date:" />
 								<p:calendar id="finstartDate" showButtonPanel="true"
 									pattern="dd/MM/yyyy" />
