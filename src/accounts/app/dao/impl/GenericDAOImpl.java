@@ -2,26 +2,21 @@ package accounts.app.dao.impl;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 
 import accounts.app.dao.GenericDao;
 
 
-public abstract class GenericDaoImpl<T> implements GenericDao<T> {
+public abstract class GenericDAOImpl<T> implements GenericDao<T> {
 
     @PersistenceContext
     protected EntityManager em;
 
     private Class<T> type;
 
-    public GenericDaoImpl() {
+    public GenericDAOImpl() {
         Type t = getClass().getGenericSuperclass();
         ParameterizedType pt = (ParameterizedType) t;
         type = (Class) pt.getActualTypeArguments()[0];

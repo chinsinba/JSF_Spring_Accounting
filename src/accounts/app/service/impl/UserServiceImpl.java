@@ -16,9 +16,9 @@ import accounts.model.user.User;
 
 
 /**
- * @author Imran Pariyani
  * 
- * {@link http://pariyani.com} pariyani
+ * @author syed
+ *
  */
 public class UserServiceImpl implements UserService {
 

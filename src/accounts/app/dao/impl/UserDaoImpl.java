@@ -17,7 +17,7 @@ import accounts.model.user.User;
  * 
  * {@link http://pariyani.com} pariyani
  */
-public class UserDaoImpl extends GenericDaoImpl<accounts.model.user.User> implements UserDao {
+public class UserDaoImpl extends GenericDAOImpl<User> implements UserDao {
 
     private EntityManager entityManagerFactory;
 

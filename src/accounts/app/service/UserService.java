@@ -4,9 +4,9 @@ import accounts.model.user.User;
 
 
 /**
- * @author Imran Pariyani
  * 
- * {@link http://pariyani.com} pariyani
+ * @author syed
+ *
  */
 public interface UserService {
     User getUser(int userId);
