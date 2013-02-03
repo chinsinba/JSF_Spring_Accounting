@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 
-import accounts.app.user.User;
+import accounts.app.user.User2;
 
 
 /**
@@ -37,12 +37,12 @@ public class PreferencesBean implements Serializable {
     private boolean authenticated = false;
     private String username;
     
-    private User user;
+    private User2 user;
     
     /**
 	 * @return the user
 	 */
-	public User getUser() {
+	public User2 getUser() {
 		return user;
 	}
 	private int id;
@@ -156,7 +156,7 @@ public class PreferencesBean implements Serializable {
         this.setUsername(result.getName());
     }
 
-	public void setUser(User user) {
+	public void setUser(User2 user) {
 		this.user=user;
 	}
 }

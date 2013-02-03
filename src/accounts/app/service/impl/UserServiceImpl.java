@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import accounts.app.dao.UserDao;
 import accounts.app.service.UserService;
-import accounts.app.user.User;
+import accounts.model.user.User;
 
 
 /**
@@ -37,6 +37,7 @@ public class UserServiceImpl implements UserService {
     private ExecutorService sendMailExeService;
 
     public User getUser(int userId) {
+    	
         return userDao.getUser(userId);
     }
 

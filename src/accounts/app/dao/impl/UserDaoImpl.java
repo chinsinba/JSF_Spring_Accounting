@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import accounts.app.dao.UserDao;
-import accounts.app.user.User;
+import accounts.model.user.User;
 
 
 /**
@@ -17,7 +17,7 @@ import accounts.app.user.User;
  * 
  * {@link http://pariyani.com} pariyani
  */
-public class UserDaoImpl implements UserDao {
+public class UserDaoImpl extends GenericDaoImpl<accounts.model.user.User> implements UserDao {
 
     private EntityManager entityManagerFactory;
 

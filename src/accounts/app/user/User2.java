@@ -22,7 +22,7 @@ import org.hibernate.validator.Pattern;
 @Entity
 @Table(name = "user_sample")
 @Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
-public class User implements Serializable {
+public class User2 implements Serializable {
 
     private static final long serialVersionUID = 6916816325466379714L;
 

@@ -1,6 +1,7 @@
 package accounts.app.service;
 
-import accounts.app.user.User;
+import accounts.model.user.User;
+
 
 /**
  * @author Imran Pariyani

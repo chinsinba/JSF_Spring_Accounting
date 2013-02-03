@@ -22,7 +22,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import accounts.app.service.UserService;
-import accounts.app.user.User;
+import accounts.app.user.User2;
 
 
 /**
