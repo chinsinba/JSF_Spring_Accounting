@@ -1,7 +1,7 @@
 package accounts.app.dao;
 
-import accounts.model.Address;
-import accounts.model.CompanyDetails;
+import accounts.model.entity.Address;
+import accounts.model.entity.CompanyDetails;
 /**
  * 
  * @author syed

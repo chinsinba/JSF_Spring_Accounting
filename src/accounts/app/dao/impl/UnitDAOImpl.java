@@ -1,7 +1,7 @@
 package accounts.app.dao.impl;
 
 import accounts.app.dao.UnitDAO;
-import accounts.model.Unit;
+import accounts.model.entity.Unit;
 
 /**
  * 

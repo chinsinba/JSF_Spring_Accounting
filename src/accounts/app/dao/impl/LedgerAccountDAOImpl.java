@@ -1,8 +1,8 @@
 package accounts.app.dao.impl;
 
 import accounts.app.dao.LedgerAccountDAO;
-import accounts.model.LedgerAccount;
-import accounts.model.user.User;
+import accounts.model.entity.LedgerAccount;
+import accounts.model.entity.user.User;
 
 
 /**

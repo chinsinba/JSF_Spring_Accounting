@@ -1,8 +1,8 @@
 package accounts.app.dao.impl;
 
 import accounts.app.dao.ContactDAO;
-import accounts.model.Contact;
-import accounts.model.user.User;
+import accounts.model.entity.Contact;
+import accounts.model.entity.user.User;
 
 
 /**

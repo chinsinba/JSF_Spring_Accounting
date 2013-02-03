@@ -1,6 +1,6 @@
 package accounts.app.dao;
 
-import accounts.model.user.User;
+import accounts.model.entity.user.User;
 
 /**
  * 

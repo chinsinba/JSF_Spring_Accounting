@@ -1,7 +1,8 @@
 package accounts.app.dao.impl;
 
 import accounts.app.dao.CompanyBranchDAO;
-import accounts.model.CompanyDetails;
+import accounts.model.entity.CompanyDetails;
+
 /**
  * 
  * @author syed

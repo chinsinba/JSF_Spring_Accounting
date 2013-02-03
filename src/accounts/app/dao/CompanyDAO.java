@@ -1,6 +1,6 @@
 package accounts.app.dao;
 
-import accounts.model.CompanyDetails;
+import accounts.model.entity.CompanyDetails;
 
 /**
  * 

@@ -1,6 +1,6 @@
 package accounts.app.dao;
 
-import accounts.model.BankAccount;
+import accounts.model.entity.BankAccount;
 
 /**
  * 

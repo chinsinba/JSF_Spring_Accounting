@@ -1,8 +1,8 @@
 package accounts.app.dao.impl;
 
 import accounts.app.dao.BankDetailsDAO;
-import accounts.model.BankDetails;
-import accounts.model.CompanyDetails;
+import accounts.model.entity.BankDetails;
+import accounts.model.entity.CompanyDetails;
 
 /**
  * 

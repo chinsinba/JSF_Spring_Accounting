@@ -9,13 +9,13 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import accounts.app.dao.UserDao;
-import accounts.model.user.User;
+import accounts.model.entity.user.User;
 
 
 /**
- * @author Imran Pariyani
  * 
- * {@link http://pariyani.com} pariyani
+ * @author syed
+ *
  */
 public class UserDaoImpl extends GenericDAOImpl<User> implements UserDao {
 

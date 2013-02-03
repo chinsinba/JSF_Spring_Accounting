@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import accounts.app.dao.UserDao;
 import accounts.app.service.UserService;
-import accounts.model.user.User;
+import accounts.model.entity.user.User;
 
 
 /**

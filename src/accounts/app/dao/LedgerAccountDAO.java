@@ -1,7 +1,7 @@
 package accounts.app.dao;
 
-import accounts.model.LedgerAccount;
-import accounts.model.user.User;
+import accounts.model.entity.LedgerAccount;
+import accounts.model.entity.user.User;
 
 
 /**
