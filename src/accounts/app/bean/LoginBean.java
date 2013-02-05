@@ -12,6 +12,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.ServletContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -22,13 +23,13 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import accounts.app.service.UserService;
-import accounts.app.user.User2;
+import accounts.model.entity.user.User;
 
 
 /**
- * @author Imran Pariyani
  * 
- * {@link http://pariyani.com} pariyani
+ * @author syed
+ *
  */
 @ManagedBean("loginBean")
 @Scope("request")
@@ -64,7 +65,7 @@ public class LoginBean {
 	{
 		this.am= null;
 	}
-
+	@Inject
 	public LoginBean(@Named("authenticationManager") AuthenticationManager am,
 			final PreferencesBean preferencesBean, final UserService service) {
 		this.am = am;
@@ -73,11 +74,7 @@ public class LoginBean {
 	}
 
 	public String login() {
-		return "/Company.xhtml";
-		/*
-
 		try {
-
 			if (this.preferencesBean.isAuthenticated()) {
 				return "/Company.xhtml";
 			}
@@ -90,18 +87,21 @@ public class LoginBean {
 			ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
 			ApplicationContext appContext = WebApplicationContextUtils.getWebApplicationContext(servletContext);
 			//javax.servlet.http.HttpServletRequest req=(javax.servlet.http.HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
-			 User user = this.userService.getUser(1);
-            this.preferencesBean.setUser(user);
+			accounts.model.entity.user.User user = this.userService.getUser(1);
+			this.preferencesBean.setUser(user);
 			return "/Company.xhtml";
 
-		} catch (AuthenticationException e) {
+		} 
+		catch (AuthenticationException e) 
+		{
 			FacesUtils.addErrorString(null, "login.failed");
 			return "Login.xhtml";
-		} catch (Exception e) {
+		} 
+		catch (Exception e) {
 			e.printStackTrace();
 			throw new FacesException(e);
 		}
-	*/}
+	}
 
 	private String userName;
 

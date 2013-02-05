@@ -3,9 +3,13 @@ package accounts.app.service.impl;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import javax.inject.Inject;
 import javax.mail.internet.MimeMessage;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import accounts.app.dao.UserDao;
 import accounts.app.service.UserService;
@@ -17,12 +21,14 @@ import accounts.model.entity.user.User;
  * @author syed
  *
  */
+@Service
 public class UserServiceImpl implements UserService {
 
     private final UserDao userDao;
 
     private JavaMailSender javaMailSender;
     
+    @Inject
     UserServiceImpl(UserDao userDao,JavaMailSender javaMailSender) {
         this.userDao = userDao;
         this.javaMailSender = javaMailSender;
@@ -33,7 +39,8 @@ public class UserServiceImpl implements UserService {
 
     private ExecutorService sendMailExeService;
 
-    public User getUser(int userId) {
+    @Transactional(readOnly = true)
+    public User getUser(long userId) {
     	
         return userDao.getUser(userId);
     }

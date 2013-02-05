@@ -8,5 +8,8 @@ import accounts.model.entity.CompanyDetails;
  *
  */
 public interface CompanyService {
-
+	public void create(CompanyDetails company);
+	public void delete(CompanyDetails company);
+	public void update(CompanyDetails company);
+	public CompanyDetails get();
 }

@@ -1,5 +1,7 @@
 package accounts.app.service;
 
+import org.springframework.stereotype.Service;
+
 import accounts.model.entity.user.User;
 
 
@@ -9,5 +11,5 @@ import accounts.model.entity.user.User;
  *
  */
 public interface UserService {
-    User getUser(int userId);
+    User getUser(long userId);
 }

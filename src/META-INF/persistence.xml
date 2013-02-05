@@ -1,30 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 
- | create by imran pariyani
- | 
- | Persistence configuration file for sample application.
- |
- | Original Author: pariyani
- | Current Author: $Author: pariyani $
- | Version: $Id: persistence.xml 16:46:53Z ipariyani $
- +-->
-<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
-    <persistence-unit name="sample" transaction-type="RESOURCE_LOCAL">
-    	<provider>org.hibernate.ejb.HibernatePersistence</provider>
-    	<non-jta-data-source>java:/MyDB</non-jta-data-source>
-        <properties>
-            <!-- 
-             | The SQL dialect to use for this data source, use MySQL InnoDB as
-             | we only use InnoDB tables for the entity beans.
-             +-->
-            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLInnoDBDialect"/>
-            <!-- 
-             | Specify the second level query cache for hibernate.
-             +-->
-            <property name="hibernate.cache.provider_class" value="net.sf.ehcache.hibernate.SingletonEhCacheProvider"/><!-- "net.sf.ehcache.hibernate.EhCacheProvider"  -->
-
-        </properties>
-    </persistence-unit>
+<!-- | create by imran pariyani | | Persistence configuration file for sample 
+	application. | | Original Author: pariyani | Current Author: $Author: pariyani 
+	$ | Version: $Id: persistence.xml 16:46:53Z ipariyani $ + -->
+<persistence version="1.0"
+	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+	<persistence-unit name="sample" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<class>accounts.model.entity.Address</class>
+		<class>accounts.model.entity.BankAccount</class>
+		<class>accounts.model.entity.BankDetails</class>
+		<class>accounts.model.entity.CompanyDetails</class>
+		<class>accounts.model.entity.CompanyBranch</class>
+		<class>accounts.model.entity.Contact</class>
+		<class>accounts.model.entity.LedgerAccount</class>
+		<class>accounts.model.entity.LedgerGroup</class>
+		<class>accounts.model.entity.Unit</class>
+		<class>accounts.model.entity.account.CustomerAccount</class>
+		<class>accounts.model.entity.account.OtherAccount</class>
+		<class>accounts.model.entity.account.SupplierAccount</class>
+		<class>accounts.model.entity.item.Item</class>
+		<class>accounts.model.entity.item.ItemCategory</class>
+		<class>accounts.model.entity.user.Permission</class>
+		<class>accounts.model.entity.user.Roles</class>
+		<class>accounts.model.entity.user.User</class>
+		<properties>
+				<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/account_rna1" />
+				<property name="javax.persistence.jdbc.user" value="root" />
+				<property name="javax.persistence.jdbc.password" value="root" />
+				<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+				<property name="eclipselink.ddl-generation" value="create-tables" />
+				<property name="eclipselink.ddl-generation.output-mode"
+					value="database" />
+		</properties>
+	</persistence-unit>
 </persistence>

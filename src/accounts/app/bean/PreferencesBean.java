@@ -14,13 +14,13 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 
-import accounts.app.user.User2;
+import accounts.model.entity.user.User;
 
 
 /**
- * @author Imran Pariyani
  * 
- * {@link http://pariyani.com} pariyani
+ * @author syed
+ *
  */
 @ManagedBean
 @Scope("session")
@@ -37,12 +37,12 @@ public class PreferencesBean implements Serializable {
     private boolean authenticated = false;
     private String username;
     
-    private User2 user;
+    private accounts.model.entity.user.User user;
     
     /**
 	 * @return the user
 	 */
-	public User2 getUser() {
+	public accounts.model.entity.user.User getUser() {
 		return user;
 	}
 	private int id;
@@ -156,7 +156,7 @@ public class PreferencesBean implements Serializable {
         this.setUsername(result.getName());
     }
 
-	public void setUser(User2 user) {
+	public void setUser(accounts.model.entity.user.User user) {
 		this.user=user;
 	}
 }

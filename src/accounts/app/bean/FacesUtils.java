@@ -10,8 +10,9 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 /**
+ * 
+ * @author syed
  *
- * @author Dimitar Makariev
  */
 public abstract class FacesUtils {
 

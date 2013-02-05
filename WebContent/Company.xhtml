@@ -15,8 +15,8 @@
 			<div>
 				<p:toolbar>
 					<p:toolbarGroup align="right">
-						<p:commandButton type="button" title="Save" value="Save"
-							icon="ui-icon-disk" />
+						<p:commandButton  value="Save"
+							icon="ui-icon-disk"  action="#{companyBean.save}"/>
 						<p:commandButton type="button" title="Delete" value="Delete"
 							icon="ui-icon-trash" />
 						<p:commandButton type="button" title="Clear" value="Cancel"
@@ -29,37 +29,37 @@
 						<p:panel header="Company Info">
 							<h:panelGrid columns="5" cellpadding="5">
 								<h:outputText value="Company Name: " />
-								<p:inputText id="companyName" />
+								<p:inputText id="companyName" value="#{companyBean.compName}" />
 								<p:spacer width="15" />
 								<h:outputText value="PAN: " />
-								<p:inputText id="pan" />
+								<p:inputText id="pan" value="#{companyBean.panNo}"/>
 								<h:outputText value="Address Line1 : " />
-								<p:inputText id="address1" />
+								<p:inputText id="address1"  value="#{companyBean.addrLine1}"/>
 								<p:spacer width="15" />
 								<h:outputText value="Address Line2: " />
-								<p:inputText id="address2" />
+								<p:inputText id="address2"  value="#{companyBean.addrLine2}"/>
 								<h:outputText value="Address Line3: " />
-								<p:inputText id="address3" />
+								<p:inputText id="address3" value="#{companyBean.addrLine3}" />
 								<p:spacer width="15" />
 								<h:outputText value="Address Line4: " />
-								<p:inputText id="address4" />
+								<p:inputText id="address4"  value="#{companyBean.addrLine4}"/>
 								<h:outputText value="City: " />
-								<p:inputText id="city" />
+								<p:inputText id="city"  value="#{companyBean.city}"/>
 								<p:spacer width="15" />
 								<h:outputText value="District: " />
-								<p:inputText id="district" />
+								<p:inputText id="district"  value="#{companyBean.district}"/>
 								<h:outputText value="Hobli/Gram : " />
-								<p:inputText id="hobli" />
+								<p:inputText id="hobli"  value="#{companyBean.hobliGram}"/>
 								<p:spacer width="15" />
 								<h:outputText value="State : " />
-								<p:inputText id="state" />
+								<p:inputText id="state"  value="#{companyBean.state}"/>
 								<h:outputText value="Country : " />
-								<p:inputText id="country" />
+								<p:inputText id="country"  value="#{companyBean.country}"/>
 								<p:spacer width="15" />
 								<h:outputText value="Contact No : " />
-								<p:inputText id="contact" />
+								<p:inputText id="contact"  value="#{companyBean.contactNo}"/>
 								<h:outputText value="Email : " />
-								<p:inputText id="email" />
+								<p:inputText id="email"  value="#{companyBean.email}"/>
 
 							</h:panelGrid>
 						</p:panel>
@@ -214,8 +214,8 @@
 				</h:form>
 				<p:toolbar>
 					<p:toolbarGroup align="right">
-						<p:commandButton type="button" title="Save" value="Save"
-							icon="ui-icon-disk" />
+						<p:commandButton value="Save"
+							icon="ui-icon-disk"   action="#{companyBean.save}"/>
 						<p:commandButton type="button" title="Delete" value="Delete"
 							icon="ui-icon-trash" />
 						<p:commandButton type="button" title="Clear" value="Cancel"

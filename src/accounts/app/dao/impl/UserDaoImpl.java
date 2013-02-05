@@ -17,16 +17,19 @@ import accounts.model.entity.user.User;
  * @author syed
  *
  */
+@Repository
+@Component
 public class UserDaoImpl extends GenericDAOImpl<User> implements UserDao {
 
     private EntityManager entityManagerFactory;
 
+    @PersistenceContext
     void setEntityManager(EntityManager entityManager) {
         this.entityManagerFactory = entityManager;
     }
 
-    
-    public User getUser(int id) {
+    @Transactional(readOnly = true, propagation = Propagation.REQUIRED)
+    public User getUser(long id) {
         return (User) this.entityManagerFactory.find(User.class, id);
     }
 }
