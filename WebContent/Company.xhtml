@@ -15,8 +15,8 @@
 			<div>
 				<p:toolbar>
 					<p:toolbarGroup align="right">
-						<p:commandButton  value="Save"
-							icon="ui-icon-disk"  action="#{companyBean.save}"/>
+						<p:commandButton value="Save" icon="ui-icon-disk"
+							action="#{companyBean.save}" />
 						<p:commandButton type="button" title="Delete" value="Delete"
 							icon="ui-icon-trash" />
 						<p:commandButton type="button" title="Clear" value="Cancel"
@@ -32,34 +32,34 @@
 								<p:inputText id="companyName" value="#{companyBean.compName}" />
 								<p:spacer width="15" />
 								<h:outputText value="PAN: " />
-								<p:inputText id="pan" value="#{companyBean.panNo}"/>
+								<p:inputText id="pan" value="#{companyBean.panNo}" />
 								<h:outputText value="Address Line1 : " />
-								<p:inputText id="address1"  value="#{companyBean.addrLine1}"/>
+								<p:inputText id="address1" value="#{companyBean.addrLine1}" />
 								<p:spacer width="15" />
 								<h:outputText value="Address Line2: " />
-								<p:inputText id="address2"  value="#{companyBean.addrLine2}"/>
+								<p:inputText id="address2" value="#{companyBean.addrLine2}" />
 								<h:outputText value="Address Line3: " />
 								<p:inputText id="address3" value="#{companyBean.addrLine3}" />
 								<p:spacer width="15" />
 								<h:outputText value="Address Line4: " />
-								<p:inputText id="address4"  value="#{companyBean.addrLine4}"/>
+								<p:inputText id="address4" value="#{companyBean.addrLine4}" />
 								<h:outputText value="City: " />
-								<p:inputText id="city"  value="#{companyBean.city}"/>
+								<p:inputText id="city" value="#{companyBean.city}" />
 								<p:spacer width="15" />
 								<h:outputText value="District: " />
-								<p:inputText id="district"  value="#{companyBean.district}"/>
+								<p:inputText id="district" value="#{companyBean.district}" />
 								<h:outputText value="Hobli/Gram : " />
-								<p:inputText id="hobli"  value="#{companyBean.hobliGram}"/>
+								<p:inputText id="hobli" value="#{companyBean.hobliGram}" />
 								<p:spacer width="15" />
 								<h:outputText value="State : " />
-								<p:inputText id="state"  value="#{companyBean.state}"/>
+								<p:inputText id="state" value="#{companyBean.state}" />
 								<h:outputText value="Country : " />
-								<p:inputText id="country"  value="#{companyBean.country}"/>
+								<p:inputText id="country" value="#{companyBean.country}" />
 								<p:spacer width="15" />
 								<h:outputText value="Contact No : " />
-								<p:inputText id="contact"  value="#{companyBean.contactNo}"/>
+								<p:inputText id="contact" value="#{companyBean.contactNo}" />
 								<h:outputText value="Email : " />
-								<p:inputText id="email"  value="#{companyBean.email}"/>
+								<p:inputText id="email" value="#{companyBean.email}" />
 
 							</h:panelGrid>
 						</p:panel>
@@ -69,23 +69,20 @@
 						<p:panel header="Registration Info">
 							<h:panelGrid columns="2" cellpadding="5">
 								<h:outputText value="Company Type: " />
-								<p:selectOneMenu>
-									<f:selectItem itemLabel="Select One" itemValue="" />
-									<f:selectItem itemLabel="Proprietary" itemValue="1" />
-									<f:selectItem itemLabel="Pvt ltd Co" itemValue="2" />
-									<f:selectItem itemLabel="Public ltd Co" itemValue="3" />
-									<f:selectItem itemLabel="Govt Enterprise" itemValue="4" />
+								<p:selectOneMenu value="#{companyBean.typeCode}">
+									<f:selectItems value="#{companyBean.typeCodes}" var="typeCode"
+										itemLabel="#{typeCode}" itemValue="#{typeCode}" />
 								</p:selectOneMenu>
 							</h:panelGrid>
 							<h:panelGrid columns="8" cellpadding="5">
 								<h:outputText value="Reg Name : " />
-								<p:inputText id="regName" />
+								<p:inputText id="regName" value="#{companyBean.regName}"/>
 								<p:spacer width="15" />
 								<h:outputText value="Reg No : " />
-								<p:inputText id="regNo" />
+								<p:inputText id="regNo" value="#{companyBean.regNo}"/>
 								<p:spacer width="15" />
 								<h:outputText value="Reg Date:" />
-								<p:calendar id="cal" showButtonPanel="true" pattern="dd/MM/yyyy" />
+								<p:calendar id="cal" showButtonPanel="true" pattern="dd/MM/yyyy" value="#{companyBean.regDate}"/>
 							</h:panelGrid>
 
 
@@ -97,25 +94,25 @@
 
 							<h:panelGrid id="display" columns="5" cellpadding="5">
 								<h:outputText value="Stakeholder Name: " />
-								<p:inputText id="stkHldName" />
+								<p:inputText id="stkHldName" value="#{companyBean.stakeHoldName}"/>
 								<p:spacer width="15" />
 								<h:outputText value="DOB: " />
 								<p:calendar id="stlDob" showButtonPanel="true"
-									pattern="dd/MM/yyyy" />
+									pattern="dd/MM/yyyy"  value="#{companyBean.stakeHoldDob}"/>
 								<h:outputText value="Address : " />
-								<p:inputTextarea id="stkaddr" />
+								<p:inputTextarea id="stkaddr"  value="#{companyBean.stakeHoldAddr}"/>
 								<p:spacer width="15" />
 								<h:outputText value="Contact No : " />
-								<p:inputText id="stkcont" />
+								<p:inputText id="stkcont"  value="#{companyBean.stakeHoldPhNo}"/>
 								<h:outputText value="Email : " />
-								<p:inputText id="stkemail" />
+								<p:inputText id="stkemail"  value="#{companyBean.stakeHoldEmail}"/>
 								<p:spacer width="15" />
 								<h:outputText value="PAN : " />
-								<p:inputText id="stkpan" />
+								<p:inputText id="stkpan"  value="#{companyBean.stakeHoldPan}" />
 							</h:panelGrid>
 							<p:separator />
-							<p:dataTable id="dataTable" var="car" value="#{tableBean.cars}"
-								paginator="true" rows="10"
+							<p:dataTable id="dataTable" var="car" value="#{companyBean.stakeHolder}"
+								paginator="true" rows="5"
 								paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 								rowsPerPageTemplate="5,10,15">
 								<f:facet name="header"> Stakeholder </f:facet>
@@ -124,62 +121,62 @@
 									<f:facet name="header">
 										<h:outputText value="Name" />
 									</f:facet>
-									<h:outputText value="#{car.model}" />
+									<h:outputText value="#{car.companyName}" />
 								</p:column>
 
 								<p:column>
 									<f:facet name="header">
 										<h:outputText value="DOB" />
 									</f:facet>
-									<h:outputText value="#{car.year}" />
+									<h:outputText value="#{car.financialYearEnd}" />
 								</p:column>
 
 								<p:column>
 									<f:facet name="header">
 										<h:outputText value="Address" />
 									</f:facet>
-									<h:outputText value="#{car.manufacturer}" />
+									<h:outputText value="#{car.registrationName}" />
 								</p:column>
 
 								<p:column>
 									<f:facet name="header">
 										<h:outputText value="Contact No" />
 									</f:facet>
-									<h:outputText value="#{car.color}" />
+									<h:outputText value="#{car.registrationName}" />
 								</p:column>
 								<p:column>
 									<f:facet name="header">
 										<h:outputText value="Email" />
 									</f:facet>
-									<h:outputText value="#{car.color}" />
+									<h:outputText value="#{car.registrationName}" />
 								</p:column>
 
 								<p:column>
 									<f:facet name="header">
 										<h:outputText value="PAN" />
 									</f:facet>
-									<h:outputText value="#{car.color}" />
+									<h:outputText value="#{car.registrationName}" />
 								</p:column>
 
 								<p:column>
 									<f:facet name="header">
 										<h:outputText value="Partner Type" />
 									</f:facet>
-									<h:outputText value="#{car.color}" />
+									<h:outputText value="#{car.registrationName}" />
 								</p:column>
 
 								<p:column>
 									<f:facet name="header">
 										<h:outputText value="User Name" />
 									</f:facet>
-									<h:outputText value="#{car.color}" />
+									<h:outputText value="#{car.registrationName}" />
 								</p:column>
 
 								<p:column>
 									<f:facet name="header">
 										<h:outputText value="Password" />
 									</f:facet>
-									<h:outputText value="#{car.color}" />
+									<h:outputText value="#{car.registrationName}" />
 								</p:column>
 
 								<f:facet name="footer">
@@ -198,15 +195,15 @@
 							<h:panelGrid columns="8" cellpadding="5">
 								<h:outputText value="Financial Year Start Date:" />
 								<p:calendar id="finstartDate" showButtonPanel="true"
-									pattern="dd/MM/yyyy" />
+									pattern="dd/MM/yyyy"  value="#{companyBean.finStartDate}"/>
 								<p:spacer width="15" />
 								<h:outputText value="Financial Year End Date:" />
 								<p:calendar id="finEndDate" showButtonPanel="true"
-									pattern="dd/MM/yyyy" />
+									pattern="dd/MM/yyyy" value="#{companyBean.finEndDate}"/>
 								<p:spacer width="15" />
 								<h:outputText value="Books Start Date:" />
 								<p:calendar id="booksStartDate" showButtonPanel="true"
-									pattern="dd/MM/yyyy" />
+									pattern="dd/MM/yyyy" value="#{companyBean.bookStartDate}"/>
 							</h:panelGrid>
 
 						</p:panel>
@@ -214,8 +211,8 @@
 				</h:form>
 				<p:toolbar>
 					<p:toolbarGroup align="right">
-						<p:commandButton value="Save"
-							icon="ui-icon-disk"   action="#{companyBean.save}"/>
+						<p:commandButton value="Save" icon="ui-icon-disk"
+							action="#{companyBean.save}" />
 						<p:commandButton type="button" title="Delete" value="Delete"
 							icon="ui-icon-trash" />
 						<p:commandButton type="button" title="Clear" value="Cancel"

@@ -1,5 +1,9 @@
 package accounts.app.bean.backingBean;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import javax.annotation.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.inject.Inject;
@@ -41,6 +45,135 @@ public class CompanyBean {
 
 	private CompanyService companyService;
 
+	private String typeCode ;
+
+	private List<String> typeCodes;
+
+	private String regName;
+
+	private String regNo;
+
+
+	private String stakeHoldName;
+
+	private Date stakeHoldDob;
+
+	private int stakeHoldPhNo;
+
+	private String stakeHoldAddr;
+
+	private String stakeHoldEmail;
+
+	private String stakeHoldPan;
+
+	private Date regDate;
+
+	private Date finStartDate;
+
+	private Date finEndDate;
+
+	private Date bookStartDate;
+
+	public CompanyService getCompanyService() {
+		return companyService;
+	}
+
+
+	public String getStakeHoldName() {
+		return stakeHoldName;
+	}
+
+
+	public void setStakeHoldName(String stakeHoldName) {
+		this.stakeHoldName = stakeHoldName;
+	}
+
+
+	public Date getStakeHoldDob() {
+		return stakeHoldDob;
+	}
+
+
+	public void setStakeHoldDob(Date stakeHoldDob) {
+		this.stakeHoldDob = stakeHoldDob;
+	}
+
+
+	public int getStakeHoldPhNo() {
+		return stakeHoldPhNo;
+	}
+
+
+	public void setStakeHoldPhNo(int stakeHoldPhNo) {
+		this.stakeHoldPhNo = stakeHoldPhNo;
+	}
+
+
+	public String getStakeHoldAddr() {
+		return stakeHoldAddr;
+	}
+
+
+	public void setStakeHoldAddr(String stakeHoldAddr) {
+		this.stakeHoldAddr = stakeHoldAddr;
+	}
+
+
+	public String getStakeHoldEmail() {
+		return stakeHoldEmail;
+	}
+
+
+	public void setStakeHoldEmail(String stakeHoldEmail) {
+		this.stakeHoldEmail = stakeHoldEmail;
+	}
+
+
+	public String getStakeHoldPan() {
+		return stakeHoldPan;
+	}
+
+
+	public void setStakeHoldPan(String stakeHoldPan) {
+		this.stakeHoldPan = stakeHoldPan;
+	}
+
+
+	public void setCompanyService(CompanyService companyService) {
+		this.companyService = companyService;
+	}
+
+
+	public Date getFinStartDate() {
+		return finStartDate;
+	}
+
+
+	public void setFinStartDate(Date finStartDate) {
+		this.finStartDate = finStartDate;
+	}
+
+
+	public Date getFinEndDate() {
+		return finEndDate;
+	}
+
+
+	public void setFinEndDate(Date finEndDate) {
+		this.finEndDate = finEndDate;
+	}
+
+
+	public Date getBookStartDate() {
+		return bookStartDate;
+	}
+
+
+	public void setBookStartDate(Date bookStartDate) {
+		this.bookStartDate = bookStartDate;
+	}
+
+
 	@Inject
 	public CompanyBean(final CompanyService service)
 	{
@@ -66,10 +199,22 @@ public class CompanyBean {
 		company.setCompanyAddress(addr);
 
 		company.setPanNo(getPanNo());
+		company.setFinancialYearEnd(new java.sql.Date(getFinEndDate().getTime()));
+		company.setFinancialYearStart(new java.sql.Date(getFinStartDate().getTime()));
+		company.setBooksStartDate(new java.sql.Date(getBookStartDate().getTime()));
+
+		company.setRegistrationDate(new java.sql.Date(getRegDate().getTime()));
+
+		company.setRegistrationName(getRegName());
+
+		company.setRegistrationNo(getRegNo());
+
 
 		companyService.create(company);
 
 	}
+
+	private List<CompanyDetails> stakeHolder;
 
 
 	public String getCompName() {
@@ -174,6 +319,71 @@ public class CompanyBean {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+
+	public List<String> getTypeCodes() {
+		typeCodes =new ArrayList<String>();
+		typeCodes.add("Proprietary");
+		typeCodes.add("Pvt ltd Co");
+		typeCodes.add("Public ltd Co");
+		typeCodes.add("Govt Enterprise");
+
+		return typeCodes;
+	}
+
+	public void setTypeCodes(List<String> typeCodes) {
+		this.typeCodes = typeCodes;
+	}
+
+
+	public String getTypeCode() {
+		return "Govt Enterprise";
+	}
+
+
+	public void setTypeCode(String typeCode) {
+		this.typeCode = typeCode;
+	}
+
+
+	public String getRegName() {
+		return regName;
+	}
+
+
+	public void setRegName(String regName) {
+		this.regName = regName;
+	}
+
+
+	public String getRegNo() {
+		return regNo;
+	}
+
+
+	public void setRegNo(String regNo) {
+		this.regNo = regNo;
+	}
+
+
+	public Date getRegDate() {
+		return regDate;
+	}
+
+
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
+	}
+
+
+	public List<CompanyDetails> getStakeHolder() {
+		return companyService.getCompanies();
+	}
+
+
+	public void setStakeHolder(List<CompanyDetails> stakeHolder) {
+		this.stakeHolder = stakeHolder;
 	}
 
 

@@ -1,5 +1,7 @@
 package accounts.app.service.impl;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -48,6 +50,12 @@ public class CompanyServiceImpl implements CompanyService {
 	public CompanyDetails get() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<CompanyDetails> getCompanies() {
+		return companyDao.getCompanies();
+
 	}
 
 }
