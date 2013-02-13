@@ -1,0 +1,155 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/views/template/Welcome.xhtml">
+
+
+	<ui:define name="metadata">
+	</ui:define>
+	<ui:define name="header">
+		<ui:include src="/views/template/header.xhtml" />
+	</ui:define>
+	<ui:define name="menu">
+		<ui:include src="/views/Company/menu.xhtml" />
+	</ui:define>
+	<ui:define name="content">
+
+		<h:form id="compForm">
+
+			<p:toolbar>
+				<p:toolbarGroup align="right">
+					<p:commandButton value="Save" icon="ui-icon-disk"
+						action="#{companyBean.save}" />
+					<p:commandButton type="button" title="Delete" value="Delete"
+						icon="ui-icon-trash" />
+					<p:commandButton type="button" title="Clear" value="Cancel"
+						icon="ui-icon-clear" />
+				</p:toolbarGroup>
+			</p:toolbar>
+
+			<div align="left">
+
+				<p:panel header="StakeHolder">
+					<h:panelGrid id="display" columns="6" cellpadding="5">
+						<h:outputText value="Stakeholder Name: " />
+						<p:inputText id="stkHldName"
+							value="#{compStakeholderBean.stakeHoldName}" />
+						<p:spacer width="15" />
+						<h:outputText value="DOB: " />
+						<p:calendar id="stlDob" showButtonPanel="true"
+							pattern="dd/MM/yyyy" value="#{compStakeholderBean.stakeHoldDob}" />
+						<p:spacer />
+						<h:outputText value="Address : " />
+						<p:inputTextarea id="stkaddr"
+							value="#{compStakeholderBean.stakeHoldAddr}" />
+						<p:spacer width="15" />
+						<h:outputText value="Contact No : " />
+						<p:inputText id="stkcont"
+							value="#{compStakeholderBean.stakeHoldPhNo}" />
+						<p:spacer />
+						<h:outputText value="Email : " />
+						<p:inputText id="stkemail"
+							value="#{compStakeholderBean.stakeHoldEmail}" />
+						<p:spacer width="15" />
+						<h:outputText value="PAN : " />
+						<p:inputText id="stkpan"
+							value="#{compStakeholderBean.stakeHoldPan}" />
+						<p:commandButton value="Insert" action="#{companyBean.save}" />
+					</h:panelGrid>
+					<p:separator />
+
+				</p:panel>
+				<p:dataTable id="dataTable" var="car"
+					value="#{compStakeholderBean.lazyModel}" paginator="true" rows="1"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15" lazy="true"
+					selection="#{compStakeholderBean.selectedStakeHolder}"
+					selectionMode="single">
+					<f:facet name="header"> Stakeholder </f:facet>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Name" />
+						</f:facet>
+						<h:outputText value="#{car.stakeHolderName}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="DOB" />
+						</f:facet>
+						<h:outputText value="#{car.dob}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Address" />
+						</f:facet>
+						<h:outputText value="#{car.address}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Contact No" />
+						</f:facet>
+						<h:outputText value="#{car.phNo}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Email" />
+						</f:facet>
+						<h:outputText value="#{car.email}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="PAN" />
+						</f:facet>
+						<h:outputText value="#{car.panNo}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Partner Type" />
+						</f:facet>
+						<h:outputText value="#{car.panNo}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="User Name" />
+						</f:facet>
+						<h:outputText value="#{car.panNo}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Password" />
+						</f:facet>
+						<h:outputText value="#{car.panNo}" />
+					</p:column>
+
+					<f:facet name="footer">
+						<p:commandButton id="viewButton" value="Edit" icon="ui-icon-edit" />
+						<p:commandButton id="addButton" value="New" icon="ui-icon-edit" />
+						<p:commandButton id="delButton" value="Delete"
+							icon="ui-icon-clear" />
+					</f:facet>
+				</p:dataTable>
+
+			</div>
+			<p:toolbar>
+				<p:toolbarGroup align="right">
+					<p:commandButton value="Save" icon="ui-icon-disk"
+						action="#{companyBean.save}" />
+					<p:commandButton type="button" title="Delete" value="Delete"
+						icon="ui-icon-trash" />
+					<p:commandButton type="button" title="Clear" value="Cancel"
+						icon="ui-icon-clear" />
+				</p:toolbarGroup>
+			</p:toolbar>
+		</h:form>
+	</ui:define>
+</ui:composition>

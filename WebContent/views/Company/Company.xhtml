@@ -1,0 +1,124 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/views/template/Welcome.xhtml">
+
+
+	<ui:define name="metadata">
+	</ui:define>
+	<ui:define name="header">
+		<ui:include src="/views/template/header.xhtml" />
+	</ui:define>
+	<ui:define name="menu">
+		<ui:include src="/views/Company/menu.xhtml" />
+	</ui:define>
+	<ui:define name="content">
+
+		<h:form id="compForm">
+
+			<p:toolbar>
+				<p:toolbarGroup align="right">
+					<p:commandButton value="Save" icon="ui-icon-disk"
+						action="#{companyBean.save}" />
+					<p:commandButton type="button" title="Delete" value="Delete"
+						icon="ui-icon-trash" />
+					<p:commandButton type="button" title="Clear" value="Cancel"
+						icon="ui-icon-clear" />
+				</p:toolbarGroup>
+			</p:toolbar>
+
+			<div align="left">
+				<p:panel header="Company Info">
+					<h:panelGrid columns="5" cellpadding="5">
+						<h:outputText value="Company Name: " />
+						<p:inputText id="companyName" value="#{companyBean.compName}" />
+						<p:spacer width="15" />
+						<h:outputText value="PAN: " />
+						<p:inputText id="pan" value="#{companyBean.panNo}" />
+						<h:outputText value="Address Line1 : " />
+						<p:inputText id="address1" value="#{companyBean.addrLine1}" />
+						<p:spacer width="15" />
+						<h:outputText value="Address Line2: " />
+						<p:inputText id="address2" value="#{companyBean.addrLine2}" />
+						<h:outputText value="Address Line3: " />
+						<p:inputText id="address3" value="#{companyBean.addrLine3}" />
+						<p:spacer width="15" />
+						<h:outputText value="Address Line4: " />
+						<p:inputText id="address4" value="#{companyBean.addrLine4}" />
+						<h:outputText value="City: " />
+						<p:inputText id="city" value="#{companyBean.city}" />
+						<p:spacer width="15" />
+						<h:outputText value="District: " />
+						<p:inputText id="district" value="#{companyBean.district}" />
+						<h:outputText value="Hobli/Gram : " />
+						<p:inputText id="hobli" value="#{companyBean.hobliGram}" />
+						<p:spacer width="15" />
+						<h:outputText value="State : " />
+						<p:inputText id="state" value="#{companyBean.state}" />
+						<h:outputText value="Country : " />
+						<p:inputText id="country" value="#{companyBean.country}" />
+						<p:spacer width="15" />
+						<h:outputText value="Contact No : " />
+						<p:inputText id="contact" value="#{companyBean.contactNo}" />
+						<h:outputText value="Email : " />
+						<p:inputText id="email" value="#{companyBean.email}" />
+
+					</h:panelGrid>
+				</p:panel>
+
+				<p:spacer height="10" />
+
+				<p:panel header="Registration Info">
+					<h:panelGrid columns="2" cellpadding="5">
+						<h:outputText value="Company Type: " />
+						<p:selectOneMenu value="#{companyBean.typeCode}">
+							<f:selectItems value="#{companyBean.typeCodes}" var="typecode"
+								itemLabel="#{typecode}" itemValue="#{typecode}" />
+						</p:selectOneMenu>
+					</h:panelGrid>
+					<h:panelGrid columns="8" cellpadding="5">
+						<h:outputText value="Reg Name : " />
+						<p:inputText id="regName" value="#{companyBean.regName}" />
+						<p:spacer width="15" />
+						<h:outputText value="Reg No : " />
+						<p:inputText id="regNo" value="#{companyBean.regNo}" />
+						<p:spacer width="15" />
+						<h:outputText value="Reg Date:" />
+						<p:calendar id="cal" showButtonPanel="true" pattern="dd/MM/yyyy"
+							value="#{companyBean.regDate}" />
+					</h:panelGrid>
+				</p:panel>
+
+
+				<p:panel header="Financial Year">
+					<h:panelGrid columns="8" cellpadding="5">
+						<h:outputText value="Financial Year Start Date:" />
+						<p:calendar id="finstartDate" showButtonPanel="true"
+							pattern="dd/MM/yyyy" value="#{companyBean.finStartDate}" />
+						<p:spacer width="15" />
+						<h:outputText value="Financial Year End Date:" />
+						<p:calendar id="finEndDate" showButtonPanel="true"
+							pattern="dd/MM/yyyy" value="#{companyBean.finEndDate}" />
+						<p:spacer width="15" />
+						<h:outputText value="Books Start Date:" />
+						<p:calendar id="booksStartDate" showButtonPanel="true"
+							pattern="dd/MM/yyyy" value="#{companyBean.bookStartDate}" />
+					</h:panelGrid>
+
+				</p:panel>
+			</div>
+			<p:toolbar>
+				<p:toolbarGroup align="right">
+					<p:commandButton value="Save" icon="ui-icon-disk"
+						action="#{companyBean.save}" />
+					<p:commandButton type="button" title="Delete" value="Delete"
+						icon="ui-icon-trash" />
+					<p:commandButton type="button" title="Clear" value="Cancel"
+						icon="ui-icon-clear" />
+				</p:toolbarGroup>
+			</p:toolbar>
+		</h:form>
+	</ui:define>
+</ui:composition>
