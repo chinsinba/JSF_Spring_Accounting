@@ -9,9 +9,8 @@
 	<title>Login</title>
 </h:head>
 <body>
-	<h:form>
+	<h:form id="headForm">
 
-		<p:growl id="messages" />
 		<p:toolbar>
 			<p:toolbarGroup align="right">
 				<!-- <p:commandLink id="company" action="/Company.xhtml">
@@ -32,7 +31,7 @@
 					<h:outputText value="HRMS" />
 				</p:commandLink>
 				 -->
-				<p:button value="Company" outcome="/Company.xhtml" />
+				<p:button value="Company" outcome="/views/Company/Company.xhtml"/>
 				<p:button type="button" value="Accounts"
 					outcome="/views/Accounts/Masters/Items.xhtml" />
 				<p:button type="button" value="Purchase"

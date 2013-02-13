@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import accounts.app.dao.CompanyDAO;
 import accounts.app.service.CompanyService;
 import accounts.model.entity.CompanyDetails;
+import accounts.model.entity.StakeHolder;
 
 /**
  * 
@@ -48,14 +49,18 @@ public class CompanyServiceImpl implements CompanyService {
 	@Override
 	@Transactional
 	public CompanyDetails get() {
-		// TODO Auto-generated method stub
-		return null;
+		return companyDao.getCompany();
 	}
 
 	@Override
 	public List<CompanyDetails> getCompanies() {
 		return companyDao.getCompanies();
 
+	}
+
+	@Override
+	public List<StakeHolder> getStakeHolders(CompanyDetails company) {
+		return companyDao.getStakeHolders(company);
 	}
 
 }

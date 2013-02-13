@@ -9,39 +9,43 @@
 <f:view contentType="text/html" id="fview">
 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Account Baaz</title>
+
 	<ui:debug />
 	<f:metadata>
 		<ui:insert name="metadata" />
 	</f:metadata>
-
 	<h:head>
-		<p:ajaxStatus onstart="statusDialog.show();"
-			onsuccess="statusDialog.hide();" />
+		<title>Account Baaz</title>
+	</h:head>
+	<h:body>
 
+
+		<p:ajaxStatus onstart="statusDialog.show();"
+			onsuccess="statusDialog.hide();" id="_ajax_status" />
+
+		<p:dialog modal="true" widgetVar="statusDialog" showHeader="false"
+			draggable="false" closable="false" resizable="false" visible="false"
+			position="center" maximizable="false" minimizable="false">
+			<p:graphicImage value="/resource/images/ajax-loader.gif" />
+		</p:dialog>
 		<p:layout fullPage="true" resizeTitle="resize"
 			style="background-color:#FFFFFF;">
-			<p:layoutUnit position="north" size="100" id="north" >
+			<p:layoutUnit position="north" size="100" id="north">
 				<ui:insert name="header" />
 			</p:layoutUnit>
 
 
-			<p:layoutUnit styleClass="layoutUnitCenter" position="center"  >
-				<h:form id="mainForm">
-					<p:messages autoUpdate="true" id="msgs" showDetail="true"
-						showSummary="true" />
-					<ui:insert name="content" />
-				</h:form>
-			</p:layoutUnit> 
+			<p:layoutUnit styleClass="layoutUnitCenter" position="center">
+				<p:messages autoUpdate="true" id="msgs" showDetail="true"
+					showSummary="true" />
+				<ui:insert name="content" />
+			</p:layoutUnit>
 
 			<p:layoutUnit position="south" resizable="true" id="south">
 				<ui:include src="/views/template/footer.xhtml" />
 			</p:layoutUnit>
 		</p:layout>
 
-	</h:head>
-
-	<h:body onload="statusDialog.hide();">
 	</h:body>
 
 </f:view>

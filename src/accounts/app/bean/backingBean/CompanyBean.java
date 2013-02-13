@@ -5,16 +5,15 @@ import java.util.Date;
 import java.util.List;
 
 import javax.annotation.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 
 import accounts.app.service.CompanyService;
-import accounts.app.service.UserService;
 import accounts.model.entity.Address;
 import accounts.model.entity.CompanyDetails;
 
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class CompanyBean {
 
 	private String compName;
@@ -54,7 +53,7 @@ public class CompanyBean {
 	private String regNo;
 
 
-	private String stakeHoldName;
+	/*private String stakeHoldName;
 
 	private Date stakeHoldDob;
 
@@ -65,7 +64,7 @@ public class CompanyBean {
 	private String stakeHoldEmail;
 
 	private String stakeHoldPan;
-
+	 */
 	private Date regDate;
 
 	private Date finStartDate;
@@ -74,68 +73,10 @@ public class CompanyBean {
 
 	private Date bookStartDate;
 
+	private CompanyDetails company ;
+
 	public CompanyService getCompanyService() {
 		return companyService;
-	}
-
-
-	public String getStakeHoldName() {
-		return stakeHoldName;
-	}
-
-
-	public void setStakeHoldName(String stakeHoldName) {
-		this.stakeHoldName = stakeHoldName;
-	}
-
-
-	public Date getStakeHoldDob() {
-		return stakeHoldDob;
-	}
-
-
-	public void setStakeHoldDob(Date stakeHoldDob) {
-		this.stakeHoldDob = stakeHoldDob;
-	}
-
-
-	public int getStakeHoldPhNo() {
-		return stakeHoldPhNo;
-	}
-
-
-	public void setStakeHoldPhNo(int stakeHoldPhNo) {
-		this.stakeHoldPhNo = stakeHoldPhNo;
-	}
-
-
-	public String getStakeHoldAddr() {
-		return stakeHoldAddr;
-	}
-
-
-	public void setStakeHoldAddr(String stakeHoldAddr) {
-		this.stakeHoldAddr = stakeHoldAddr;
-	}
-
-
-	public String getStakeHoldEmail() {
-		return stakeHoldEmail;
-	}
-
-
-	public void setStakeHoldEmail(String stakeHoldEmail) {
-		this.stakeHoldEmail = stakeHoldEmail;
-	}
-
-
-	public String getStakeHoldPan() {
-		return stakeHoldPan;
-	}
-
-
-	public void setStakeHoldPan(String stakeHoldPan) {
-		this.stakeHoldPan = stakeHoldPan;
 	}
 
 
@@ -182,8 +123,8 @@ public class CompanyBean {
 
 
 	public void save(){
-		CompanyDetails company = new CompanyDetails();
-		company.setCompanyName(getCompName());
+
+		getCompany().setCompanyName(getCompName());
 
 		Address addr = new Address();
 		addr.setAddressLine1(getAddrLine1());
@@ -196,25 +137,24 @@ public class CompanyBean {
 		addr.setState(getState());
 		addr.setHobliGram(getHobliGram());
 
-		company.setCompanyAddress(addr);
+		getCompany().setCompanyAddress(addr);
 
-		company.setPanNo(getPanNo());
-		company.setFinancialYearEnd(new java.sql.Date(getFinEndDate().getTime()));
-		company.setFinancialYearStart(new java.sql.Date(getFinStartDate().getTime()));
-		company.setBooksStartDate(new java.sql.Date(getBookStartDate().getTime()));
+		getCompany().setPanNo(getPanNo());
+		getCompany().setFinancialYearEnd(new java.sql.Date(getFinEndDate().getTime()));
+		getCompany().setFinancialYearStart(new java.sql.Date(getFinStartDate().getTime()));
+		getCompany().setBooksStartDate(new java.sql.Date(getBookStartDate().getTime()));
 
-		company.setRegistrationDate(new java.sql.Date(getRegDate().getTime()));
+		getCompany().setRegistrationDate(new java.sql.Date(getRegDate().getTime()));
 
-		company.setRegistrationName(getRegName());
+		getCompany().setRegistrationName(getRegName());
 
-		company.setRegistrationNo(getRegNo());
+		getCompany().setRegistrationNo(getRegNo());
 
 
-		companyService.create(company);
+		companyService.create(getCompany());
 
 	}
 
-	private List<CompanyDetails> stakeHolder;
 
 
 	public String getCompName() {
@@ -377,15 +317,16 @@ public class CompanyBean {
 	}
 
 
-	public List<CompanyDetails> getStakeHolder() {
-		return companyService.getCompanies();
+	public CompanyDetails getCompany() {
+		company = companyService.get();
+		if(company == null)
+			company = new CompanyDetails();
+		return company;
 	}
 
 
-	public void setStakeHolder(List<CompanyDetails> stakeHolder) {
-		this.stakeHolder = stakeHolder;
+	public void setCompany(CompanyDetails company) {
+		this.company = company;
 	}
-
-
 
 }

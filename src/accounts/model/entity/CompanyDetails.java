@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -17,7 +18,10 @@ import javax.persistence.TableGenerator;
 
 
 @Entity
-@NamedQuery(name="comp.findall",query="SELECT comp FROM CompanyDetails comp")
+@NamedQueries({
+	@NamedQuery(name="comp.findall",query="SELECT comp FROM CompanyDetails comp"),
+	@NamedQuery(name="comp.getCompForUser", query="SELECT comp FROM CompanyDetails comp WHERE comp.id = 2")
+})
 @Table(name="COMPANYDETAILS")
 public class CompanyDetails {
 

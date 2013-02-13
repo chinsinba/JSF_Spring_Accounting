@@ -87,8 +87,8 @@ public class LoginBean {
 			ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
 			ApplicationContext appContext = WebApplicationContextUtils.getWebApplicationContext(servletContext);
 			//javax.servlet.http.HttpServletRequest req=(javax.servlet.http.HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
-			accounts.model.entity.user.User user = this.userService.getUser(1);
-			this.preferencesBean.setUser(user);
+			/*accounts.model.entity.user.User user = this.userService.getUser(1);
+			this.preferencesBean.setUser(user);*/
 			return "/Company.xhtml";
 
 		} 

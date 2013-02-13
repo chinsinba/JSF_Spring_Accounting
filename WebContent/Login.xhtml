@@ -10,7 +10,7 @@
 	<ui:define name="content">
 		<body>
 			<div align="center">
-				<h:form id="form">
+				<h:form id="loginForm">
 					<p:panel id="panel">
 						<p:messages id="messages" />
 						<h:panelGrid columns="3">
@@ -29,9 +29,10 @@
 							<p:message for="j_password" />
 
 							<f:facet name="footer">
-								<p:commandButton value="Login" update="panel"
-									action="#{loginBean.login}" />
-									<p:commandLink value="Forgot Password" />
+								<!-- 	<p:commandButton value="Login" update="panel"
+									action="#{loginBean.login}" /> -->
+								<p:button value="Login" outcome="/views/Company/Company.xhtml" />
+								<p:commandLink value="Forgot Password" />
 							</f:facet>
 						</h:panelGrid>
 					</p:panel>
