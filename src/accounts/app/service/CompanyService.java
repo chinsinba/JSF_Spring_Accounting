@@ -19,4 +19,6 @@ public interface CompanyService {
 	
 	public List<StakeHolder> getStakeHolders(CompanyDetails company);
 	public void create(StakeHolder stkholder);
+	public void update(StakeHolder selectedStakeHolder);
+	public void delete(StakeHolder selectedStakeHolder);
 }

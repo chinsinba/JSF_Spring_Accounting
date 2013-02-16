@@ -72,4 +72,15 @@ public class CompanyServiceImpl implements CompanyService {
 		stakeHolderDAO.create(stkholder);
 	}
 
+	@Override
+	public void update(StakeHolder selectedStakeHolder) {
+		stakeHolderDAO.update(selectedStakeHolder);
+
+	}
+
+	@Override
+	@Transactional
+	public void delete(StakeHolder selectedStakeHolder) {
+		stakeHolderDAO.delete(selectedStakeHolder.getId());
+	}
 }

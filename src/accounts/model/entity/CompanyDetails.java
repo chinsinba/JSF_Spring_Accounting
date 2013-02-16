@@ -69,7 +69,7 @@ public class CompanyDetails {
 	@OneToOne(cascade ={CascadeType.ALL} ,fetch=FetchType.EAGER)
 	private Address companyAddress;
 
-	@OneToMany(cascade={CascadeType.ALL})
+	@OneToMany(cascade={CascadeType.ALL},fetch=FetchType.LAZY)
 	private List<CompanyBranch> branches;
 
 	public List<CompanyBranch> getBranches() {

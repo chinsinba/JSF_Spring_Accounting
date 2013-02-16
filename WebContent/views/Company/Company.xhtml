@@ -21,7 +21,7 @@
 			<p:toolbar>
 				<p:toolbarGroup align="right">
 					<p:commandButton value="Save" icon="ui-icon-disk"
-						action="#{companyBean.save}" />
+						action="#{companyBean.save}" rendered="#{companyBean.saveEnabled}" />
 					<p:commandButton type="button" title="Delete" value="Delete"
 						icon="ui-icon-trash" />
 					<p:commandButton type="button" title="Clear" value="Cancel"
@@ -74,7 +74,7 @@
 				<p:spacer height="10" />
 
 				<p:panel header="Registration Info">
-					<h:panelGrid columns="5" cellpadding="5">
+					<h:panelGrid columns="2" cellpadding="5">
 						<h:outputText value="Company Type: " />
 						<p:selectOneMenu value="#{companyBean.typeCode}">
 							<f:selectItems value="#{companyBean.typeCodes}" var="typecode"

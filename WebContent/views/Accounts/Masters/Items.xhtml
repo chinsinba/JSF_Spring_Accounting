@@ -10,18 +10,19 @@
 	<ui:define name="content">
 		<body>
 			<div>
-				<p:toolbar>
-					<p:toolbarGroup align="right">
-						<p:commandButton type="button" title="Save" value="Save"
-							icon="ui-icon-disk" />
-						<p:commandButton type="button" title="Delete" value="Delete"
-							icon="ui-icon-trash" />
-						<p:commandButton type="button" title="Clear" value="Cancel"
-							icon="ui-icon-clear" />
-					</p:toolbarGroup>
-				</p:toolbar>
-
 				<h:form id="form">
+
+					<p:toolbar>
+						<p:toolbarGroup align="right">
+							<p:commandButton type="button" title="Save" value="Save"
+								icon="ui-icon-disk" />
+							<p:commandButton type="button" title="Delete" value="Delete"
+								icon="ui-icon-trash" />
+							<p:commandButton type="button" title="Clear" value="Cancel"
+								icon="ui-icon-clear" />
+						</p:toolbarGroup>
+					</p:toolbar>
+
 
 					<p:panel header="Item Creation">
 						<h:panelGrid columns="5" cellpadding="5">
@@ -60,7 +61,7 @@
 							<p:spacer width="15" />
 							<h:outputText value="Unit : " />
 							<p:inputText id="opStckUnit" />
-							
+
 							<h:outputText value="Opening Stock(Value) : " />
 							<p:inputText id="opStckValue" />
 							<p:spacer width="15" />
@@ -72,7 +73,7 @@
 								<f:selectItem itemLabel="Public ltd Co" itemValue="3" />
 								<f:selectItem itemLabel="Govt Enterprise" itemValue="4" />
 							</p:selectOneMenu>
-							
+
 						</h:panelGrid>
 					</p:panel>
 					<p:panel header="Tax Details">
@@ -88,7 +89,7 @@
 							<p:spacer width="15" />
 							<h:outputText value="Percentage : " />
 							<p:inputText id="inTaxPercent" />
-							
+
 							<h:outputText value="Sales/Outward Tax: " />
 							<p:selectOneMenu value="#{buttonBean.number}">
 								<f:selectItem itemLabel="Select One" itemValue="" />
@@ -180,19 +181,20 @@
 
 
 					</p:panel>
+
+
+
+					<p:toolbar>
+						<p:toolbarGroup align="right">
+							<p:commandButton type="button" title="Save" value="Save"
+								icon="ui-icon-disk" />
+							<p:commandButton type="button" title="Delete" value="Delete"
+								icon="ui-icon-trash" />
+							<p:commandButton type="button" title="Clear" value="Cancel"
+								icon="ui-icon-clear" />
+						</p:toolbarGroup>
+					</p:toolbar>
 				</h:form>
-
-
-				<p:toolbar>
-					<p:toolbarGroup align="right">
-						<p:commandButton type="button" title="Save" value="Save"
-							icon="ui-icon-disk" />
-						<p:commandButton type="button" title="Delete" value="Delete"
-							icon="ui-icon-trash" />
-						<p:commandButton type="button" title="Clear" value="Cancel"
-							icon="ui-icon-clear" />
-					</p:toolbarGroup>
-				</p:toolbar>
 			</div>
 		</body>
 	</ui:define>

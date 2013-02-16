@@ -29,31 +29,28 @@
 			<p:layoutUnit position="west" id="west" resizable="false"
 				style="height:580px;overflow:hidden;" size="225">
 				<ui:insert name="menu">
-				<ui:include src="/views/Accounts/Masters/menu.xhtml" />
+					<ui:include src="/views/Accounts/Masters/menu.xhtml" />
 				</ui:insert>
 			</p:layoutUnit>
 
-			<p:layoutUnit styleClass="layoutUnitCenter" position="center" id="center">
-				<h:form id="mainForm">
-					<p:messages autoUpdate="true" id="msgs" showDetail="true"
-						showSummary="true" />
-					<ui:insert name="content" >
-					<ui:include src="#{menuPageBean.page}.xhtml"/>
-					</ui:insert>
-				</h:form>
+			<p:layoutUnit styleClass="layoutUnitCenter" position="center"
+				id="center">
+				<p:messages autoUpdate="true" id="msgs" showDetail="true"
+					showSummary="true" />
+				<ui:insert name="content">
+					<ui:include src="#{menuPageBean.page}.xhtml" />
+				</ui:insert>
 			</p:layoutUnit>
 
 			<p:layoutUnit position="south" resizable="true" id="south">
-			<ui:insert name="footer">
-				<ui:include src="/views/template/footer.xhtml" />
+				<ui:insert name="footer">
+					<ui:include src="/views/template/footer.xhtml" />
 				</ui:insert>
 			</p:layoutUnit>
 		</p:layout>
 
-		<p:dialog modal="true" widgetVar="statusDialog" showHeader="false"
-			draggable="false" closable="false" resizable="false" visible="false"
-			position="center" maximizable="false" minimizable="false">
-			<p:graphicImage value="#{resource['images/ajax-loader.gif']}" />
+		<p:dialog modal="true" widgetVar="statusDialog" showHeader="false">
+			<p:graphicImage value="/resource/images/ajax-loader.gif" />
 		</p:dialog>
 
 	</h:head>
