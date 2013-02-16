@@ -20,7 +20,7 @@ import javax.persistence.TableGenerator;
 @Entity
 @NamedQueries({
 	@NamedQuery(name="comp.findall",query="SELECT comp FROM CompanyDetails comp"),
-	@NamedQuery(name="comp.getCompForUser", query="SELECT comp FROM CompanyDetails comp WHERE comp.id = 2")
+	@NamedQuery(name="comp.getCompForUser", query="SELECT comp FROM CompanyDetails comp WHERE comp.id = 14")
 })
 @Table(name="COMPANYDETAILS")
 public class CompanyDetails {
@@ -66,7 +66,7 @@ public class CompanyDetails {
 
 	private Date financialYearEnd;
 
-	@OneToOne(cascade ={CascadeType.ALL} ,fetch=FetchType.LAZY)
+	@OneToOne(cascade ={CascadeType.ALL} ,fetch=FetchType.EAGER)
 	private Address companyAddress;
 
 	@OneToMany(cascade={CascadeType.ALL})

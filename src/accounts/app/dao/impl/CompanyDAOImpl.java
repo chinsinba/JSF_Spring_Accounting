@@ -36,7 +36,7 @@ public class CompanyDAOImpl extends GenericDAOImpl<CompanyDetails> implements Co
 	public List<StakeHolder> getStakeHolders(CompanyDetails company) {
 
 		Query query = em.createNamedQuery("stakeHolder.findall");
-//		query.setParameter("companyId", company.getId());
+		query.setParameter("company", company);
 		try{
 			return query.getResultList();
 		}catch (Exception e) {

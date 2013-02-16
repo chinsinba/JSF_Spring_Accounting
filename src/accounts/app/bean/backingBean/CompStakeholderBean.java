@@ -12,10 +12,11 @@ import javax.inject.Inject;
 import org.primefaces.model.LazyDataModel;
 
 import accounts.app.service.CompanyService;
+import accounts.model.entity.CompanyDetails;
 import accounts.model.entity.StakeHolder;
 
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class CompStakeholderBean  implements Serializable{
 	private CompanyService companyService;
 	private List<StakeHolder> stakeHolder;
@@ -26,8 +27,6 @@ public class CompStakeholderBean  implements Serializable{
 
 	private Date stakeHoldDob;
 
-	
-
 	private int stakeHoldPhNo;
 
 	private String stakeHoldAddr;
@@ -35,14 +34,18 @@ public class CompStakeholderBean  implements Serializable{
 	private String stakeHoldEmail;
 
 	private String stakeHoldPan;
-	 
-	
+
+	private CompanyDetails company; 
+
+
+
 	@Inject
 	public CompStakeholderBean(final CompanyService service, CompanyBean company)
 	{
 		this.companyService = service;
 		this.stakeHolder = companyService.getStakeHolders(company.getCompany());
 		this.lazyModel = new LazyCarDataModel(stakeHolder);
+		this.setCompany(company.getCompany());
 
 	}
 
@@ -131,6 +134,27 @@ public class CompStakeholderBean  implements Serializable{
 
 	public void setSelectedCar(StakeHolder selectedCar) {
 		this.selectedStakeHolder = selectedCar;
+	}
+
+
+	public CompanyDetails getCompany() {
+		return company;
+	}
+
+	public void setCompany(CompanyDetails company) {
+		this.company = company;
+	}
+
+	public void save(){
+
+		StakeHolder stkholder = new StakeHolder();
+		stkholder.setAddress(getStakeHoldAddr());
+		stkholder.setDob(new java.sql.Date(getStakeHoldDob().getTime()));
+		stkholder.setEmail(getStakeHoldEmail());
+		stkholder.setPanNo(getStakeHoldPan());
+		stkholder.setStakeHolderName(getStakeHoldName());
+		stkholder.setCompany(getCompany());
+		companyService.create(stkholder);
 	}
 
 }

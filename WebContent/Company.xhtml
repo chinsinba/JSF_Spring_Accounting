@@ -18,7 +18,7 @@
 			<p:toolbar>
 				<p:toolbarGroup align="right">
 					<p:commandButton value="Save" icon="ui-icon-disk"
-						action="#{companyBean.save}" />
+						action="#{companyBean.save}"  disabled="#{companyBean.saveEnabled}"/>
 					<p:commandButton type="button" title="Delete" value="Delete"
 						icon="ui-icon-trash" />
 					<p:commandButton type="button" title="Clear" value="Cancel"

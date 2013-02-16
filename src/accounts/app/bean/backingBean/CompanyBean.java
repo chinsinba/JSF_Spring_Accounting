@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.annotation.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 
 import accounts.app.service.CompanyService;
@@ -13,10 +13,11 @@ import accounts.model.entity.Address;
 import accounts.model.entity.CompanyDetails;
 
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class CompanyBean {
+	private boolean saveEnabled ; 
 
-	private String compName;
+	/*private String compName;
 
 	private String panNo;
 
@@ -36,7 +37,7 @@ public class CompanyBean {
 
 	private String state;
 
-	private String country;
+	private String country;*/
 
 	private int contactNo;
 
@@ -48,32 +49,22 @@ public class CompanyBean {
 
 	private List<String> typeCodes;
 
-	private String regName;
+	/*private String regName;
 
 	private String regNo;
 
 
-	/*private String stakeHoldName;
-
-	private Date stakeHoldDob;
-
-	private int stakeHoldPhNo;
-
-	private String stakeHoldAddr;
-
-	private String stakeHoldEmail;
-
-	private String stakeHoldPan;
-	 */
 	private Date regDate;
 
 	private Date finStartDate;
 
 	private Date finEndDate;
 
-	private Date bookStartDate;
+	private Date bookStartDate;*/
 
 	private CompanyDetails company ;
+
+	private Address compAddress;
 
 	public CompanyService getCompanyService() {
 		return companyService;
@@ -86,32 +77,32 @@ public class CompanyBean {
 
 
 	public Date getFinStartDate() {
-		return finStartDate;
+		return getCompany().getFinancialYearStart();
 	}
 
 
 	public void setFinStartDate(Date finStartDate) {
-		this.finStartDate = finStartDate;
+		getCompany().setFinancialYearStart(new java.sql.Date(finStartDate.getTime()));
 	}
 
 
 	public Date getFinEndDate() {
-		return finEndDate;
+		return getCompany().getFinancialYearEnd();
 	}
 
 
 	public void setFinEndDate(Date finEndDate) {
-		this.finEndDate = finEndDate;
+		getCompany().setFinancialYearEnd(new java.sql.Date(finEndDate.getTime()));
 	}
 
 
 	public Date getBookStartDate() {
-		return bookStartDate;
+		return getCompany().getBooksStartDate();
 	}
 
 
 	public void setBookStartDate(Date bookStartDate) {
-		this.bookStartDate = bookStartDate;
+		getCompany().setBooksStartDate(new java.sql.Date(bookStartDate.getTime()));
 	}
 
 
@@ -119,12 +110,22 @@ public class CompanyBean {
 	public CompanyBean(final CompanyService service)
 	{
 		this.companyService = service;
+		company = companyService.get();
+		if(company == null){
+			setSaveEnabled(false);
+			company = new CompanyDetails();
+			compAddress = new Address();
+		}
+		else
+		{
+			setSaveEnabled(true);
+			compAddress= company.getCompanyAddress();
+		}
 	}
-
 
 	public void save(){
 
-		getCompany().setCompanyName(getCompName());
+		/*		getCompany().setCompanyName(getCompName());
 
 		Address addr = new Address();
 		addr.setAddressLine1(getAddrLine1());
@@ -148,7 +149,9 @@ public class CompanyBean {
 
 		getCompany().setRegistrationName(getRegName());
 
-		getCompany().setRegistrationNo(getRegNo());
+		getCompany().setRegistrationNo(getRegNo());*/
+
+		getCompany().setCompanyAddress(getCompAddress());
 
 
 		companyService.create(getCompany());
@@ -158,91 +161,91 @@ public class CompanyBean {
 
 
 	public String getCompName() {
-		return compName;
+		return getCompany().getCompanyName();
 	}
 
 	public void setCompName(String compName) {
-		this.compName = compName;
+		getCompany().setCompanyName(compName);
 	}
 
 	public String getPanNo() {
-		return panNo;
+		return getCompany().getPanNo();
 	}
 
 	public void setPanNo(String panNo) {
-		this.panNo = panNo;
+		getCompany().setPanNo(panNo);
 	}
 
 	public String getAddrLine1() {
-		return addrLine1;
+		return getCompAddress().getAddressLine1();
 	}
 
 	public void setAddrLine1(String addrLine1) {
-		this.addrLine1 = addrLine1;
+		getCompAddress().setAddressLine1(addrLine1);
 	}
 
 	public String getAddrLine2() {
-		return addrLine2;
+		return getCompAddress().getAddressLine2();
 	}
 
 	public void setAddrLine2(String addrLine2) {
-		this.addrLine2 = addrLine2;
+		getCompAddress().setAddressLine2(addrLine2);
 	}
 
 	public String getAddrLine3() {
-		return addrLine3;
+		return getCompAddress().getAddressLine3();
 	}
 
 	public void setAddrLine3(String addrLine3) {
-		this.addrLine3 = addrLine3;
+		getCompAddress().setAddressLine3(addrLine3);
 	}
 
 	public String getAddrLine4() {
-		return addrLine4;
+		return getCompAddress().getAddressLine4();
 	}
 
 	public void setAddrLine4(String addrLine4) {
-		this.addrLine4 = addrLine4;
+		getCompAddress().setAddressLine4(addrLine4);
 	}
 
 	public String getCity() {
-		return city;
+		return getCompAddress().getCity();
 	}
 
 	public void setCity(String city) {
-		this.city = city;
+		getCompAddress().setCity(city);
 	}
 
 	public String getDistrict() {
-		return district;
+		return getCompAddress().getDistrict();
 	}
 
 	public void setDistrict(String district) {
-		this.district = district;
+		getCompAddress().setDistrict(district);
 	}
 
 	public String getHobliGram() {
-		return hobliGram;
+		return getCompAddress().getHobliGram();
 	}
 
 	public void setHobliGram(String hobliGram) {
-		this.hobliGram = hobliGram;
+		getCompAddress().setHobliGram(hobliGram);
 	}
 
 	public String getState() {
-		return state;
+		return getCompAddress().getState();
 	}
 
 	public void setState(String state) {
-		this.state = state;
+		getCompAddress().setState(state);
 	}
 
 	public String getCountry() {
-		return country;
+		return getCompAddress().getCountry();
 	}
 
 	public void setCountry(String country) {
-		this.country = country;
+		getCompAddress().setCountry(country);
 	}
 
 	public int getContactNo() {
@@ -288,45 +291,63 @@ public class CompanyBean {
 
 
 	public String getRegName() {
-		return regName;
+		return getCompany().getRegistrationName();
 	}
 
 
 	public void setRegName(String regName) {
-		this.regName = regName;
+		getCompany().setRegistrationName(regName);
 	}
 
 
 	public String getRegNo() {
-		return regNo;
+		return getCompany().getRegistrationNo();
 	}
 
 
 	public void setRegNo(String regNo) {
-		this.regNo = regNo;
+		getCompany().setRegistrationNo(regNo);
 	}
 
 
 	public Date getRegDate() {
-		return regDate;
+		return getCompany().getRegistrationDate();
 	}
 
 
 	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
+		getCompany().setRegistrationDate(new java.sql.Date(regDate.getTime()));
 	}
 
 
 	public CompanyDetails getCompany() {
-		company = companyService.get();
-		if(company == null)
-			company = new CompanyDetails();
+
 		return company;
 	}
 
 
 	public void setCompany(CompanyDetails company) {
 		this.company = company;
+	}
+
+
+	public boolean isSaveEnabled() {
+		return saveEnabled;
+	}
+
+
+	public void setSaveEnabled(boolean saveEnabled) {
+		this.saveEnabled = saveEnabled;
+	}
+
+
+	public Address getCompAddress() {
+		return compAddress;
+	}
+
+
+	public void setCompAddress(Address compAddress) {
+		this.compAddress = compAddress;
 	}
 
 }

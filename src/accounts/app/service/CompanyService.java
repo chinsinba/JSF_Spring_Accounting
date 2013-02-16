@@ -18,4 +18,5 @@ public interface CompanyService {
 	public List<CompanyDetails> getCompanies();
 	
 	public List<StakeHolder> getStakeHolders(CompanyDetails company);
+	public void create(StakeHolder stkholder);
 }

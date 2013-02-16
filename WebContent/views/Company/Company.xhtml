@@ -33,10 +33,13 @@
 				<p:panel header="Company Info">
 					<h:panelGrid columns="5" cellpadding="5">
 						<h:outputText value="Company Name: " />
-						<p:inputText id="companyName" value="#{companyBean.compName}" />
+						<p:inputText id="companyName" value="#{companyBean.compName}"
+							required="true">
+						</p:inputText>
 						<p:spacer width="15" />
 						<h:outputText value="PAN: " />
-						<p:inputText id="pan" value="#{companyBean.panNo}" />
+						<p:inputText id="pan" value="#{companyBean.panNo}" >
+						</p:inputText>
 						<h:outputText value="Address Line1 : " />
 						<p:inputText id="address1" value="#{companyBean.addrLine1}" />
 						<p:spacer width="15" />
@@ -61,7 +64,7 @@
 						<p:inputText id="country" value="#{companyBean.country}" />
 						<p:spacer width="15" />
 						<h:outputText value="Contact No : " />
-						<p:inputText id="contact" value="#{companyBean.contactNo}" />
+						<p:inputText id="contact" value="#{companyBean.contactNo}" maxlength="10"/>
 						<h:outputText value="Email : " />
 						<p:inputText id="email" value="#{companyBean.email}" />
 
@@ -71,7 +74,7 @@
 				<p:spacer height="10" />
 
 				<p:panel header="Registration Info">
-					<h:panelGrid columns="2" cellpadding="5">
+					<h:panelGrid columns="5" cellpadding="5">
 						<h:outputText value="Company Type: " />
 						<p:selectOneMenu value="#{companyBean.typeCode}">
 							<f:selectItems value="#{companyBean.typeCodes}" var="typecode"

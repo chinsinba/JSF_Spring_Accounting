@@ -13,7 +13,7 @@ import javax.persistence.TableGenerator;
 
 
 @Entity
-@NamedQuery(name="stakeHolder.findall",query="SELECT stkhold FROM StakeHolder stkhold WHERE stkhold.company = 2")
+@NamedQuery(name="stakeHolder.findall",query="SELECT stkhold FROM StakeHolder stkhold WHERE stkhold.company = :company")
 @Table(name="STAKEHOLDER")
 public class StakeHolder {
 
