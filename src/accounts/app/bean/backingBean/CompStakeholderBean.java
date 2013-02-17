@@ -19,12 +19,14 @@ import accounts.model.entity.StakeHolder;
 
 @ManagedBean
 @ViewScoped
-public class CompStakeholderBean  implements Serializable{
+public class CompStakeholderBean  {
 	private CompanyService companyService;
 	private List<StakeHolder> stakeHolder;
 	private StakeHolder selectedStakeHolder;
 	private LazyDataModel<StakeHolder> lazyModel;  
 
+	private String compName;
+	private String compCode;
 	private String stakeHoldName;
 
 	private Date stakeHoldDob;
@@ -51,6 +53,8 @@ public class CompStakeholderBean  implements Serializable{
 	private String selstakeHoldPan;
 
 	private CompanyDetails company; 
+	
+	private CompanyBean compBean;
 
 
 	private boolean editing;
@@ -62,6 +66,7 @@ public class CompStakeholderBean  implements Serializable{
 		this.stakeHolder = companyService.getStakeHolders(company.getCompany());
 		this.lazyModel = new LazyCarDataModel(stakeHolder);
 		this.setCompany(company.getCompany());
+		this.setCompBean(company);
 
 	}
 
@@ -202,7 +207,7 @@ public class CompStakeholderBean  implements Serializable{
 
 
 	public CompanyDetails getCompany() {
-		return company;
+		return getCompBean().getCompany();
 	}
 
 	public void setCompany(CompanyDetails company) {
@@ -285,6 +290,30 @@ public class CompStakeholderBean  implements Serializable{
 		companyService.delete(selectedStakeHolder);
 		stakeHolder.remove(selectedStakeHolder);
 		setGrowlMessage("Delete", "Delete Successfull");
+	}
+
+	public String getCompName() {
+		return getCompany().getCompanyName();
+	}
+
+	public void setCompName(String compName) {
+		this.compName = compName;
+	}
+
+	public String getCompCode() {
+		return getCompany().getCompanyCode();
+	}
+
+	public void setCompCode(String compCode) {
+		this.compCode = compCode;
+	}
+
+	public CompanyBean getCompBean() {
+		return compBean;
+	}
+
+	public void setCompBean(CompanyBean compBean) {
+		this.compBean = compBean;
 	}
 
 }

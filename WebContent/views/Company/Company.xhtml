@@ -17,97 +17,120 @@
 	<ui:define name="content">
 
 		<h:form id="compForm">
-
+			<p:growl id="growl" showDetail="true" sticky="false" />
 			<p:toolbar>
 				<p:toolbarGroup align="right">
 					<p:commandButton value="Save" icon="ui-icon-disk"
-						action="#{companyBean.save}" rendered="#{companyBean.saveEnabled}" />
-					<p:commandButton type="button" title="Delete" value="Delete"
-						icon="ui-icon-trash" />
+						action="#{companyBean.save}" disabled="#{companyBean.saveEnabled}"
+						update="compFin,compInfo,compReg,compForm,growl" />
+					<p:commandButton title="Edit" value="Edit" icon="ui-icon-trash"
+						action="#{companyBean.edit}"
+						update="compFin,compInfo,compReg,compForm,growl" />
+				<!-- 	<p:commandButton action="#{companyBean.delete}" title="Delete"
+						value="Delete" icon="ui-icon-trash"
+						update="compFin,compInfo,compReg,compForm,growl" /> -->
 					<p:commandButton type="button" title="Clear" value="Cancel"
-						icon="ui-icon-clear" />
+						icon="ui-icon-cancel" />
 				</p:toolbarGroup>
 			</p:toolbar>
 
 			<div align="left">
-				<p:panel header="Company Info">
+				<p:panel id="compInfo" header="Company Info">
 					<h:panelGrid columns="5" cellpadding="5">
 						<h:outputText value="Company Name: " />
 						<p:inputText id="companyName" value="#{companyBean.compName}"
-							required="true">
+							required="true" readonly="#{companyBean.editable}">
 						</p:inputText>
 						<p:spacer width="15" />
 						<h:outputText value="PAN: " />
-						<p:inputText id="pan" value="#{companyBean.panNo}" >
+						<p:inputText id="pan" value="#{companyBean.panNo}"
+							readonly="#{companyBean.editable}">
 						</p:inputText>
 						<h:outputText value="Address Line1 : " />
-						<p:inputText id="address1" value="#{companyBean.addrLine1}" />
+						<p:inputText id="address1" value="#{companyBean.addrLine1}"
+							readonly="#{companyBean.editable}" />
 						<p:spacer width="15" />
 						<h:outputText value="Address Line2: " />
-						<p:inputText id="address2" value="#{companyBean.addrLine2}" />
+						<p:inputText id="address2" value="#{companyBean.addrLine2}"
+							readonly="#{companyBean.editable}" />
 						<h:outputText value="Address Line3: " />
-						<p:inputText id="address3" value="#{companyBean.addrLine3}" />
+						<p:inputText id="address3" value="#{companyBean.addrLine3}"
+							readonly="#{companyBean.editable}" />
 						<p:spacer width="15" />
 						<h:outputText value="Address Line4: " />
-						<p:inputText id="address4" value="#{companyBean.addrLine4}" />
+						<p:inputText id="address4" value="#{companyBean.addrLine4}"
+							readonly="#{companyBean.editable}" />
 						<h:outputText value="City: " />
-						<p:inputText id="city" value="#{companyBean.city}" />
+						<p:inputText id="city" value="#{companyBean.city}"
+							readonly="#{companyBean.editable}" />
 						<p:spacer width="15" />
 						<h:outputText value="District: " />
-						<p:inputText id="district" value="#{companyBean.district}" />
+						<p:inputText id="district" value="#{companyBean.district}"
+							readonly="#{companyBean.editable}" />
 						<h:outputText value="Hobli/Gram : " />
-						<p:inputText id="hobli" value="#{companyBean.hobliGram}" />
+						<p:inputText id="hobli" value="#{companyBean.hobliGram}"
+							readonly="#{companyBean.editable}" />
 						<p:spacer width="15" />
 						<h:outputText value="State : " />
-						<p:inputText id="state" value="#{companyBean.state}" />
+						<p:inputText id="state" value="#{companyBean.state}"
+							readonly="#{companyBean.editable}" />
 						<h:outputText value="Country : " />
-						<p:inputText id="country" value="#{companyBean.country}" />
+						<p:inputText id="country" value="#{companyBean.country}"
+							readonly="#{companyBean.editable}" />
 						<p:spacer width="15" />
 						<h:outputText value="Contact No : " />
-						<p:inputText id="contact" value="#{companyBean.contactNo}" maxlength="10"/>
+						<p:inputText id="contact" value="#{companyBean.contactNo}"
+							maxlength="10" readonly="#{companyBean.editable}" />
 						<h:outputText value="Email : " />
-						<p:inputText id="email" value="#{companyBean.email}" />
+						<p:inputText id="email" value="#{companyBean.email}"
+							readonly="#{companyBean.editable}" />
 
 					</h:panelGrid>
 				</p:panel>
 
 				<p:spacer height="10" />
 
-				<p:panel header="Registration Info">
+				<p:panel id="compReg" header="Registration Info">
 					<h:panelGrid columns="2" cellpadding="5">
 						<h:outputText value="Company Type: " />
-						<p:selectOneMenu value="#{companyBean.typeCode}">
+						<p:selectOneMenu value="#{companyBean.typeCode}"
+							disabled="#{companyBean.editable}">
 							<f:selectItems value="#{companyBean.typeCodes}" var="typecode"
 								itemLabel="#{typecode}" itemValue="#{typecode}" />
 						</p:selectOneMenu>
 					</h:panelGrid>
 					<h:panelGrid columns="8" cellpadding="5">
 						<h:outputText value="Reg Name : " />
-						<p:inputText id="regName" value="#{companyBean.regName}" />
+						<p:inputText id="regName" value="#{companyBean.regName}"
+							readonly="#{companyBean.editable}" />
 						<p:spacer width="15" />
 						<h:outputText value="Reg No : " />
-						<p:inputText id="regNo" value="#{companyBean.regNo}" />
+						<p:inputText id="regNo" value="#{companyBean.regNo}"
+							readonly="#{companyBean.editable}" />
 						<p:spacer width="15" />
 						<h:outputText value="Reg Date:" />
 						<p:calendar id="cal" showButtonPanel="true" pattern="dd/MM/yyyy"
-							value="#{companyBean.regDate}" />
+							value="#{companyBean.regDate}" disabled="#{companyBean.editable}" />
 					</h:panelGrid>
 				</p:panel>
 
 
-				<p:panel header="Financial Year">
+				<p:panel id="compFin" header="Financial Year">
 					<h:panelGrid columns="8" cellpadding="5">
 						<h:outputText value="Financial Year Start Date:" />
 						<p:calendar id="finstartDate" showButtonPanel="true"
-							pattern="dd/MM/yyyy" value="#{companyBean.finStartDate}" />
+							pattern="dd/MM/yyyy" value="#{companyBean.finStartDate}"
+							disabled="#{companyBean.editable}" />
 						<p:spacer width="15" />
 						<h:outputText value="Financial Year End Date:" />
 						<p:calendar id="finEndDate" showButtonPanel="true"
-							pattern="dd/MM/yyyy" value="#{companyBean.finEndDate}" />
+							pattern="dd/MM/yyyy" value="#{companyBean.finEndDate}"
+							disabled="#{companyBean.editable}" />
 						<p:spacer width="15" />
 						<h:outputText value="Books Start Date:" />
 						<p:calendar id="booksStartDate" showButtonPanel="true"
-							pattern="dd/MM/yyyy" value="#{companyBean.bookStartDate}" />
+							pattern="dd/MM/yyyy" value="#{companyBean.bookStartDate}"
+							disabled="#{companyBean.editable}" />
 					</h:panelGrid>
 
 				</p:panel>
@@ -115,11 +138,16 @@
 			<p:toolbar>
 				<p:toolbarGroup align="right">
 					<p:commandButton value="Save" icon="ui-icon-disk"
-						action="#{companyBean.save}" />
-					<p:commandButton type="button" title="Delete" value="Delete"
-						icon="ui-icon-trash" />
+						action="#{companyBean.save}" disabled="#{companyBean.saveEnabled}"
+						update="compFin,compInfo,compReg,compForm,growl" />
+					<p:commandButton title="Edit" value="Edit" icon="ui-icon-trash"
+						action="#{companyBean.edit}"
+						update="compFin,compInfo,compReg,compForm,growl" />
+					<!-- <p:commandButton action="#{companyBean.delete}" title="Delete"
+						value="Delete" icon="ui-icon-trash"
+						update="compFin,compInfo,compReg,compForm,growl" /> -->
 					<p:commandButton type="button" title="Clear" value="Cancel"
-						icon="ui-icon-clear" />
+						icon="ui-icon-cancel" />
 				</p:toolbarGroup>
 			</p:toolbar>
 		</h:form>

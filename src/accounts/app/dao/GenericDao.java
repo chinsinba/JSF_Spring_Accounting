@@ -26,4 +26,6 @@ public interface GenericDao<T> {
     T find(Object id);
 
     T update(T t);   
+    
+    T merge(T t);
 }

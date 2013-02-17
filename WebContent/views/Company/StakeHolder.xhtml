@@ -32,6 +32,14 @@
 			<div align="left">
 
 				<p:panel id="insertPanel" header="StakeHolder">
+					<h:panelGrid columns="4" cellpadding="5">
+						<h:outputText value="Company Name :" />
+						<p:inputText id="compNam" readonly="true"  value="#{compStakeholderBean.compName}"/>
+						<h:outputText value="Code :" />
+						<p:inputText id="CompCode" readonly="true"  value="#{compStakeholderBean.compCode}"/>
+
+					</h:panelGrid>
+					<p:separator />
 					<h:panelGrid id="display" columns="6" cellpadding="5">
 						<h:outputText value="Stakeholder Name: " />
 						<p:inputText id="stkHldName"
@@ -69,69 +77,87 @@
 						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 						rowsPerPageTemplate="5,10,15" lazy="false"
 						selection="#{compStakeholderBean.selectedStakeHolder}"
-						selectionMode="single" rowKey="#{car.id}">
+						selectionMode="single" rowKey="#{car.id}" resizableColumns="true">
 						<f:facet name="header"> Stakeholder </f:facet>
 
 						<p:column>
 							<f:facet name="header">
 								<h:outputText value="Name" />
 							</f:facet>
-							<h:outputText value="#{car.stakeHolderName}" />
+							<h:outputText id="col1" value="#{car.stakeHolderName}" />
+							<p:tooltip for="col1" value="#{car.stakeHolderName}"
+								showEffect="clip" hideEffect="clip" />
 						</p:column>
 
 						<p:column>
 							<f:facet name="header">
 								<h:outputText value="DOB" />
 							</f:facet>
-							<h:outputText value="#{car.dob}" />
+							<h:outputText id="col2" value="#{car.dob}" />
+							<p:tooltip for="col2" value="#{car.dob}" showEffect="clip"
+								hideEffect="clip" />
 						</p:column>
 
 						<p:column>
 							<f:facet name="header">
 								<h:outputText value="Address" />
 							</f:facet>
-							<h:outputText value="#{car.address}" />
+							<h:outputText id="col3" value="#{car.address}" />
+							<p:tooltip for="col3" value="#{car.address}" showEffect="clip"
+								hideEffect="clip" />
 						</p:column>
 
 						<p:column>
 							<f:facet name="header">
 								<h:outputText value="Contact No" />
 							</f:facet>
-							<h:outputText value="#{car.phNo}" />
+							<h:outputText id="col4" value="#{car.phNo}" />
+							<p:tooltip for="col4" value="#{car.phNo}" showEffect="clip"
+								hideEffect="clip" />
 						</p:column>
 						<p:column>
 							<f:facet name="header">
 								<h:outputText value="Email" />
 							</f:facet>
-							<h:outputText value="#{car.email}" />
+							<h:outputText id="col5" value="#{car.email}" />
+							<p:tooltip for="col5" value="#{car.email}" showEffect="clip"
+								hideEffect="clip" />
 						</p:column>
 
 						<p:column>
 							<f:facet name="header">
 								<h:outputText value="PAN" />
 							</f:facet>
-							<h:outputText value="#{car.panNo}" />
+							<h:outputText id="col6" value="#{car.panNo}" />
+							<p:tooltip for="col6" value="#{car.panNo}" showEffect="clip"
+								hideEffect="clip" />
 						</p:column>
 
 						<p:column>
 							<f:facet name="header">
 								<h:outputText value="Partner Type" />
 							</f:facet>
-							<h:outputText value="#{car.panNo}" />
+							<h:outputText id="col7" value="#{car.panNo}" />
+							<p:tooltip for="col7" value="#{car.panNo}" showEffect="clip"
+								hideEffect="clip" />
 						</p:column>
 
 						<p:column>
 							<f:facet name="header">
 								<h:outputText value="User Name" />
 							</f:facet>
-							<h:outputText value="#{car.panNo}" />
+							<h:outputText id="col8" value="#{car.panNo}" />
+							<p:tooltip for="col8" value="#{car.panNo}" showEffect="clip"
+								hideEffect="clip" />
 						</p:column>
 
 						<p:column>
 							<f:facet name="header">
 								<h:outputText value="Password" />
 							</f:facet>
-							<h:outputText value="#{car.panNo}" />
+							<h:outputText id="col9" value="#{car.panNo}" />
+							<p:tooltip for="col9" value="#{car.panNo}" showEffect="clip"
+								hideEffect="clip" />
 						</p:column>
 
 						<f:facet name="footer">
@@ -140,8 +166,8 @@
 								update=":compForm:editDisplay,:compForm:growl"
 								oncomplete="carDialog.show()" />
 							<p:commandButton id="delButton" value="Delete"
-								icon="ui-icon-clear" update="dataTable,:compForm:growl"
-								action="#{compStakeholderBean.delete}" />
+								update="dataTable,:compForm:growl"
+								action="#{compStakeholderBean.delete}" icon="ui-icon-trash" />
 						</f:facet>
 					</p:dataTable>
 
@@ -170,7 +196,7 @@
 						<h:outputText value="PAN : " />
 						<p:inputText value="#{compStakeholderBean.selstakeHoldPan}" />
 						<p:commandButton value="update"
-							action="#{compStakeholderBean.update}" update="dataTable,growl"  />
+							action="#{compStakeholderBean.update}" update="dataTable,growl" />
 					</h:panelGrid>
 				</p:dialog>
 			</div>

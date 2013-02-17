@@ -45,8 +45,7 @@ public class CompanyServiceImpl implements CompanyService {
 	@Override
 	@Transactional
 	public void update(CompanyDetails company) {
-		// TODO Auto-generated method stub
-
+		companyDao.update(company);
 	}
 
 	@Override
@@ -82,5 +81,11 @@ public class CompanyServiceImpl implements CompanyService {
 	@Transactional
 	public void delete(StakeHolder selectedStakeHolder) {
 		stakeHolderDAO.delete(selectedStakeHolder.getId());
+	}
+
+	@Override
+	@Transactional
+	public CompanyDetails merge(CompanyDetails company) {
+		return companyDao.merge(company);	
 	}
 }

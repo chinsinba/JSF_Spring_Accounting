@@ -5,7 +5,9 @@ import java.util.Date;
 import java.util.List;
 
 import javax.annotation.ManagedBean;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 import accounts.app.service.CompanyService;
@@ -17,27 +19,7 @@ import accounts.model.entity.CompanyDetails;
 public class CompanyBean {
 	private boolean saveEnabled ; 
 
-	/*private String compName;
-
-	private String panNo;
-
-	private String addrLine1;
-
-	private String addrLine2;
-
-	private String addrLine3;
-
-	private String addrLine4;
-
-	private String city;
-
-	private String district;
-
-	private String hobliGram;
-
-	private String state;
-
-	private String country;*/
+	private boolean editable = true;
 
 	private int contactNo;
 
@@ -48,19 +30,6 @@ public class CompanyBean {
 	private String typeCode ;
 
 	private List<String> typeCodes;
-
-	/*private String regName;
-
-	private String regNo;
-
-
-	private Date regDate;
-
-	private Date finStartDate;
-
-	private Date finEndDate;
-
-	private Date bookStartDate;*/
 
 	private CompanyDetails company ;
 
@@ -112,9 +81,13 @@ public class CompanyBean {
 		this.companyService = service;
 		company = companyService.get();
 		if(company == null){
-			setSaveEnabled(false);
+//			setSaveEnabled(false);
 			company = new CompanyDetails();
 			compAddress = new Address();
+			company.setCompanyAddress(compAddress);
+			companyService.create(getCompany());
+			edit();
+			
 		}
 		else
 		{
@@ -125,39 +98,39 @@ public class CompanyBean {
 
 	public void save(){
 
-		/*		getCompany().setCompanyName(getCompName());
-
-		Address addr = new Address();
-		addr.setAddressLine1(getAddrLine1());
-		addr.setAddressLine2(getAddrLine2());
-		addr.setAddressLine3(getAddrLine3());
-		addr.setAddressLine4(getAddrLine4());
-		addr.setCity(getCity());
-		addr.setCountry(getCountry());
-		addr.setDistrict(getDistrict());
-		addr.setState(getState());
-		addr.setHobliGram(getHobliGram());
-
-		getCompany().setCompanyAddress(addr);
-
-		getCompany().setPanNo(getPanNo());
-		getCompany().setFinancialYearEnd(new java.sql.Date(getFinEndDate().getTime()));
-		getCompany().setFinancialYearStart(new java.sql.Date(getFinStartDate().getTime()));
-		getCompany().setBooksStartDate(new java.sql.Date(getBookStartDate().getTime()));
-
-		getCompany().setRegistrationDate(new java.sql.Date(getRegDate().getTime()));
-
-		getCompany().setRegistrationName(getRegName());
-
-		getCompany().setRegistrationNo(getRegNo());*/
-
 		getCompany().setCompanyAddress(getCompAddress());
-
-
-		companyService.create(getCompany());
+	/*	if(isEditable()){
+			companyService.create(getCompany());
+			setGrowlMessage("Save", "Saved Company Details");
+		}
+		else
+		{
+			companyService.update(getCompany());
+			setGrowlMessage("Update", "Updated Company Details");
+		}*/
+		companyService.update(getCompany());
+		setGrowlMessage("Save", "Updated Company Details");
+		setSaveEnabled(true);
+		setEditable(true);
 
 	}
 
+	public void edit()
+	{
+		setSaveEnabled(false);
+		setEditable(false);
+	}
+
+	/*public void delete(){
+		companyService.delete(getCompany());
+		clearValues();
+		edit();
+	}*/
+
+	private void clearValues() {
+		setCompany(new CompanyDetails());
+		setCompAddress(new Address());
+	}
 
 
 	public String getCompName() {
@@ -348,6 +321,21 @@ public class CompanyBean {
 
 	public void setCompAddress(Address compAddress) {
 		this.compAddress = compAddress;
+	}
+
+
+	public boolean isEditable() {
+		return editable;
+	}
+
+
+	public void setEditable(boolean editable) {
+		this.editable = editable;
+	}
+
+	private void setGrowlMessage( String Summary, String description) {
+		FacesContext context = FacesContext.getCurrentInstance();
+		context.addMessage(null, new FacesMessage(Summary,description));
 	}
 
 }

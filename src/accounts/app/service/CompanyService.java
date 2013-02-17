@@ -14,6 +14,7 @@ public interface CompanyService {
 	public void create(CompanyDetails company);
 	public void delete(CompanyDetails company);
 	public void update(CompanyDetails company);
+	public CompanyDetails merge(CompanyDetails company);
 	public CompanyDetails get();
 	public List<CompanyDetails> getCompanies();
 	

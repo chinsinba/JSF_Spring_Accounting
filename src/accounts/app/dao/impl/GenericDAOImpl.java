@@ -57,4 +57,11 @@ public abstract class GenericDAOImpl<T> implements GenericDao<T> {
     public T update(final T t) {
         return this.em.merge(t);    
     }
+    
+    public T merge(final T t)
+    {
+    	this.em.merge(t);
+    	return t;
+    }
+    
 }
