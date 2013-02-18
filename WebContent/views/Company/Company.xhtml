@@ -17,7 +17,7 @@
 	<ui:define name="content">
 
 		<h:form id="compForm">
-			<p:growl id="growl" showDetail="true" sticky="false" />
+
 			<p:toolbar>
 				<p:toolbarGroup align="right">
 					<p:commandButton value="Save" icon="ui-icon-disk"
@@ -26,16 +26,17 @@
 					<p:commandButton title="Edit" value="Edit" icon="ui-icon-trash"
 						action="#{companyBean.edit}"
 						update="compFin,compInfo,compReg,compForm,growl" />
-				<!-- 	<p:commandButton action="#{companyBean.delete}" title="Delete"
+					<!-- 	<p:commandButton action="#{companyBean.delete}" title="Delete"
 						value="Delete" icon="ui-icon-trash"
 						update="compFin,compInfo,compReg,compForm,growl" /> -->
 					<p:commandButton type="button" title="Clear" value="Cancel"
 						icon="ui-icon-cancel" />
 				</p:toolbarGroup>
 			</p:toolbar>
+			<p:growl id="growl"  showDetail="true" sticky="false" />
 
 			<div align="left">
-				<p:panel id="compInfo" header="Company Info">
+				<p:fieldset id="compInfo" legend="Company Info">
 					<h:panelGrid columns="5" cellpadding="5">
 						<h:outputText value="Company Name: " />
 						<p:inputText id="companyName" value="#{companyBean.compName}"
@@ -86,11 +87,11 @@
 							readonly="#{companyBean.editable}" />
 
 					</h:panelGrid>
-				</p:panel>
+				</p:fieldset>
 
 				<p:spacer height="10" />
 
-				<p:panel id="compReg" header="Registration Info">
+				<p:fieldset id="compReg" legend="Registration Info">
 					<h:panelGrid columns="2" cellpadding="5">
 						<h:outputText value="Company Type: " />
 						<p:selectOneMenu value="#{companyBean.typeCode}"
@@ -112,10 +113,10 @@
 						<p:calendar id="cal" showButtonPanel="true" pattern="dd/MM/yyyy"
 							value="#{companyBean.regDate}" disabled="#{companyBean.editable}" />
 					</h:panelGrid>
-				</p:panel>
+				</p:fieldset>
 
 
-				<p:panel id="compFin" header="Financial Year">
+				<p:fieldset id="compFin" legend="Financial Year">
 					<h:panelGrid columns="8" cellpadding="5">
 						<h:outputText value="Financial Year Start Date:" />
 						<p:calendar id="finstartDate" showButtonPanel="true"
@@ -133,7 +134,7 @@
 							disabled="#{companyBean.editable}" />
 					</h:panelGrid>
 
-				</p:panel>
+				</p:fieldset>
 			</div>
 			<p:toolbar>
 				<p:toolbarGroup align="right">

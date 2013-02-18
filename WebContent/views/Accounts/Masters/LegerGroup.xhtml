@@ -9,26 +9,27 @@
 	</ui:define>
 	<ui:define name="content">
 		<body>
-			<div>
-				<p:toolbar>
-					<p:toolbarGroup align="right">
-						<p:commandButton type="button" title="Save" value="Save"
-							icon="ui-icon-disk" />
-						<p:commandButton type="button" title="Delete" value="Delete"
-							icon="ui-icon-trash" />
-						<p:commandButton type="button" title="Clear" value="Cancel"
-							icon="ui-icon-clear" />
-					</p:toolbarGroup>
-				</p:toolbar>
-				<h:form id="form">
-					<p:panel header="Ledger Group">
-						<h:panelGrid columns = "5" cellpadding="5">
+			<h:form id="form">
+				<div>
+					<p:toolbar>
+						<p:toolbarGroup align="right">
+							<p:commandButton type="button" title="Save" value="Save"
+								icon="ui-icon-disk" />
+							<p:commandButton type="button" title="Delete" value="Delete"
+								icon="ui-icon-trash" />
+							<p:commandButton type="button" title="Clear" value="Cancel"
+								icon="ui-icon-clear" />
+						</p:toolbarGroup>
+					</p:toolbar>
+
+					<p:fieldset legend="Ledger Group">
+						<h:panelGrid columns="5" cellpadding="5">
 							<h:outputText value="Company Name :" />
 							<p:inputText id="compNam" />
 							<p:spacer width="15" />
 							<h:outputText value="Code :" />
 							<p:inputText id="CompCode" />
-							
+
 						</h:panelGrid>
 						<p:separator></p:separator>
 						<h:panelGrid columns="3" cellpadding="5">
@@ -48,20 +49,21 @@
 							<p:spacer width="15" />
 							<p:inputText id="mainGrpName" />
 						</h:panelGrid>
-					</p:panel>
+					</p:fieldset>
 
-				</h:form>
-				<p:toolbar>
-					<p:toolbarGroup align="right">
-						<p:commandButton type="button" title="Save" value="Save"
-							icon="ui-icon-disk" />
-						<p:commandButton type="button" title="Delete" value="Delete"
-							icon="ui-icon-trash" />
-						<p:commandButton type="button" title="Clear" value="Cancel"
-							icon="ui-icon-clear" />
-					</p:toolbarGroup>
-				</p:toolbar>
-			</div>
+
+					<p:toolbar>
+						<p:toolbarGroup align="right">
+							<p:commandButton type="button" title="Save" value="Save"
+								icon="ui-icon-disk" />
+							<p:commandButton type="button" title="Delete" value="Delete"
+								icon="ui-icon-trash" />
+							<p:commandButton type="button" title="Clear" value="Cancel"
+								icon="ui-icon-clear" />
+						</p:toolbarGroup>
+					</p:toolbar>
+				</div>
+			</h:form>
 		</body>
 	</ui:define>
 </ui:composition>

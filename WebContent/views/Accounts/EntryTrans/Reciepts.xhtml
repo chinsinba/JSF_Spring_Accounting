@@ -9,19 +9,20 @@
 	</ui:define>
 	<ui:define name="content">
 		<body>
-			<div>
-				<p:toolbar>
-					<p:toolbarGroup align="right">
-						<p:commandButton type="button" title="Save" value="Save"
-							icon="ui-icon-disk" />
-						<p:commandButton type="button" title="Delete" value="Delete"
-							icon="ui-icon-trash" />
-						<p:commandButton type="button" title="Clear" value="Cancel"
-							icon="ui-icon-clear" />
-					</p:toolbarGroup>
-				</p:toolbar>
+			<h:form id="form">
+				<div>
+					<p:toolbar>
+						<p:toolbarGroup align="right">
+							<p:commandButton type="button" title="Save" value="Save"
+								icon="ui-icon-disk" />
+							<p:commandButton type="button" title="Delete" value="Delete"
+								icon="ui-icon-trash" />
+							<p:commandButton type="button" title="Clear" value="Cancel"
+								icon="ui-icon-clear" />
+						</p:toolbarGroup>
+					</p:toolbar>
 
-				<h:form id="form">
+
 
 					<p:panel header="Reciepts">
 						<h:panelGrid columns="5">
@@ -167,20 +168,21 @@
 
 						</p:panel>
 					</p:panel>
-				</h:form>
 
 
-				<p:toolbar>
-					<p:toolbarGroup align="right">
-						<p:commandButton type="button" title="Save" value="Save"
-							icon="ui-icon-disk" />
-						<p:commandButton type="button" title="Delete" value="Delete"
-							icon="ui-icon-trash" />
-						<p:commandButton type="button" title="Clear" value="Cancel"
-							icon="ui-icon-clear" />
-					</p:toolbarGroup>
-				</p:toolbar>
-			</div>
+
+					<p:toolbar>
+						<p:toolbarGroup align="right">
+							<p:commandButton type="button" title="Save" value="Save"
+								icon="ui-icon-disk" />
+							<p:commandButton type="button" title="Delete" value="Delete"
+								icon="ui-icon-trash" />
+							<p:commandButton type="button" title="Clear" value="Cancel"
+								icon="ui-icon-clear" />
+						</p:toolbarGroup>
+					</p:toolbar>
+				</div>
+			</h:form>
 		</body>
 	</ui:define>
 </ui:composition>

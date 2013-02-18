@@ -9,19 +9,20 @@
 	</ui:define>
 	<ui:define name="content">
 		<body>
-			<div>
-				<p:toolbar>
-					<p:toolbarGroup align="right">
-						<p:commandButton type="button" title="Save" value="Save"
-							icon="ui-icon-disk" />
-						<p:commandButton type="button" title="Delete" value="Delete"
-							icon="ui-icon-trash" />
-						<p:commandButton type="button" title="Clear" value="Cancel"
-							icon="ui-icon-clear" />
-					</p:toolbarGroup>
-				</p:toolbar>
+			<h:form id="form">
+				<div>
+					<p:toolbar>
+						<p:toolbarGroup align="right">
+							<p:commandButton type="button" title="Save" value="Save"
+								icon="ui-icon-disk" />
+							<p:commandButton type="button" title="Delete" value="Delete"
+								icon="ui-icon-trash" />
+							<p:commandButton type="button" title="Clear" value="Cancel"
+								icon="ui-icon-clear" />
+						</p:toolbarGroup>
+					</p:toolbar>
 
-				<h:form id="form">
+
 
 					<p:panel header="Journal Entry">
 						<h:panelGrid columns="5">
@@ -77,45 +78,45 @@
 								<p:spacer width="15" />
 								<p:commandButton value="Insert"></p:commandButton>
 							</h:panelGrid>
-								<p:dataTable id="dataTable" var="car" value="#{tableBean.cars}"
-									paginator="true" rows="5"
-									paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-									rowsPerPageTemplate="5,10,15" >
-									<f:facet name="header"></f:facet>
+							<p:dataTable id="dataTable" var="car" value="#{tableBean.cars}"
+								paginator="true" rows="5"
+								paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+								rowsPerPageTemplate="5,10,15">
+								<f:facet name="header"></f:facet>
 
-									<p:column headerText="Sl No">
-										<h:outputText value="#{car.model}" />
-									</p:column>
+								<p:column headerText="Sl No">
+									<h:outputText value="#{car.model}" />
+								</p:column>
 
-									<p:column headerText="Reference">
-										<h:outputText value="#{car.year}" />
-									</p:column>
+								<p:column headerText="Reference">
+									<h:outputText value="#{car.year}" />
+								</p:column>
 
-									<p:column headerText="Account Name">
-										<h:outputText value="#{car.manufacturer}" />
-									</p:column>
+								<p:column headerText="Account Name">
+									<h:outputText value="#{car.manufacturer}" />
+								</p:column>
 
-									<p:column headerText="Debit">
-										<h:outputText value="#{car.color}" />
-									</p:column>
+								<p:column headerText="Debit">
+									<h:outputText value="#{car.color}" />
+								</p:column>
 
-									<p:column headerText="Credit">
-										<h:outputText value="#{car.color}" />
-									</p:column>
+								<p:column headerText="Credit">
+									<h:outputText value="#{car.color}" />
+								</p:column>
 
-									<p:column headerText="Narration">
-										<h:outputText value="#{car.color}" />
-									</p:column>
+								<p:column headerText="Narration">
+									<h:outputText value="#{car.color}" />
+								</p:column>
 
-									<f:facet name="footer">
-										<p:commandButton id="viewButton" value="Edit" />
-										<p:commandButton id="delButton" value="Delete" />
-									</f:facet>
-								</p:dataTable>
+								<f:facet name="footer">
+									<p:commandButton id="viewButton" value="Edit" />
+									<p:commandButton id="delButton" value="Delete" />
+								</f:facet>
+							</p:dataTable>
 							<h:panelGrid cellpadding="5">
 								<h:panelGroup>
 									<h:outputText value="Total : " />
-									<p:inputText id="journTotcrd"  />
+									<p:inputText id="journTotcrd" />
 									<p:spacer width="15" />
 									<p:inputText id="journTotdbt" />
 								</h:panelGroup>
@@ -132,20 +133,21 @@
 						<h:outputText value="Note : " />
 						<p:inputTextarea id="journNote" style="width:100%" />
 					</p:panel>
-				</h:form>
 
 
-				<p:toolbar>
-					<p:toolbarGroup align="right">
-						<p:commandButton type="button" title="Save" value="Save"
-							icon="ui-icon-disk" />
-						<p:commandButton type="button" title="Delete" value="Delete"
-							icon="ui-icon-trash" />
-						<p:commandButton type="button" title="Clear" value="Cancel"
-							icon="ui-icon-clear" />
-					</p:toolbarGroup>
-				</p:toolbar>
-			</div>
+
+					<p:toolbar>
+						<p:toolbarGroup align="right">
+							<p:commandButton type="button" title="Save" value="Save"
+								icon="ui-icon-disk" />
+							<p:commandButton type="button" title="Delete" value="Delete"
+								icon="ui-icon-trash" />
+							<p:commandButton type="button" title="Clear" value="Cancel"
+								icon="ui-icon-clear" />
+						</p:toolbarGroup>
+					</p:toolbar>
+				</div>
+			</h:form>
 		</body>
 	</ui:define>
 </ui:composition>

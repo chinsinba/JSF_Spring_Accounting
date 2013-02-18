@@ -19,15 +19,14 @@
 		<p:ajaxStatus onstart="statusDialog.show();"
 			onsuccess="statusDialog.hide();" />
 
-		<p:layout fullPage="true" resizeTitle="resize"
-			style="background-color:#FFFFFF;">
+		<p:layout fullPage="true" resizeTitle="resize">
 			<p:layoutUnit position="north" size="70" id="header">
 				<ui:include src="/views/template/header.xhtml" />
 			</p:layoutUnit>
 
 
 			<p:layoutUnit position="west" id="west" resizable="false"
-				style="height:580px;overflow:hidden;" size="225">
+				 size="225" >
 				<ui:insert name="menu">
 					<ui:include src="/views/Accounts/Masters/menu.xhtml" />
 				</ui:insert>
@@ -42,11 +41,11 @@
 				</ui:insert>
 			</p:layoutUnit>
 
-			<p:layoutUnit position="south" resizable="true" id="south">
-				<ui:insert name="footer">
+			<!-- <p:layoutUnit position="south" resizable="true" id="south">
+				<ui:insert name="footer" >
 					<ui:include src="/views/template/footer.xhtml" />
 				</ui:insert>
-			</p:layoutUnit>
+			</p:layoutUnit> -->
 		</p:layout>
 
 		<p:dialog modal="true" widgetVar="statusDialog" showHeader="false">
