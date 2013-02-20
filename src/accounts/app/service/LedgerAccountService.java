@@ -1,7 +1,10 @@
 package accounts.app.service;
 
+import java.util.List;
+
+import accounts.model.entity.CompanyDetails;
 import accounts.model.entity.LedgerAccount;
-import accounts.model.entity.user.User;
+
 
 
 /**
@@ -10,4 +13,8 @@ import accounts.model.entity.user.User;
  *
  */
 public interface LedgerAccountService {
+	
+	LedgerAccount create(LedgerAccount ledAcc);
+	
+	List<LedgerAccount> findAll(CompanyDetails company);
 }

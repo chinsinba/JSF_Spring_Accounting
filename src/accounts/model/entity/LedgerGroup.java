@@ -6,11 +6,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
 @Entity
+@NamedQuery(name="LedgerGroup.findAll" , query="SELECT grp FROM LedgerGroup grp")
+@Table(name="LEDGERGROUP")
 public class LedgerGroup {
 	
 	@Id
@@ -31,8 +35,8 @@ public class LedgerGroup {
 	
 	private String groupName;
 	
-	@OneToMany
-	private Set<LedgerGroup> subgroup;
+	@OneToOne
+	private LedgerGroup subgroup;
 	
 	private String code;
 	
@@ -54,13 +58,7 @@ public class LedgerGroup {
 		this.groupName = groupName;
 	}
 
-	public Set<LedgerGroup> getSubgroup() {
-		return subgroup;
-	}
-
-	public void setSubgroup(Set<LedgerGroup> subgroup) {
-		this.subgroup = subgroup;
-	}
+	
 
 	public String getCode() {
 		return code;
@@ -77,6 +75,24 @@ public class LedgerGroup {
 	public void setInternalCode(String internalCode) {
 		this.internalCode = internalCode;
 	}
+
+	public LedgerGroup getSubgroup() {
+		return subgroup;
+	}
+
+	public void setSubgroup(LedgerGroup subgroup) {
+		this.subgroup = subgroup;
+	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		return (obj instanceof LedgerGroup && ((LedgerGroup)obj).id==this.getId());
+	}
+	
+	@Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return  this.getClass().hashCode() + String.valueOf(getId()).hashCode();
+	}
 
 }

@@ -24,7 +24,7 @@ public class Contact {
 
 	private String ContractPersonName;
 
-	private int phoneNo;
+	private long phoneNo;
 
 	public String getContractPersonName() {
 		return ContractPersonName;
@@ -34,11 +34,11 @@ public class Contact {
 		ContractPersonName = contractPersonName;
 	}
 
-	public int getPhoneNo() {
+	public long getPhoneNo() {
 		return phoneNo;
 	}
 
-	public void setPhoneNo(int phoneNo) {
+	public void setPhoneNo(long phoneNo) {
 		this.phoneNo = phoneNo;
 	}
 

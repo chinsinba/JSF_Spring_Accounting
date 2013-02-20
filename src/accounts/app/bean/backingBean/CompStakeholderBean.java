@@ -1,12 +1,10 @@
 package accounts.app.bean.backingBean;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 import javax.annotation.ManagedBean;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;

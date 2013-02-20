@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.annotation.ManagedBean;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -15,7 +16,7 @@ import accounts.model.entity.Address;
 import accounts.model.entity.CompanyDetails;
 
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class CompanyBean {
 	private boolean saveEnabled ; 
 
@@ -90,7 +91,7 @@ public class CompanyBean {
 			
 		}
 		else
-		{
+		{	
 			setSaveEnabled(true);
 			compAddress= company.getCompanyAddress();
 		}

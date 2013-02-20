@@ -4,11 +4,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
 @Entity
+@Table(name="LEDGERACCOUNT")
+@NamedQuery(name="LedgerAccount.findAll",query="SELECT led FROM LedgerAccount led WHERE led.company=:comp")
 public class LedgerAccount {
 	
 	@Id
@@ -24,7 +30,7 @@ public class LedgerAccount {
 		this.id = id;
 	}
 
-	@OneToOne
+	@ManyToOne
 	private CompanyDetails company;
 	
 	private String accountName;

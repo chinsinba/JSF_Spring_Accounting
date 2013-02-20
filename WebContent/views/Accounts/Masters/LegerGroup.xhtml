@@ -11,53 +11,58 @@
 		<body>
 			<h:form id="form">
 				<div>
+					<p:growl id="growl" showDetail="true" sticky="false" />
 					<p:toolbar>
 						<p:toolbarGroup align="right">
-							<p:commandButton type="button" title="Save" value="Save"
-								icon="ui-icon-disk" />
+							<p:commandButton value="Save" icon="ui-icon-disk"
+								action="#{ledgerGroupBean.save}" update="growl,groupList" />
 							<p:commandButton type="button" title="Delete" value="Delete"
-								icon="ui-icon-trash" />
+								icon="ui-icon-trash" disabled="true" />
 							<p:commandButton type="button" title="Clear" value="Cancel"
 								icon="ui-icon-clear" />
 						</p:toolbarGroup>
 					</p:toolbar>
-
+					<p:spacer height="10" />
 					<p:fieldset legend="Ledger Group">
 						<h:panelGrid columns="5" cellpadding="5">
 							<h:outputText value="Company Name :" />
-							<p:inputText id="compNam" />
+							<p:inputText id="compNam"
+								value="#{ledgerGroupBean.company.companyName}" />
 							<p:spacer width="15" />
 							<h:outputText value="Code :" />
-							<p:inputText id="CompCode" />
+							<p:inputText id="CompCode"
+								value="#{ledgerGroupBean.company.companyCode}" />
 
 						</h:panelGrid>
 						<p:separator></p:separator>
 						<h:panelGrid columns="3" cellpadding="5">
 							<h:outputText value="Group Name : " />
 							<p:spacer width="15" />
-							<p:inputText id="ledName" />
+							<p:inputText id="ledName" value="#{ledgerGroupBean.groupName}" />
 							<h:outputText value="Sub-Group : " />
 							<p:spacer width="15" />
-							<p:selectOneMenu value="#{buttonBean.number}">
-								<f:selectItem itemLabel="Select One" itemValue="" />
-								<f:selectItem itemLabel="Proprietary" itemValue="1" />
-								<f:selectItem itemLabel="Pvt ltd Co" itemValue="2" />
-								<f:selectItem itemLabel="Public ltd Co" itemValue="3" />
-								<f:selectItem itemLabel="Govt Enterprise" itemValue="4" />
+							<p:selectOneMenu id="groupList"
+								value="#{ledgerGroupBean.selSubGroup}"
+								converter="#{ledgerGroupConverter}">
+								<f:selectItems value="#{ledgerGroupBean.subGroups}"
+									var="typecode" itemLabel="#{typecode.groupName}"
+									itemValue="#{typecode}" />
+								<p:ajax listener="#{ledgerGroupBean.subGroupChanged}"
+									update="mainGrpName" />
 							</p:selectOneMenu>
+
 							<h:outputText value="Main Group : " />
 							<p:spacer width="15" />
-							<p:inputText id="mainGrpName" />
+							<p:inputText id="mainGrpName"
+								value="#{ledgerGroupBean.mainGroup.groupName}" readonly="true" />
 						</h:panelGrid>
 					</p:fieldset>
-
-
 					<p:toolbar>
 						<p:toolbarGroup align="right">
-							<p:commandButton type="button" title="Save" value="Save"
-								icon="ui-icon-disk" />
+							<p:commandButton value="Save" icon="ui-icon-disk"
+								action="#{ledgerGroupBean.save}" update="growl,groupList" />
 							<p:commandButton type="button" title="Delete" value="Delete"
-								icon="ui-icon-trash" />
+								icon="ui-icon-trash" disabled="true	" />
 							<p:commandButton type="button" title="Clear" value="Cancel"
 								icon="ui-icon-clear" />
 						</p:toolbarGroup>

@@ -20,7 +20,7 @@ import javax.persistence.TableGenerator;
 @Entity
 @NamedQueries({
 	@NamedQuery(name="comp.findall",query="SELECT comp FROM CompanyDetails comp"),
-	@NamedQuery(name="comp.getCompForUser", query="SELECT comp FROM CompanyDetails comp WHERE comp.id = 19")
+	@NamedQuery(name="comp.getCompForUser", query="SELECT comp FROM CompanyDetails comp WHERE comp.id = 1")
 })
 @Table(name="COMPANYDETAILS")
 public class CompanyDetails {

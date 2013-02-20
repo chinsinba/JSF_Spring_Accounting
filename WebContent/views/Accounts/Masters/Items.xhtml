@@ -37,11 +37,11 @@
 							<h:panelGrid columns="5" cellpadding="5">
 
 								<h:outputText value="Item Name " />
-								<p:inputText id="itemNam" />
+								<p:inputText id="itemNam" value="#{itemBean.itemName}"/>
 								<p:spacer width="15" />
 
 								<h:outputText value="Item Code: " />
-								<p:inputText id="itemCod" />
+								<p:inputText id="itemCod" value="#{itemBean.code}" />
 
 
 								<h:outputText value="Item Group: " />
@@ -51,16 +51,16 @@
 								</p:selectOneMenu>
 								<p:spacer width="15" />
 								<h:outputText value="Item Category " />
-								<p:inputText id="itmCategory" />
+								<p:inputText id="itmCategory" value="#{itemBean.category}"/>
 
 								<h:outputText value="Opening Stock(Qty): " />
-								<p:inputText id="opStck" />
+								<p:inputText id="opStck" value="#{itemBean.quantity}" />
 								<p:spacer width="15" />
 								<h:outputText value="Unit : " />
-								<p:inputText id="opStckUnit" />
+								<p:inputText id="opStckUnit"  value="#{itemBean.openingStockUnit}" />
 
 								<h:outputText value="Opening Stock(Value) : " />
-								<p:inputText id="opStckValue" />
+								<p:inputText id="opStckValue" value="#{itemBean.valuation}"/>
 								<p:spacer width="15" />
 								<h:outputText value="Account :" />
 								<p:selectOneMenu value="#{itemBean.account}">
