@@ -12,10 +12,11 @@
 		<body>
 			<h:form id="form">
 				<div>
+					<p:growl id="growl" showDetail="true" sticky="false" />
 					<p:toolbar>
 						<p:toolbarGroup align="right">
-							<p:commandButton type="button" title="Save" value="Save"
-								icon="ui-icon-disk" />
+							<p:commandButton value="Save" icon="ui-icon-disk"
+								action="#{customerAccountBean.save}" update="dataTable,growl" />
 							<p:commandButton type="button" title="Delete" value="Delete"
 								icon="ui-icon-trash" />
 							<p:commandButton type="button" title="Clear" value="Cancel"
@@ -25,88 +26,89 @@
 					<p:spacer height="10" />
 					<p:panel>
 						<p:fieldset legend="Customer Info">
-							<h:panelGrid columns="5" cellpadding="5">
+							<h:panelGrid columns="4" cellpadding="5">
 								<h:outputText value="Company Name :" />
-								<p:inputText id="compNam" />
-								<p:spacer width="15" />
+								<p:inputText id="compNam"
+									value="#{companyBean.compName}" readonly=""/>
 								<h:outputText value="Code :" />
-								<p:inputText id="CompCode" />
+								<p:inputText id="CompCode" readonly="true" value="#{companyBean.compCode}"/>
 
 							</h:panelGrid>
 							<p:separator></p:separator>
 
-							<h:panelGrid columns="5" cellpadding="5">
+							<h:panelGrid columns="4" cellpadding="5">
 
 								<h:outputText value="Customer Name:" />
-								<p:inputText id="custName" />
-								<p:spacer width="15" />
+								<p:inputText id="custName"
+									value="#{customerAccountBean.custName}" />
 								<h:outputText value="Code: " />
-								<p:inputText id="code" />
+								<p:inputText id="code" value="#{customerAccountBean.custCode}" />
 
 
 								<h:outputText value="Group: " />
-								<p:selectOneMenu value="#{buttonBean.number}">
-									<f:selectItem itemLabel="Select One" itemValue="" />
-									<f:selectItem itemLabel="Proprietary" itemValue="1" />
-									<f:selectItem itemLabel="Pvt ltd Co" itemValue="2" />
-									<f:selectItem itemLabel="Public ltd Co" itemValue="3" />
-									<f:selectItem itemLabel="Govt Enterprise" itemValue="4" />
+								<p:selectOneMenu id="groupList"
+									value="#{ledgerGroupBean.selSubGroup}"
+									converter="#{ledgerGroupConverter}">
+									<f:selectItems value="#{ledgerGroupBean.subGroups}"
+										var="typecode" itemLabel="#{typecode.groupName}"
+										itemValue="#{typecode}" />
+									<p:ajax listener="#{ledgerGroupBean.subGroupChanged}" />
 								</p:selectOneMenu>
-								<p:spacer width="15" />
+
 								<h:outputText value="Opening Balance: " />
-								<p:inputText id="opBal" />
+								<p:inputText id="opBal" value="#{customerAccountBean.openBal}" />
 
 								<h:outputText value="Type: " />
-								<p:selectOneMenu value="#{buttonBean.number}">
-									<f:selectItem itemLabel="Select One" itemValue="" />
-									<f:selectItem itemLabel="Proprietary" itemValue="1" />
-									<f:selectItem itemLabel="Pvt ltd Co" itemValue="2" />
-									<f:selectItem itemLabel="Public ltd Co" itemValue="3" />
-									<f:selectItem itemLabel="Govt Enterprise" itemValue="4" />
+								<p:selectOneMenu value="#{ledgerAccountBean.type}">
+									<f:selectItems value="#{ledgerAccountBean.types}"
+										var="typecode" itemLabel="#{typecode}" itemValue="#{typecode}" />
 								</p:selectOneMenu>
-
 							</h:panelGrid>
 						</p:fieldset>
 						<p:spacer height="10" />
 						<p:fieldset id="tab1" legend="Contact Details">
 							<h:panelGrid columns="5" cellpadding="5">
 								<h:outputText value="Contact Person : " />
-								<p:inputText id="contPerson" />
+								<p:inputText id="contPerson"
+									value="#{customerAccountBean.contPer}" />
 								<h:outputText value="Mobile No : " />
-								<p:inputText id="contactMobile" />
+								<p:inputText id="contactMobile"
+									value="#{customerAccountBean.mobNo}" />
 								<p:spacer width="15" />
 								<h:outputText value="Phone No : " />
-								<p:inputText id="contactPhone" />
+								<p:inputText id="contactPhone"
+									value="#{customerAccountBean.phNo}" />
 								<h:outputText value="Email : " />
-								<p:inputText id="email" />
+								<p:inputText id="email" value="#{customerAccountBean.email}" />
 								<p:spacer width="15" />
 
 								<h:outputText value="Address Line 1: " />
-								<p:inputText id="address1" />
+								<p:inputText id="address1" value="#{customerAccountBean.addr1}" />
 
 								<h:outputText value="Address Line 2: " />
-								<p:inputText id="address2" />
+								<p:inputText id="address2" value="#{customerAccountBean.addr2}" />
 								<p:spacer width="15" />
 								<h:outputText value="Address Line 3: " />
-								<p:inputText id="address3" />
+								<p:inputText id="address3" value="#{customerAccountBean.addr2}" />
 
 								<h:outputText value="Address Line 4: " />
-								<p:inputText id="address4" />
+								<p:inputText id="address4" value="#{customerAccountBean.addr4}" />
 								<p:spacer width="15" />
 								<h:outputText value="City: " />
-								<p:inputText id="city" />
+								<p:inputText id="city" value="#{customerAccountBean.city}" />
 
 								<h:outputText value="District: " />
-								<p:inputText id="district" />
+								<p:inputText id="district"
+									value="#{customerAccountBean.district}" />
 								<p:spacer width="15" />
 								<h:outputText value="Hobli/Gram : " />
-								<p:inputText id="hobli" />
+								<p:inputText id="hobli" value="#{customerAccountBean.hobli}" />
 
 								<h:outputText value="State : " />
-								<p:inputText id="state" />
+								<p:inputText id="state" value="#{customerAccountBean.state}" />
 								<p:spacer width="15" />
 								<h:outputText value="Country : " />
-								<p:inputText id="country" />
+								<p:inputText id="country" value="#{customerAccountBean.country}" />
 
 
 							</h:panelGrid>
@@ -116,18 +118,21 @@
 						<p:fieldset id="tab2" legend="Bank Details">
 							<h:panelGrid columns="4" cellpadding="5">
 								<h:outputText value="Bank Account Name: " />
-								<p:inputText id="BankAcName" />
+								<p:inputText id="BankAcName"
+									value="#{customerAccountBean.bnkName}" />
 								<p:spacer />
 								<p:spacer />
 
 								<h:outputText value="Bank Account No: " />
-								<p:inputText id="BankAcNo" />
+								<p:inputText id="BankAcNo" value="#{customerAccountBean.accNo}" />
 								<h:outputText value="Branch: " />
-								<p:inputText id="branch" />
+								<p:inputText id="branch" value="#{customerAccountBean.brName}" />
 								<h:outputText value="IFSC Code: " />
-								<p:inputText id="IfscCod" />
+								<p:inputText id="IfscCod"
+									value="#{customerAccountBean.ifscCode}" />
 								<h:outputText value="Branch Code: " />
-								<p:inputText id="BranchCod" />
+								<p:inputText id="BranchCod"
+									value="#{customerAccountBean.brcode}" />
 							</h:panelGrid>
 						</p:fieldset>
 						<p:spacer height="10" />
@@ -135,109 +140,112 @@
 						<p:fieldset id="tab3" legend="Tax Details">
 							<h:panelGrid columns="4" cellpadding="5">
 								<h:outputText value="TIN/VAT: " />
-								<p:inputText id="tinVat" />
+								<p:inputText id="tinVat" value="#{customerAccountBean.tinVat}" />
 								<p:spacer />
 								<p:spacer />
 								<h:outputText value="CST: " />
-								<p:inputText id="cst" />
+								<p:inputText id="cst" value="#{customerAccountBean.cst}" />
 								<h:outputText value="PAN: " />
-								<p:inputText id="custPAN" />
+								<p:inputText id="custPAN" value="#{customerAccountBean.panNo}" />
 
 								<h:outputText value="Credit Limit: " />
-								<p:selectBooleanCheckbox />
+								<p:selectBooleanCheckbox value="#{customerAccountBean.credit}" />
 								<h:outputText value="Credit Days: " />
-								<p:inputText id="custCrDat" />
+								<p:inputText id="custCrDat"
+									value="#{customerAccountBean.crDays}" />
 								<h:outputText value="Customer Since : " />
 								<p:calendar id="custStDate" showButtonPanel="true"
-									pattern="dd/MM/yyyy" />
+									pattern="dd/MM/yyyy" value="#{customerAccountBean.custSince}" />
 								<p:spacer />
 								<p:commandButton value="Insert"
-									action="#{compStakeholderBean.save}" update="dataTable" />
+									action="#{customerAccountBean.save}" update="dataTable,growl" />
 
 							</h:panelGrid>
 						</p:fieldset>
 						<p:spacer height="10" />
-						<p:dataTable id="dataTable" var="car" value="#{tableBean.cars}"
-							paginator="true" rows="10"
+						<p:dataTable id="dataTable" var="car"
+							value="#{customerAccountBean.custAccounts}" paginator="true"
+							rows="10" 	selectionMode="single" rowKey="#{car.id}" 
 							paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-							rowsPerPageTemplate="5,10,15">
-							<f:facet name="header"> Customers</f:facet>
+							rowsPerPageTemplate="5,10,15" resizableColumns="true"
+							lazy="false">
+							<f:facet name="header"> Customer Accounts</f:facet>
 
 							<p:column>
 								<f:facet name="header">
 									<h:outputText value="Comp Name" />
 								</f:facet>
-								<h:outputText value="#{car.color}" />
+								<h:outputText value="#{car.name}" />
 							</p:column>
 
 							<p:column>
 								<f:facet name="header">
 									<h:outputText value="Cust Name" />
 								</f:facet>
-								<h:outputText value="#{car.color}" />
+								<h:outputText value="#{car.name}" />
 							</p:column>
 
 							<p:column>
 								<f:facet name="header">
 									<h:outputText value="Code" />
 								</f:facet>
-								<h:outputText value="#{car.color}" />
+								<h:outputText value="#{car.code}" />
 							</p:column>
 
 							<p:column>
 								<f:facet name="header">
 									<h:outputText value="Cont Person" />
 								</f:facet>
-								<h:outputText value="#{car.color}" />
+								<h:outputText value="#{car.contact.contractPersonName}" />
 							</p:column>
 
 							<p:column>
 								<f:facet name="header">
 									<h:outputText value="Cont No" />
 								</f:facet>
-								<h:outputText value="#{car.color}" />
+								<h:outputText value="#{car.contact.phoneNo}" />
 							</p:column>
 
 							<p:column>
 								<f:facet name="header">
 									<h:outputText value="PAN" />
 								</f:facet>
-								<h:outputText value="#{car.color}" />
+								<h:outputText value="#{car.panNo}" />
 							</p:column>
 
 							<p:column>
 								<f:facet name="header">
 									<h:outputText value="Email" />
 								</f:facet>
-								<h:outputText value="#{car.color}" />
+								<h:outputText value="#{car.email}" />
 							</p:column>
 
 							<p:column>
 								<f:facet name="header">
 									<h:outputText value="Acc Name" />
 								</f:facet>
-								<h:outputText value="#{car.color}" />
+								<h:outputText value="#{car.name}" />
 							</p:column>
 
 							<p:column>
 								<f:facet name="header">
 									<h:outputText value="Grp Name" />
 								</f:facet>
-								<h:outputText value="#{car.color}" />
+								<h:outputText value="#{car.name}" />
 							</p:column>
 
 							<p:column>
 								<f:facet name="header">
 									<h:outputText value="Op Balance" />
 								</f:facet>
-								<h:outputText value="#{car.color}" />
+								<h:outputText value="#{car.openingBal}" />
 							</p:column>
 
 							<p:column>
 								<f:facet name="header">
 									<h:outputText value="Cr Days" />
 								</f:facet>
-
+								<h:outputText value="#{car.noOfCreditDays}" />
 							</p:column>
 
 							<f:facet name="footer">
@@ -256,8 +264,8 @@
 
 					<p:toolbar>
 						<p:toolbarGroup align="right">
-							<p:commandButton type="button" title="Save" value="Save"
-								icon="ui-icon-disk" />
+							<p:commandButton value="Save" icon="ui-icon-disk"
+								action="#{customerAccountBean.save}" update="dataTable,growl" />
 							<p:commandButton type="button" title="Delete" value="Delete"
 								icon="ui-icon-trash" />
 							<p:commandButton type="button" title="Clear" value="Cancel"

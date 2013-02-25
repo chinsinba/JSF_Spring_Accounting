@@ -27,11 +27,11 @@
 						<h:panelGrid columns="5" cellpadding="5">
 							<h:outputText value="Company Name :" />
 							<p:inputText id="compNam"
-								value="#{ledgerGroupBean.company.companyName}" />
+								value="#{companyBean.compName}" readonly="true"/>
 							<p:spacer width="15" />
 							<h:outputText value="Code :" />
 							<p:inputText id="CompCode"
-								value="#{ledgerGroupBean.company.companyCode}" />
+								value="#{companyBean.compCode}" readonly="true"/>
 
 						</h:panelGrid>
 						<p:separator></p:separator>

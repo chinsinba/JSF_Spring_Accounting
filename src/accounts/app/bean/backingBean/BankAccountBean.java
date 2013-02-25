@@ -3,8 +3,10 @@ package accounts.app.bean.backingBean;
 import java.util.List;
 
 import javax.annotation.ManagedBean;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 import org.hibernate.id.IdentityGenerator.GetGeneratedKeysDelegate;
@@ -58,7 +60,7 @@ public class BankAccountBean {
 	private LedgerGroup ledGroup;
 
 	private List<BankAccount> bankAccounts;
-	
+
 	private BankAccount selAccount;
 
 	@Inject
@@ -93,9 +95,13 @@ public class BankAccountBean {
 		bnkAcc.setContact(cont);
 		bnkAcc.setBankDetails(bankdet);
 		service.create(bnkAcc);
-
+		setGrowlMessage("Save", "Bank account created");
 	}
 
+	private void setGrowlMessage( String Summary, String description) {
+		FacesContext context = FacesContext.getCurrentInstance();
+		context.addMessage(null, new FacesMessage(Summary,description));
+	}
 	public String getBnkName() {
 		return bnkName;
 	}
@@ -248,7 +254,7 @@ public class BankAccountBean {
 	}
 
 	public List<BankAccount> getBankAccounts() {
-		bankAccounts = service.findAll();
+		bankAccounts = service.findAll(getCompany());
 		return bankAccounts;
 	}
 

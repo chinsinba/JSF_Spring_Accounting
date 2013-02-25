@@ -27,10 +27,10 @@
 						<h:panelGrid columns="5" cellpadding="5">
 							<h:outputText value="Company Name :" />
 							<p:inputText id="compNam"
-								value="#{ledgerGroupBean.company.companyName}" />
+								value="#{companyBean.compName}" readonly="true"/>
 							<p:spacer width="15" />
 							<h:outputText value="Code :" />
-							<p:inputText id="CompCode" />
+							<p:inputText id="CompCode" value="#{companyBean.compCode}" readonly="true"/>
 
 						</h:panelGrid>
 						<p:separator></p:separator>
@@ -73,7 +73,7 @@
 							rowsPerPageTemplate="5,10,15" lazy="false"
 							selection="#{ledgerAccountBean.selAccount}"
 							selectionMode="single" rowKey="#{car.id}" resizableColumns="true">
-							<f:facet name="header"> Stakeholder </f:facet>
+							<f:facet name="header"> Ledger Accounts </f:facet>
 
 							<p:column>
 								<f:facet name="header">

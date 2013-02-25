@@ -14,6 +14,7 @@
 	<ui:define name="menu">
 		<ui:include src="/views/Company/menu.xhtml" />
 	</ui:define>
+	
 	<ui:define name="content">
 
 		<h:form id="compForm">
@@ -50,7 +51,8 @@
 							<p:spacer width="15" />
 							<h:outputText value="DOB: " />
 							<p:calendar id="stlDob" showButtonPanel="true"
-								pattern="dd/MM/yyyy" value="#{compStakeholderBean.stakeHoldDob}" />
+								pattern="dd/MM/yyyy" value="#{compStakeholderBean.stakeHoldDob}" navigator="true"
+									 />
 							<p:spacer />
 							<h:outputText value="Address : " />
 							<p:inputTextarea id="stkaddr"

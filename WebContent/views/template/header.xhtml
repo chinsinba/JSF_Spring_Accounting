@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Login</title>
-</h:head>
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
 <body>
-	<h:form id="headForm">
-
-		<p:toolbar>
-			<p:toolbarGroup align="right" >
-				<!-- <p:commandLink id="company" action="/Company.xhtml">
+	<p:toolbar >
+		<p:toolbarGroup align="right" >
+			<!-- <p:commandLink id="company" action="/Company.xhtml">
 					<h:outputText value="Company" />
 				</p:commandLink>
 
@@ -31,17 +26,15 @@
 					<h:outputText value="HRMS" />
 				</p:commandLink>
 				 -->
-				<p:button value="Company" outcome="/views/Company/Company.xhtml"/>
-				<p:button type="button" value="Accounts"
-					outcome="/views/Accounts/Masters/Items.xhtml" />
-				<p:button type="button" value="Purchase"
-					outcome="/views/Purchase/Purchase.xhtml" />
-				<p:button type="button" value="Sales"
-					outcome="/views/Sales/Sales.xhtml" />
-				<p:button type="button" value="HRMS"
-					outcome="/views/HRMS/HRMS.xhtml" />
-			</p:toolbarGroup>
-		</p:toolbar>
-	</h:form>
+			<p:button value="Company" outcome="/views/Company/Company.xhtml" />
+			<p:button type="button" value="Accounts"
+				outcome="/views/Accounts/Masters/Items.xhtml" />
+			<p:button type="button" value="Purchase"
+				outcome="/views/Purchase/Purchase.xhtml" />
+			<p:button type="button" value="Sales"
+				outcome="/views/Sales/Sales.xhtml" />
+			<p:button type="button" value="HRMS" outcome="/views/HRMS/HRMS.xhtml" />
+		</p:toolbarGroup>
+	</p:toolbar>
 </body>
 </html>

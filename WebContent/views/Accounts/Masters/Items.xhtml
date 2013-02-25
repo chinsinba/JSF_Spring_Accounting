@@ -27,10 +27,10 @@
 						<p:fieldset legend="Item Creation">
 							<h:panelGrid columns="5" cellpadding="5">
 								<h:outputText value="Company Name :" />
-								<p:inputText id="compNam" value="#{itemBean.compName}" />
+								<p:inputText id="compNam" value="#{companyBean.compName}" readonly="true"/>
 								<p:spacer width="15" />
 								<h:outputText value="Code :" />
-								<p:inputText id="CompCode" value="#{itemBean.compCode}" />
+								<p:inputText id="CompCode" value="#{companyBean.compCode}" readonly="true" />
 
 							</h:panelGrid>
 							<p:separator></p:separator>
@@ -74,18 +74,20 @@
 						<p:fieldset legend="Tax Details">
 							<h:panelGrid columns="5" cellpadding="5">
 								<h:outputText value="Purchase/Inward Tax: " />
-								<p:selectOneMenu value="#{itemBean.purTax}">
-									<f:selectItems value="#{itemBean.purTaxs}" var="typecode"
-										itemLabel="#{typecode}" itemValue="#{typecode}" />
+								<p:selectOneMenu value="#{itemBean.purTax}"
+								converter="#{ledgerAccountConverter}">
+									<f:selectItems value="#{ledgerAccountBean.ledAccounts}" var="typecode"
+										itemLabel="#{typecode.accountName}" itemValue="#{typecode}" />
 								</p:selectOneMenu>
 								<p:spacer width="15" />
 								<h:outputText value="Percentage : " />
 								<p:inputText id="inTaxPercent" />
 
 								<h:outputText value="Sales/Outward Tax: " />
-								<p:selectOneMenu value="#{itemBean.salTax}">
-									<f:selectItems value="#{itemBean.salTaxs}" var="typecode"
-										itemLabel="#{typecode}" itemValue="#{typecode}" />
+								<p:selectOneMenu value="#{itemBean.salTax}"
+								converter="#{ledgerAccountConverter}">
+									<f:selectItems value="#{ledgerAccountBean.ledAccounts}" var="typecode"
+										itemLabel="#{typecode.accountName}" itemValue="#{typecode}" />
 								</p:selectOneMenu>
 								<p:spacer width="15" />
 								<h:outputText value="Percentage : " />

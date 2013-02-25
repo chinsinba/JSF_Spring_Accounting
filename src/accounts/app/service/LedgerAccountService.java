@@ -14,6 +14,8 @@ import accounts.model.entity.LedgerAccount;
  */
 public interface LedgerAccountService {
 	
+	LedgerAccount find(long id);
+	
 	LedgerAccount create(LedgerAccount ledAcc);
 	
 	List<LedgerAccount> findAll(CompanyDetails company);

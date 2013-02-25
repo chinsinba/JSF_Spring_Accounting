@@ -7,26 +7,50 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 
 <f:view contentType="text/html" id="fview">
-
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Account Baaz</title>
+	<title>Accounts</title>
 	<ui:debug />
 	<f:metadata>
 		<ui:insert name="metadata" />
 	</f:metadata>
 
 	<h:head>
+
+		<f:facet name="first">
+			<meta http-equiv="X-UA-Compatible" content="EmulateIE8" />
+			<meta content='text/html; charset=UTF-8' http-equiv="Content-Type" />
+			<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		</f:facet>
+
+		<link type="text/css" rel="stylesheet"
+			href="#{request.contextPath}/css/default.css" />
+		<link type="text/css" rel="stylesheet"
+			href="#{request.contextPath}/css/syntaxhighlighter/syntaxhighlighter.css" />
+
+		<style type="text/css">
+.ui-layout-north {
+	z-index: 20 !important;
+	overflow: visible !important;;
+}
+
+.ui-layout-north .ui-layout-unit-content {
+	overflow: visible !important;
+}
+</style>
+
+	</h:head>
+	<h:body onload="statusDialog.hide();"  >
 		<p:ajaxStatus onstart="statusDialog.show();"
 			onsuccess="statusDialog.hide();" />
 
 		<p:layout fullPage="true" resizeTitle="resize">
 			<p:layoutUnit position="north" size="70" id="header">
-				<ui:include src="/views/template/header.xhtml" />
+				<ui:insert name="head">
+					<ui:include src="/views/template/header.xhtml" />
+				</ui:insert>
 			</p:layoutUnit>
 
 
-			<p:layoutUnit position="west" id="west" resizable="false"
-				 size="225" >
+			<p:layoutUnit position="west" id="west" resizable="false" size="225">
 				<ui:insert name="menu">
 					<ui:include src="/views/Accounts/Masters/menu.xhtml" />
 				</ui:insert>
@@ -52,10 +76,8 @@
 			<p:graphicImage value="/resource/images/ajax-loader.gif" />
 		</p:dialog>
 
-	</h:head>
-
-	<h:body onload="statusDialog.hide();">
 	</h:body>
+
 
 </f:view>
 </html>

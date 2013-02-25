@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -14,6 +15,7 @@ import javax.persistence.TableGenerator;
 
 @Entity
 @Table(name = "BankAccount")
+@NamedQuery(name="BankAccount.findAll",query="SELECT acc FROM BankAccount acc WHERE acc.company=:comp")
 public class BankAccount {
 
 	@Id
@@ -46,7 +48,7 @@ public class BankAccount {
 	private String  accountNo;
 	
 	
-	@OneToOne
+	@OneToOne(cascade={CascadeType.ALL})
 	private Contact contact;
 	
 	

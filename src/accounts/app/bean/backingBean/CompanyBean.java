@@ -35,6 +35,7 @@ public class CompanyBean {
 	private CompanyDetails company ;
 
 	private Address compAddress;
+	
 
 	public CompanyService getCompanyService() {
 		return companyService;
@@ -337,6 +338,16 @@ public class CompanyBean {
 	private void setGrowlMessage( String Summary, String description) {
 		FacesContext context = FacesContext.getCurrentInstance();
 		context.addMessage(null, new FacesMessage(Summary,description));
+	}
+
+
+	public String getCompCode() {
+		return getCompany().getCompanyCode();
+	}
+
+
+	public void setCompCode(String compCode) {
+		getCompany().setCompanyCode(compCode);
 	}
 
 }

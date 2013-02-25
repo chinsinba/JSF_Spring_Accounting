@@ -11,10 +11,11 @@
 		<body>
 			<h:form id="form">
 				<div>
+					<p:growl id="growl" showDetail="true" sticky="false" />
 					<p:toolbar>
 						<p:toolbarGroup align="right">
-							<p:commandButton type="button" title="Save" value="Save"
-								icon="ui-icon-disk" />
+							<p:commandButton value="Save" icon="ui-icon-disk"
+								action="#{bankAccountBean.save}" update=":form:dataTable,growl" />
 							<p:commandButton type="button" title="Delete" value="Delete"
 								icon="ui-icon-trash" />
 							<p:commandButton type="button" title="Clear" value="Cancel"
@@ -26,20 +27,19 @@
 						<h:panelGrid columns="5" cellpadding="5">
 							<h:outputText value="Company Name :" />
 							<p:inputText id="compNam"
-								value="#{ledgerGroupBean.company.companyName}" />
+								value="#{companyBean.compName}" readonly="true"/>
 							<p:spacer width="15" />
 							<h:outputText value="Code :" />
-							<p:inputText id="CompCode" />
+							<p:inputText id="CompCode" readonly="true"  value="#{companyBean.compCode}"/>
 
 						</h:panelGrid>
 						<p:separator></p:separator>
 
-						<h:panelGrid columns="5" cellpadding="5">
+						<h:panelGrid columns="4" cellpadding="5">
 							<h:outputText value=" Bank Name : " />
-							<p:inputText id="bnkName" />
-							<p:spacer width="15" />
+							<p:inputText id="bnkName" value="#{bankAccountBean.bnkName}" />
 							<h:outputText value="Code : " />
-							<p:inputText id="code" />
+							<p:inputText id="code" value="#{bankAccountBean.bnkCode}" />
 
 
 							<h:outputText value="Group : " />
@@ -51,48 +51,164 @@
 									itemValue="#{typecode}" />
 								<p:ajax listener="#{ledgerGroupBean.subGroupChanged}" />
 							</p:selectOneMenu>
-							<p:spacer width="15" />
 
 							<h:outputText value="Account Type : " />
-							<p:selectOneMenu value="#{ledgerAccountBean.type}">
-								<f:selectItems value="#{ledgerAccountBean.types}" var="typecode"
-									itemLabel="#{typecode}" itemValue="#{typecode}" />
+							<p:selectOneMenu value="#{bankAccountBean.selAccType}">
+								<f:selectItems value="#{bankAccountBean.selAccTypes}"
+									var="typecode" itemLabel="#{typecode}" itemValue="#{typecode}" />
 							</p:selectOneMenu>
 
 							<h:outputText value=" Acc No : " />
-							<p:inputText id="accNo" />
-							<p:spacer width="15" />
+							<p:inputText id="accNo" value="#{bankAccountBean.bnkAccNo}" />
 							<h:outputText value="Branch : " />
-							<p:inputText id="branch" />
+							<p:inputText id="branch" value="#{bankAccountBean.bnkBrName}" />
 
 							<h:outputText value="Address : " />
-							<p:inputTextarea id="adrs" />
-							<p:spacer width="15" />
+							<p:inputTextarea id="adrs" value="#{bankAccountBean.addr}" />
 
 							<h:outputText value="Contact No : " />
-							<p:inputText id="cont" />
+							<p:inputText id="cont" value="#{bankAccountBean.contNo}" />
 							<h:outputText value="Contact Person : " />
-							<p:inputText id="contPrs" />
-							<p:spacer width="15" />
+							<p:inputText id="contPrs" value="#{bankAccountBean.contPerName}" />
 							<p:spacer width="15" />
 
 							<p:spacer width="15" />
 
 							<h:outputText value="Opening Balance : " />
-							<p:inputText id="opBal" />
-							<p:spacer width="15" />
+							<p:inputText id="opBal" value="#{bankAccountBean.openBal}" />
 							<h:outputText value="Type : " />
 							<p:selectOneMenu value="#{ledgerAccountBean.type}">
 								<f:selectItems value="#{ledgerAccountBean.types}" var="typecode"
 									itemLabel="#{typecode}" itemValue="#{typecode}" />
 							</p:selectOneMenu>
+							<p:commandButton value="Insert" action="#{bankAccountBean.save}"
+								update=":form:dataTable,growl" />
 						</h:panelGrid>
+						<p:separator></p:separator>
+						<p:dataTable id="dataTable" var="bank"
+							value="#{bankAccountBean.bankAccounts}" paginator="true" rows="5"
+							paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+							rowsPerPageTemplate="5,10,15" lazy="false"
+							selection="#{bankAccountBean.selAccount}" selectionMode="single"
+							rowKey="#{bank.id}" resizableColumns="true">
+							<f:facet name="header"> Bank Accounts </f:facet>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Bank" />
+								</f:facet>
+								<h:outputText id="col1" value="#{bank.bankDetails.bankName}" />
+								<p:tooltip for="col1" value="#{bank.bankDetails.bankName}"
+									showEffect="clip" hideEffect="clip" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Code" />
+								</f:facet>
+								<h:outputText id="col2" value="#{bank.code}" />
+								<p:tooltip for="col2" value="#{bank.code}" showEffect="clip"
+									hideEffect="clip" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Group" />
+								</f:facet>
+								<h:outputText id="col3"
+									value="#{bank.bankDetails.address.addressLine1}" />
+								<p:tooltip for="col3"
+									value="#{bank.bankDetails.address.addressLine1}"
+									showEffect="clip" hideEffect="clip" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Acc Type" />
+								</f:facet>
+								<h:outputText id="col4" value="#{bank.type}" />
+								<p:tooltip for="col4" value="#{bank.type}" showEffect="clip"
+									hideEffect="clip" />
+							</p:column>
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Addr" />
+								</f:facet>
+								<h:outputText id="col5"
+									value="#{bank.bankDetails.address.addressLine1}" />
+								<p:tooltip for="col5"
+									value="#{bank.bankDetails.address.addressLine1}"
+									showEffect="clip" hideEffect="clip" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Acc No" />
+								</f:facet>
+								<h:outputText id="col6" value="#{bank.accountNo}" />
+								<p:tooltip for="col6" value="#{bank.accountNo}"
+									showEffect="clip" hideEffect="clip" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Branch" />
+								</f:facet>
+								<h:outputText id="col7" value="#{bank.bankDetails.branchName}" />
+								<p:tooltip for="col7" value="#{bank.bankDetails.branchName}"
+									showEffect="clip" hideEffect="clip" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Cont No" />
+								</f:facet>
+								<h:outputText id="col8" value="#{bank.contact.phoneNo}" />
+								<p:tooltip for="col8" value="#{bank.contact.phoneNo}"
+									showEffect="clip" hideEffect="clip" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Cont Person" />
+								</f:facet>
+								<h:outputText id="col9"
+									value="#{bank.contact.contractPersonName}" />
+								<p:tooltip for="col9" value="#{bank.contact.contractPersonName}"
+									showEffect="clip" hideEffect="clip" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Op Bal" />
+								</f:facet>
+								<h:outputText id="col10" value="#{bank.openingBalance}" />
+								<p:tooltip for="col10" value="#{bank.openingBalance}"
+									showEffect="clip" hideEffect="clip" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Cr/Db" />
+								</f:facet>
+								<h:outputText id="col11" value="#{bank.accountType}" />
+								<p:tooltip for="col11" value="#{bank.accountType}"
+									showEffect="clip" hideEffect="clip" />
+							</p:column>
+							<f:facet name="footer">
+								<p:commandButton id="editButton" value="Edit"
+									icon="ui-icon-edit" action="#{compStakeholderBean.edit}"
+									oncomplete="bankDialog.show()" />
+								<p:commandButton id="delButton" value="Delete"
+									action="#{compStakeholderBean.delete}" icon="ui-icon-trash" />
+							</f:facet>
+						</p:dataTable>
 					</p:fieldset>
 
 					<p:toolbar>
 						<p:toolbarGroup align="right">
-							<p:commandButton type="button" title="Save" value="Save"
-								icon="ui-icon-disk" />
+							<p:commandButton value="Save" icon="ui-icon-disk"
+								action="#{bankAccountBean.save}" update=":form:dataTable,growl" />
 							<p:commandButton type="button" title="Delete" value="Delete"
 								icon="ui-icon-trash" />
 							<p:commandButton type="button" title="Clear" value="Cancel"

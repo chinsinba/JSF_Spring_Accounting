@@ -5,7 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
 import accounts.model.entity.Address;
@@ -16,6 +18,8 @@ import accounts.model.entity.LedgerAccount;
 import accounts.model.entity.LedgerGroup;
 
 @Entity
+@Table(name="SUPPLIERACCOUNT")
+@NamedQuery(name="SupplierAccount.findAll",query="SELECT sup FROM SupplierAccount sup WHERE sup.company=:comp")
 public class SupplierAccount  {
 
 
@@ -36,9 +40,9 @@ public class SupplierAccount  {
 	@OneToOne
 	private CompanyDetails company;
 
-	private String Name;
+	private String name;
 
-	private String Code;
+	private String code;
 
 	@OneToOne(cascade={CascadeType.ALL})
 	private Contact contact;
@@ -80,19 +84,19 @@ public class SupplierAccount  {
 	}
 
 	public String getName() {
-		return Name;
+		return name;
 	}
 
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
 
 	public String getCode() {
-		return Code;
+		return code;
 	}
 
 	public void setCode(String code) {
-		Code = code;
+		this.code = code;
 	}
 
 	public Contact getContact() {

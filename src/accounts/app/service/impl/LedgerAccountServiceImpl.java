@@ -41,4 +41,10 @@ public class LedgerAccountServiceImpl implements LedgerAccountService{
 		// TODO Auto-generated method stub
 		return ledgerAccountDao.findAll(company);
 	}
+
+	@Override
+	public LedgerAccount find(long id) {
+		// TODO Auto-generated method stub
+		return ledgerAccountDao.find(id);
+	}
 }
