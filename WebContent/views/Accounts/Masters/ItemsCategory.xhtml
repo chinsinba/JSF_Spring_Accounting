@@ -11,30 +11,58 @@
 		<body>
 			<h:form id="form">
 				<div>
+					<p:growl id="growl" showDetail="true" sticky="false" />
 					<p:toolbar>
 						<p:toolbarGroup align="right">
-							<p:commandButton type="button" title="Save" value="Save"
-								icon="ui-icon-disk" />
+							<p:commandButton value="Save" icon="ui-icon-disk"
+								action="#{itemCategoryBean.save}" update="growl,groupList" />
 							<p:commandButton type="button" title="Delete" value="Delete"
-								icon="ui-icon-trash" />
+								icon="ui-icon-trash" disabled="true" />
 							<p:commandButton type="button" title="Clear" value="Cancel"
 								icon="ui-icon-clear" />
 						</p:toolbarGroup>
 					</p:toolbar>
+					<p:spacer height="10" />
+					<p:fieldset legend="Item Group">
+						<h:panelGrid columns="5" cellpadding="5">
+							<h:outputText value="Company Name :" />
+							<p:inputText id="compNam"
+								value="#{companyBean.compName}" readonly="true"/>
+							<p:spacer width="15" />
+							<h:outputText value="Code :" />
+							<p:inputText id="CompCode"
+								value="#{companyBean.compCode}" readonly="true"/>
 
-					<div align="center">
-						<b>This page is under construction</b>
-					</div>
+						</h:panelGrid>
+						<p:separator></p:separator>
+						<h:panelGrid columns="3" cellpadding="5">
+							<h:outputText value="Item Group: " />
+							<p:spacer width="15" />
+							<p:inputText id="ledName" value="#{itemCategoryBean.groupName}" />
+							<h:outputText value="Item Category : " />
+							<p:spacer width="15" />
+							<p:selectOneMenu id="groupList"
+								value="#{itemCategoryBean.selSubGroup}"
+								converter="#{itemGroupConverter}">
+								<f:selectItems value="#{itemCategoryBean.subGroups}"
+									var="typecode" itemLabel="#{typecode.categoryName}"
+									itemValue="#{typecode}" />
+								<p:ajax listener="#{itemCategoryBean.subGroupChanged}"
+									update="mainGrpName" />
+							</p:selectOneMenu>
 
-
-
-
+							<h:outputText value="Main Category : " />
+							<p:spacer width="15" />
+							<p:inputText id="mainGrpName"
+								value="#{itemCategoryBean.mainGroup.categoryName}" readonly="true" />
+						</h:panelGrid>
+					</p:fieldset>
 					<p:toolbar>
 						<p:toolbarGroup align="right">
-							<p:commandButton type="button" title="Save" value="Save"
-								icon="ui-icon-disk" />
+							<p:commandButton value="Save" icon="ui-icon-disk"
+								action="#{itemCategoryBean.save}" update="growl,groupList" />
 							<p:commandButton type="button" title="Delete" value="Delete"
-								icon="ui-icon-trash" />
+								icon="ui-icon-trash" disabled="true	" />
 							<p:commandButton type="button" title="Clear" value="Cancel"
 								icon="ui-icon-clear" />
 						</p:toolbarGroup>

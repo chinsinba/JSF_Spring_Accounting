@@ -14,7 +14,7 @@
 	<ui:define name="menu">
 		<ui:include src="/views/Company/menu.xhtml" />
 	</ui:define>
-	
+
 	<ui:define name="content">
 
 		<h:form id="compForm">
@@ -33,7 +33,7 @@
 			<div align="left">
 
 				<p:panel id="insertPanel">
-					<p:fieldset  legend="StakeHolder">
+					<p:fieldset legend="StakeHolder">
 						<h:panelGrid columns="4" cellpadding="5">
 							<h:outputText value="Company Name :" />
 							<p:inputText id="compNam" readonly="true"
@@ -47,12 +47,13 @@
 						<h:panelGrid id="display" columns="6" cellpadding="5">
 							<h:outputText value="Stakeholder Name: " />
 							<p:inputText id="stkHldName"
-								value="#{compStakeholderBean.stakeHoldName}" />
+								value="#{compStakeholderBean.stakeHoldName}" required="true"
+								requiredMessage="StakeHolder Name is required" />
 							<p:spacer width="15" />
 							<h:outputText value="DOB: " />
 							<p:calendar id="stlDob" showButtonPanel="true"
-								pattern="dd/MM/yyyy" value="#{compStakeholderBean.stakeHoldDob}" navigator="true"
-									 />
+								pattern="dd/MM/yyyy" value="#{compStakeholderBean.stakeHoldDob}"
+								navigator="true" showOn="button" />
 							<p:spacer />
 							<h:outputText value="Address : " />
 							<p:inputTextarea id="stkaddr"
@@ -64,11 +65,15 @@
 							<p:spacer />
 							<h:outputText value="Email : " />
 							<p:inputText id="stkemail"
-								value="#{compStakeholderBean.stakeHoldEmail}" />
+								value="#{compStakeholderBean.stakeHoldEmail}"
+								validatorMessage="Email is not well formed">
+								<f:validateRegex pattern="[a-zA-Z0-9]+@[a-zA-Z]+.[a-zA-Z]{2,3}"></f:validateRegex>
+							</p:inputText>
 							<p:spacer width="15" />
 							<h:outputText value="PAN : " />
 							<p:inputText id="stkpan"
-								value="#{compStakeholderBean.stakeHoldPan}" />
+								value="#{compStakeholderBean.stakeHoldPan}" required="true"
+								requiredMessage="PAN No is required" />
 							<p:commandButton value="Insert"
 								action="#{compStakeholderBean.save}"
 								update="dataTable,insertPanel,growl" />
@@ -183,7 +188,7 @@
 
 					<h:panelGrid id="editDisplay" columns="6" cellpadding="5">
 						<h:outputText value="Stakeholder Name: " />
-						<p:inputText value="#{compStakeholderBean.selstakeHoldName}" />
+						<p:inputText value="#{compStakeholderBean.selstakeHoldName}" />	
 						<p:spacer width="15" />
 						<h:outputText value="DOB: " />
 						<p:calendar showButtonPanel="true" pattern="dd/MM/yyyy"
@@ -199,7 +204,7 @@
 						<p:inputText value="#{compStakeholderBean.selstakeHoldEmail}" />
 						<p:spacer width="15" />
 						<h:outputText value="PAN : " />
-						<p:inputText value="#{compStakeholderBean.selstakeHoldPan}" />
+						<p:inputText value="#{compStakeholderBean.selstakeHoldPan}"/>
 						<p:commandButton value="update"
 							action="#{compStakeholderBean.update}" update="dataTable,growl" />
 					</h:panelGrid>

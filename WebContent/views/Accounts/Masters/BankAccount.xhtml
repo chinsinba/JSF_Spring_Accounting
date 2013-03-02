@@ -37,7 +37,8 @@
 
 						<h:panelGrid columns="4" cellpadding="5">
 							<h:outputText value=" Bank Name : " />
-							<p:inputText id="bnkName" value="#{bankAccountBean.bnkName}" />
+							<p:inputText id="bnkName" value="#{bankAccountBean.bnkName}" required="true"
+							requiredMessage="Bank Name is required"/>
 							<h:outputText value="Code : " />
 							<p:inputText id="code" value="#{bankAccountBean.bnkCode}" />
 
@@ -59,7 +60,9 @@
 							</p:selectOneMenu>
 
 							<h:outputText value=" Acc No : " />
-							<p:inputText id="accNo" value="#{bankAccountBean.bnkAccNo}" />
+							<p:inputText id="accNo" value="#{bankAccountBean.bnkAccNo}" 
+							required="true"
+							requiredMessage=" Account No is required"/>
 							<h:outputText value="Branch : " />
 							<p:inputText id="branch" value="#{bankAccountBean.bnkBrName}" />
 
