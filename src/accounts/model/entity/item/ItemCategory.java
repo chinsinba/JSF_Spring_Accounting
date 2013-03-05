@@ -11,6 +11,7 @@ import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
 import accounts.model.entity.CompanyDetails;
+import accounts.model.entity.user.User;
 
 @Entity
 @Table(name="ITEMCATEGORY")
@@ -30,6 +31,18 @@ public class ItemCategory {
 		this.id = id;
 	}
 
+	
+	@OneToOne
+	private User user;
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
 	@OneToOne
 	private CompanyDetails company;
 

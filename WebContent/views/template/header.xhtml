@@ -6,8 +6,11 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core">
 <body>
-	<p:toolbar >
-		<p:toolbarGroup align="right" >
+	<p:toolbar>
+		<p:toolbarGroup >
+			<h:outputLink value="#{request.contextPath}/j_spring_security_logout">Logout</h:outputLink>
+		</p:toolbarGroup>
+		<p:toolbarGroup align="right">
 			<!-- <p:commandLink id="company" action="/Company.xhtml">
 					<h:outputText value="Company" />
 				</p:commandLink>

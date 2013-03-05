@@ -16,6 +16,7 @@ import accounts.model.entity.CompanyDetails;
 import accounts.model.entity.Contact;
 import accounts.model.entity.LedgerAccount;
 import accounts.model.entity.LedgerGroup;
+import accounts.model.entity.user.User;
 
 @Entity
 @Table(name="SUPPLIERACCOUNT")
@@ -36,6 +37,18 @@ public class SupplierAccount  {
 	public void setId(long id) {
 		this.id = id;
 	}
+	@OneToOne
+	private User user;
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	
 
 	@OneToOne
 	private CompanyDetails company;

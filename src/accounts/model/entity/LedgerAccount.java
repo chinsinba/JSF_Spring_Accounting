@@ -12,6 +12,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
+import accounts.model.entity.user.User;
+
 @Entity
 @Table(name="LEDGERACCOUNT")
 @NamedQuery(name="LedgerAccount.findAll",query="SELECT led FROM LedgerAccount led WHERE led.company=:comp")
@@ -26,6 +28,18 @@ public class LedgerAccount {
 		return id;
 	}
 
+	
+	@OneToOne
+	private User user;
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
 	public void setId(long id) {
 		this.id = id;
 	}

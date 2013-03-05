@@ -6,24 +6,33 @@
 
 	<global-method-security secured-annotations="enabled">
 	</global-method-security>
-	<http access-denied-page="/denied.html" auto-config="false">
-		<remember-me key="JSFUserMgmtExample" />
-		<form-login authentication-failure-url="/Login.xhtml"
-			default-target-url="/Login.xhtml" login-page="/Login.xhtml"
-			login-processing-url="/j_spring_security_check" />
-		<logout logout-success-url="/Login.xhtml" logout-url="/logout.html" />
-		<intercept-url pattern="/auth/**" access="ROLE_user"
-			requires-channel="any" /><!-- access="ROLE_USER" -->
+	<!-- <http access-denied-page="/denied.html" auto-config="false"> <remember-me 
+		key="JSFUserMgmtExample" /> <form-login authentication-failure-url="/Login.xhtml" 
+		default-target-url="/Login.xhtml" login-page="/Login.xhtml" login-processing-url="/j_spring_security_check" 
+		/> <logout logout-success-url="/Login.xhtml" logout-url="/logout.html" /> 
+		<intercept-url pattern="/auth/**" access="ROLE_user" requires-channel="any" 
+		/>access="ROLE_USER" </http> -->
+
+	<http auto-config="true" use-expressions="true" once-per-request="false">
+		<intercept-url pattern="/views/**" access="hasRole('ROLE_USER')" />
+		<form-login login-page="/Login.html" default-target-url="/Company.html"
+			authentication-failure-url="/loginfailed" />
+		<logout logout-success-url="/Logout.html" />
 	</http>
 
 
 
 	<authentication-manager alias="authenticationManager">
 		<authentication-provider>
-			<user-service>
-                <user name="admin" password="admin" authorities="ROLE_USER, ROLE_ADMIN" />
-                <user name="user1" password="user1" authorities="ROLE_USER" />
-            </user-service>
+			<jdbc-user-service data-source-ref="dataSource"
+
+				users-by-username-query="
+		      select userName,password,enabled
+		      from USER where userName=?"
+
+				authorities-by-username-query="
+		      select u.userName, ur.authority from USER u, ROLES ur,USER_ROLES urm
+		      where u.id = urm.User_ID and urm.hasRoles_ID=ur.id and u.userName =?" />
 		</authentication-provider>
 	</authentication-manager>
 
