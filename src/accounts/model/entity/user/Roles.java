@@ -25,18 +25,12 @@ public class Roles {
 		this.id = id;
 	}
 	
-	private String roleName;
+	private String authority;
 
 	@OneToMany
 	private List<Permission> hasPermission;
 
-	public String getRoleName() {
-		return roleName;
-	}
-
-	public void setRoleName(String roleName) {
-		this.roleName = roleName;
-	}
+	
 
 	public List<Permission> getHasPermission() {
 		return hasPermission;
@@ -44,6 +38,14 @@ public class Roles {
 
 	public void setHasPermission(List<Permission> hasPermission) {
 		this.hasPermission = hasPermission;
+	}
+
+	public String getAuthority() {
+		return authority;
+	}
+
+	public void setAuthority(String authority) {
+		this.authority = authority;
 	}
 
 }

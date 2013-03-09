@@ -6,6 +6,7 @@ import javax.annotation.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 
+import accounts.app.bean.PreferencesBean;
 import accounts.app.service.OtherAccountService;
 import accounts.app.service.SupplierAccountService;
 import accounts.model.entity.Address;
@@ -53,8 +54,8 @@ public class OtherAccountBean extends AbstractAccountBean{
 
 	@Inject
 	public OtherAccountBean(LedgerGroupBean ledGrpBean,
-			LedgerAccountBean ledAccBean, CompanyBean compBean, OtherAccountService service) {
-		super(ledGrpBean, ledAccBean, compBean);
+			LedgerAccountBean ledAccBean, CompanyBean compBean, OtherAccountService service,PreferencesBean prefbean) {
+		super(ledGrpBean, ledAccBean, compBean,prefbean);
 
 		this.service= service;
 	}
@@ -99,6 +100,7 @@ public class OtherAccountBean extends AbstractAccountBean{
 		custAccount.setNoOfCreditDays(getCrDays());
 		custAccount.setOpeningBal(getOpenBal());
 		custAccount.setPanNo(getPanNo());
+		custAccount.setUser(getPrefBean().getUser());
 		service.create(custAccount);
 		setGrowlMessage("Save", "Created new Account");
 

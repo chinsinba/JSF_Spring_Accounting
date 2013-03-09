@@ -14,19 +14,19 @@
 					<p:panel id="panel">
 						<p:messages id="messages" />
 						<h:panelGrid columns="3">
-							<h:outputLabel for="j_username" value="User Name *" />
-							<p:inputText id="j_username" value="#{loginBean.userName}"
+							<h:outputLabel for="j_username1" value="User Name *" />
+							<p:inputText id="j_username1" value="#{loginBean.userName}"
 								required="true" label="Firstname">
 								<f:validateLength minimum="2" />
 							</p:inputText>
-							<p:message for="j_username" />
+							<p:message for="j_username1" />
 
-							<h:outputLabel for="j_password" value="Password *" />
-							<p:password id="j_password" value="#{loginBean.password}"
+							<h:outputLabel for="j_password1" value="Password *" />
+							<p:password id="j_password1" value="#{loginBean.password}"
 								required="true">
 								<f:validateLength minimum="4"></f:validateLength>
 							</p:password>
-							<p:message for="j_password" />
+							<p:message for="j_password1" />
 
 							<f:facet name="footer">
 								<p:commandButton value="Login" update="panel"

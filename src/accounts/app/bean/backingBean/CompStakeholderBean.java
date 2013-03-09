@@ -11,6 +11,7 @@ import javax.inject.Inject;
 
 import org.primefaces.model.LazyDataModel;
 
+import accounts.app.bean.PreferencesBean;
 import accounts.app.service.CompanyService;
 import accounts.model.entity.CompanyDetails;
 import accounts.model.entity.StakeHolder;
@@ -56,15 +57,17 @@ public class CompStakeholderBean  {
 
 
 	private boolean editing;
+	private PreferencesBean prefBean;
 
 	@Inject
-	public CompStakeholderBean(final CompanyService service, CompanyBean company)
+	public CompStakeholderBean(final CompanyService service, CompanyBean company, PreferencesBean prefBean)
 	{
 		this.companyService = service;
 		this.stakeHolder = companyService.getStakeHolders(company.getCompany());
 		this.lazyModel = new LazyCarDataModel(stakeHolder);
 		this.setCompany(company.getCompany());
 		this.setCompBean(company);
+		this.setPrefBean(prefBean);
 
 	}
 
@@ -221,6 +224,7 @@ public class CompStakeholderBean  {
 		stkholder.setPanNo(getStakeHoldPan());
 		stkholder.setStakeHolderName(getStakeHoldName());
 		stkholder.setCompany(getCompany());
+		stkholder.setUser(getPrefBean().getUser());
 		companyService.create(stkholder);
 		stakeHolder.add(stkholder);
 		clearValues();
@@ -312,6 +316,14 @@ public class CompStakeholderBean  {
 
 	public void setCompBean(CompanyBean compBean) {
 		this.compBean = compBean;
+	}
+
+	public PreferencesBean getPrefBean() {
+		return prefBean;
+	}
+
+	public void setPrefBean(PreferencesBean prefBean) {
+		this.prefBean = prefBean;
 	}
 
 }

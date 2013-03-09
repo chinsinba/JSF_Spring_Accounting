@@ -6,38 +6,49 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core">
 <body>
-	<p:toolbar>
-		<p:toolbarGroup >
-			<h:outputLink value="#{request.contextPath}/j_spring_security_logout">Logout</h:outputLink>
-		</p:toolbarGroup>
-		<p:toolbarGroup align="right">
-			<!-- <p:commandLink id="company" action="/Company.xhtml">
-					<h:outputText value="Company" />
-				</p:commandLink>
+	<h:form>
+		<div align="right">
+			<h:outputLink
+				value="#{request.contextPath}/views/Company/Company.html">COMPANY</h:outputLink>
+			<p:spacer width="10"></p:spacer>
+			<h:outputLink
+				value="#{request.contextPath}/views/Accounts/Masters/Items.html">ACCOUNTS</h:outputLink>
+			<p:spacer width="10"></p:spacer>
+			<h:outputLink
+				value="#{request.contextPath}/views/Purchase/Purchase.html">PURCHASE</h:outputLink>
+			<p:spacer width="10"></p:spacer>
+			<h:outputLink value="#{request.contextPath}/views/Sales/Sales.html">SALES</h:outputLink>
+			<p:spacer width="10"></p:spacer>
+			<h:outputLink value="#{request.contextPath}/views/HRMS/HRMS.html">HRMS</h:outputLink>
+			<p:spacer width="10" />
 
-				<p:commandLink id="Accounts"
-					action="/views/Accounts/Masters/Items.xhtml">
-					<h:outputText value="Accounts" />
-				</p:commandLink>
-				<p:commandLink id="Purchase" action="/views/Purchase/Purchase.xhtml">
-					<h:outputText value="Purchase" />
-				</p:commandLink>
-				<p:commandLink id="Sales" action="/views/Sales/Sales.xhtml">
-					<h:outputText value="Sales" />
-				</p:commandLink>
-				<p:commandLink id="HRMS" action="//views/HRMS/HRMS.xhtml">
-					<h:outputText value="HRMS" />
-				</p:commandLink>
-				 -->
-			<p:button value="Company" outcome="/views/Company/Company.xhtml" />
-			<p:button type="button" value="Accounts"
-				outcome="/views/Accounts/Masters/Items.xhtml" />
-			<p:button type="button" value="Purchase"
-				outcome="/views/Purchase/Purchase.xhtml" />
-			<p:button type="button" value="Sales"
-				outcome="/views/Sales/Sales.xhtml" />
-			<p:button type="button" value="HRMS" outcome="/views/HRMS/HRMS.xhtml" />
-		</p:toolbarGroup>
-	</p:toolbar>
+		</div>
+		<div>
+			<p:commandLink action="#{loginBean.logout()}" value="Logout"
+				ajax="false" />
+			<p:spacer width="10"></p:spacer>
+			<h:outputText value="User: " />
+			<h:outputText value="#{preferencesBean.user.userName}" />
+		</div>
+
+		<!-- <p:toolbar>
+			<p:toolbarGroup>
+
+
+			</p:toolbarGroup>
+			<p:toolbarGroup align="right">
+
+				<p:button value="Company" outcome="/views/Company/Company.xhtml" />
+				<p:button type="button" value="Accounts"
+					outcome="/views/Accounts/Masters/Items.xhtml" />
+				<p:button type="button" value="Purchase"
+					outcome="/views/Purchase/Purchase.xhtml" />
+				<p:button type="button" value="Sales"
+					outcome="/views/Sales/Sales.xhtml" />
+				<p:button type="button" value="HRMS"
+					outcome="/views/HRMS/HRMS.xhtml" />
+			</p:toolbarGroup>
+		</p:toolbar> -->
+	</h:form>
 </body>
 </html>

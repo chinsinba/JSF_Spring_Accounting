@@ -11,6 +11,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
+import accounts.app.bean.PreferencesBean;
 import accounts.app.service.CompanyService;
 import accounts.model.entity.Address;
 import accounts.model.entity.CompanyDetails;
@@ -35,6 +36,8 @@ public class CompanyBean {
 	private CompanyDetails company ;
 
 	private Address compAddress;
+
+	private PreferencesBean prefBean;
 	
 
 	public CompanyService getCompanyService() {
@@ -78,15 +81,17 @@ public class CompanyBean {
 
 
 	@Inject
-	public CompanyBean(final CompanyService service)
+	public CompanyBean(final CompanyService service, PreferencesBean prefBean)
 	{
 		this.companyService = service;
 		company = companyService.get();
+		this.setPrefBean(prefBean);
 		if(company == null){
 //			setSaveEnabled(false);
 			company = new CompanyDetails();
 			compAddress = new Address();
 			company.setCompanyAddress(compAddress);
+			company.setUser(getPrefBean().getUser());
 			companyService.create(getCompany());
 			edit();
 			
@@ -110,6 +115,7 @@ public class CompanyBean {
 			companyService.update(getCompany());
 			setGrowlMessage("Update", "Updated Company Details");
 		}*/
+		
 		companyService.update(getCompany());
 		setGrowlMessage("Save", "Updated Company Details");
 		setSaveEnabled(true);
@@ -348,6 +354,16 @@ public class CompanyBean {
 
 	public void setCompCode(String compCode) {
 		getCompany().setCompanyCode(compCode);
+	}
+
+
+	public PreferencesBean getPrefBean() {
+		return prefBean;
+	}
+
+
+	public void setPrefBean(PreferencesBean prefBean) {
+		this.prefBean = prefBean;
 	}
 
 }

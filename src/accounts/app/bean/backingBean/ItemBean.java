@@ -9,6 +9,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
+import accounts.app.bean.PreferencesBean;
 import accounts.app.service.ItemService;
 import accounts.model.entity.CompanyDetails;
 import accounts.model.entity.LedgerAccount;
@@ -22,13 +23,15 @@ public class ItemBean {
 
 	private CompanyBean compBean;
 	private ItemService itemService;
+	private PreferencesBean prefBean;
 
 	@Inject
-	public ItemBean(CompanyBean compBean, ItemService itemService){
+	public ItemBean(CompanyBean compBean, ItemService itemService, PreferencesBean prefBean){
 
 		this.compBean= compBean;
 		this.itemService=itemService;
 		this.company = compBean.getCompany();
+		this.setPrefBean(prefBean);
 	}
 
 	private CompanyDetails company;
@@ -296,6 +299,7 @@ public class ItemBean {
 		item.setOpeningStockUnit(getOpeningStockUnit());
 		item.setOutwardTaxAccount(getOutwardTaxAccount());
 		item.setReqBatchNo(isReqBatchNo());
+		item.setUser(getPrefBean().getUser());
 		itemService.create(item);
 
 		clearValues();
@@ -372,6 +376,16 @@ public class ItemBean {
 
 	public void setAccount(LedgerAccount account) {
 		this.account = account;
+	}
+
+
+	public PreferencesBean getPrefBean() {
+		return prefBean;
+	}
+
+
+	public void setPrefBean(PreferencesBean prefBean) {
+		this.prefBean = prefBean;
 	}
 
 }

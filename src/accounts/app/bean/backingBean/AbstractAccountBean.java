@@ -6,6 +6,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
+import accounts.app.bean.PreferencesBean;
 import accounts.model.entity.CompanyDetails;
 
 public abstract class AbstractAccountBean {
@@ -69,10 +70,14 @@ public abstract class AbstractAccountBean {
 
 	private CompanyDetails company;
 	
+	private PreferencesBean prefBean;
+	
 
 	@Inject
-	public AbstractAccountBean(LedgerGroupBean  ledGrpBean, LedgerAccountBean ledAccBean, CompanyBean compBean) {
+	public AbstractAccountBean(LedgerGroupBean  ledGrpBean, LedgerAccountBean ledAccBean, CompanyBean compBean,PreferencesBean prefBean) {
 		this.setCompany(compBean.getCompany());
+		this.setPrefBean(prefBean);
+		
 	}
 
 	public void save(){/*
@@ -353,6 +358,14 @@ public abstract class AbstractAccountBean {
 
 	public void setCompany(CompanyDetails company) {
 		this.company = company;
+	}
+
+	public PreferencesBean getPrefBean() {
+		return prefBean;
+	}
+
+	public void setPrefBean(PreferencesBean prefBean) {
+		this.prefBean = prefBean;
 	}
 
 

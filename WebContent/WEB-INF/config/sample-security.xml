@@ -13,11 +13,11 @@
 		<intercept-url pattern="/auth/**" access="ROLE_user" requires-channel="any" 
 		/>access="ROLE_USER" </http> -->
 
-	<http auto-config="true" use-expressions="true" once-per-request="false">
+	<http auto-config="true" use-expressions="true" once-per-request="true">
 		<intercept-url pattern="/views/**" access="hasRole('ROLE_USER')" />
-		<form-login login-page="/Login.html" default-target-url="/Company.html"
+		<form-login login-page="/Login.html" default-target-url="/views/Company/Company.html"
 			authentication-failure-url="/loginfailed" />
-		<logout logout-success-url="/Logout.html" />
+		<logout logout-success-url="/Login.html" invalidate-session="true"/>
 	</http>
 
 

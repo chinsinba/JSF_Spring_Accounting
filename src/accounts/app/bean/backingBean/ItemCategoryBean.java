@@ -10,6 +10,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
+import accounts.app.bean.PreferencesBean;
 import accounts.app.service.ItemGroupService;
 import accounts.model.entity.CompanyDetails;
 import accounts.model.entity.item.ItemCategory;
@@ -30,11 +31,14 @@ public class ItemCategoryBean {
 
 	public ItemGroupService ledGrpSvc;
 
+	private PreferencesBean prefBean;
+
 	@Inject
-	public ItemCategoryBean(CompanyBean compBean, ItemGroupService ledgerGroupService)
+	public ItemCategoryBean(CompanyBean compBean, ItemGroupService ledgerGroupService, PreferencesBean prefBean)
 	{
 		this.company = compBean.getCompany();
 		this.ledGrpSvc = ledgerGroupService;
+		this.setPrefBean(prefBean);
 	}
 
 	public CompanyDetails getCompany() {
@@ -114,7 +118,7 @@ public class ItemCategoryBean {
 		grp.setCompany(getCompany());
 		grp.setCategoryName(getGroupName());
 		grp.setBelongsToCategory(getSelSubGroup());
-
+		grp.setUser(getPrefBean().getUser());
 		ledGrpSvc.create(grp);
 		setGrowlMessage("Save", "Ledger Group Created");
 	}
@@ -140,6 +144,14 @@ public class ItemCategoryBean {
 	private void setGrowlMessage( String Summary, String description) {
 		FacesContext context = FacesContext.getCurrentInstance();
 		context.addMessage(null, new FacesMessage(Summary,description));
+	}
+
+	public PreferencesBean getPrefBean() {
+		return prefBean;
+	}
+
+	public void setPrefBean(PreferencesBean prefBean) {
+		this.prefBean = prefBean;
 	}
 
 }

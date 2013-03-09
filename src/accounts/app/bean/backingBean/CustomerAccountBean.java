@@ -8,6 +8,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
+import accounts.app.bean.PreferencesBean;
 import accounts.app.service.CustomerAccountService;
 import accounts.model.entity.Address;
 import accounts.model.entity.BankDetails;
@@ -25,8 +26,8 @@ public class CustomerAccountBean extends AbstractAccountBean{
 	private CustomerAccount selAccont;
 
 	@Inject
-	public CustomerAccountBean(LedgerGroupBean  ledGrpBean, LedgerAccountBean ledAccBean, CompanyBean compBean, CustomerAccountService service) {
-		super(ledGrpBean, ledAccBean, compBean);
+	public CustomerAccountBean(LedgerGroupBean  ledGrpBean, LedgerAccountBean ledAccBean, CompanyBean compBean, CustomerAccountService service,PreferencesBean prefbean) {
+		super(ledGrpBean, ledAccBean, compBean,prefbean);
 		this.setService(service);
 	}
 
@@ -69,6 +70,7 @@ public class CustomerAccountBean extends AbstractAccountBean{
 		custAccount.setNoOfCreditDays(getCrDays());
 		custAccount.setOpeningBal(getOpenBal());
 		custAccount.setPanNo(getPanNo());
+		custAccount.setUser(getPrefBean().getUser());
 		service.create(custAccount);
 		setGrowlMessage("Save", "Created new customer account");
 	}

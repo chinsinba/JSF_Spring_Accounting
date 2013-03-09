@@ -3,6 +3,7 @@ package accounts.app.bean;
 
 import javax.annotation.ManagedBean;
 import javax.faces.FacesException;
+import javax.faces.bean.RequestScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
@@ -11,6 +12,7 @@ import javax.faces.event.ValueChangeEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -32,7 +34,7 @@ import accounts.model.entity.user.User;
  *
  */
 @ManagedBean("loginBean")
-@Scope("request")
+@RequestScoped
 public class LoginBean {
 
 	private final AuthenticationManager am;
@@ -76,7 +78,7 @@ public class LoginBean {
 	public String login() {
 		try {
 			if (this.preferencesBean.isAuthenticated()) {
-				return "/Company.xhtml";
+				return "/views/Company/Company.xhtml";
 			}
 
 			Authentication request = new UsernamePasswordAuthenticationToken(this.getUserName(), getPassword());
@@ -87,9 +89,9 @@ public class LoginBean {
 			ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
 			ApplicationContext appContext = WebApplicationContextUtils.getWebApplicationContext(servletContext);
 			//javax.servlet.http.HttpServletRequest req=(javax.servlet.http.HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
-			/*User user = this.userService.getUser(1);
-			this.preferencesBean.setUser(user);*/
-			return "/Company.xhtml";
+			User user = this.userService.getUser(1);
+			this.preferencesBean.setUser(user);
+			return "/views/Company/Company.xhtml?faces-redirect=true";
 
 		} 
 		catch (AuthenticationException e) 
@@ -102,6 +104,23 @@ public class LoginBean {
 			throw new FacesException(e);
 		}
 	}
+
+	public String logout(){
+		FacesContext context = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession)
+				context.getExternalContext().getSession(true);
+		if(session==null){
+			return "invalid";
+		}
+		else{
+			session.invalidate();
+			preferencesBean.clearAuthData();
+			return "/Login.xhtml?faces-redirect=true";
+		}
+
+	}
+
+
 
 	private String userName;
 

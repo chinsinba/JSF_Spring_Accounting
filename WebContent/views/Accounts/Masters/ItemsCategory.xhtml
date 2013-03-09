@@ -16,6 +16,8 @@
 						<p:toolbarGroup align="right">
 							<p:commandButton value="Save" icon="ui-icon-disk"
 								action="#{itemCategoryBean.save}" update="growl,groupList" />
+							<p:commandButton type="button" title="Edit" value="Edit"
+								icon="ui-icon-disk" />
 							<p:commandButton type="button" title="Delete" value="Delete"
 								icon="ui-icon-trash" disabled="true" />
 							<p:commandButton type="button" title="Clear" value="Cancel"
@@ -26,12 +28,12 @@
 					<p:fieldset legend="Item Group">
 						<h:panelGrid columns="5" cellpadding="5">
 							<h:outputText value="Company Name :" />
-							<p:inputText id="compNam"
-								value="#{companyBean.compName}" readonly="true"/>
+							<p:inputText id="compNam" value="#{companyBean.compName}"
+								readonly="true" />
 							<p:spacer width="15" />
 							<h:outputText value="Code :" />
-							<p:inputText id="CompCode"
-								value="#{companyBean.compCode}" readonly="true"/>
+							<p:inputText id="CompCode" value="#{companyBean.compCode}"
+								readonly="true" />
 
 						</h:panelGrid>
 						<p:separator></p:separator>
@@ -54,13 +56,16 @@
 							<h:outputText value="Main Category : " />
 							<p:spacer width="15" />
 							<p:inputText id="mainGrpName"
-								value="#{itemCategoryBean.mainGroup.categoryName}" readonly="true" />
+								value="#{itemCategoryBean.mainGroup.categoryName}"
+								readonly="true" />
 						</h:panelGrid>
 					</p:fieldset>
 					<p:toolbar>
 						<p:toolbarGroup align="right">
 							<p:commandButton value="Save" icon="ui-icon-disk"
 								action="#{itemCategoryBean.save}" update="growl,groupList" />
+							<p:commandButton type="button" title="Edit" value="Edit"
+								icon="ui-icon-disk" />
 							<p:commandButton type="button" title="Delete" value="Delete"
 								icon="ui-icon-trash" disabled="true	" />
 							<p:commandButton type="button" title="Clear" value="Cancel"

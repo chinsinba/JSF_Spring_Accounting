@@ -15,9 +15,12 @@
 					<p:toolbar>
 						<p:toolbarGroup align="right">
 							<p:commandButton value="Save" icon="ui-icon-disk"
-								action="#{ledgerAccountBean.save}" update=":form:dataTable,growl" />
+								action="#{ledgerAccountBean.save}"
+								update=":form:dataTable,growl" />
+							<p:commandButton type="button" title="Edit" value="Edit"
+								icon="ui-icon-disk" />
 							<p:commandButton type="button" title="Delete" value="Delete"
-								icon="ui-icon-trash"  />
+								icon="ui-icon-trash" />
 							<p:commandButton type="button" title="Clear" value="Cancel"
 								icon="ui-icon-clear" />
 						</p:toolbarGroup>
@@ -26,24 +29,23 @@
 					<p:fieldset legend="Ledger Account">
 						<h:panelGrid columns="5" cellpadding="5">
 							<h:outputText value="Company Name :" />
-							<p:inputText id="compNam"
-								value="#{companyBean.compName}" readonly="true"/>
+							<p:inputText id="compNam" value="#{companyBean.compName}"
+								readonly="true" />
 							<p:spacer width="15" />
 							<h:outputText value="Code :" />
-							<p:inputText id="CompCode" value="#{companyBean.compCode}" readonly="true"/>
+							<p:inputText id="CompCode" value="#{companyBean.compCode}"
+								readonly="true" />
 
 						</h:panelGrid>
 						<p:separator></p:separator>
 
 						<h:panelGrid columns="4" cellpadding="5">
 							<h:outputText value="Account Name : " />
-							<p:inputText id="ledName" value="#{ledgerAccountBean.accName}" 
-							required="true"
-							requiredMessage="Account Name is required"/>
+							<p:inputText id="ledName" value="#{ledgerAccountBean.accName}"
+								required="true" requiredMessage="Account Name is required" />
 							<h:outputText value="Account Code : " />
-							<p:inputText id="code" value="#{ledgerAccountBean.accCode}" 
-							required="true"
-							requiredMessage="Account Code is required"/>
+							<p:inputText id="code" value="#{ledgerAccountBean.accCode}"
+								required="true" requiredMessage="Account Code is required" />
 							<h:outputText value="Sub Group : " />
 							<p:selectOneMenu id="groupList"
 								value="#{ledgerGroupBean.selSubGroup}"
@@ -93,17 +95,18 @@
 									<h:outputText value="Code" />
 								</f:facet>
 								<h:outputText id="col2" value="#{car.accountCode}" />
-								<p:tooltip for="col2" value="#{car.accountCode}" showEffect="clip"
-									hideEffect="clip" />
+								<p:tooltip for="col2" value="#{car.accountCode}"
+									showEffect="clip" hideEffect="clip" />
 							</p:column>
 
 							<p:column>
 								<f:facet name="header">
 									<h:outputText value="Ledger Group" />
 								</f:facet>
-								<h:outputText id="col3" value="#{car.ledgerGroup}" converter="#{ledgerGroupConverter}" />
-								<p:tooltip for="col3" value="#{car.ledgerGroup}" showEffect="clip"
-									hideEffect="clip" />
+								<h:outputText id="col3" value="#{car.ledgerGroup}"
+									converter="#{ledgerGroupConverter}" />
+								<p:tooltip for="col3" value="#{car.ledgerGroup}"
+									showEffect="clip" hideEffect="clip" />
 							</p:column>
 
 							<p:column>
@@ -111,16 +114,16 @@
 									<h:outputText value="Opening Balance" />
 								</f:facet>
 								<h:outputText id="col4" value="#{car.openingBalance}" />
-								<p:tooltip for="col4" value="#{car.openingBalance}" showEffect="clip"
-									hideEffect="clip" />
+								<p:tooltip for="col4" value="#{car.openingBalance}"
+									showEffect="clip" hideEffect="clip" />
 							</p:column>
 							<p:column>
 								<f:facet name="header">
 									<h:outputText value="Type" />
 								</f:facet>
 								<h:outputText id="col5" value="#{car.debit_Credit}" />
-								<p:tooltip for="col5" value="#{car.debit_Credit}" showEffect="clip"
-									hideEffect="clip" />
+								<p:tooltip for="col5" value="#{car.debit_Credit}"
+									showEffect="clip" hideEffect="clip" />
 							</p:column>
 
 
@@ -135,7 +138,10 @@
 					<p:toolbar>
 						<p:toolbarGroup align="right">
 							<p:commandButton value="Save" icon="ui-icon-disk"
-								action="#{ledgerAccountBean.save}" update=":form:dataTable,growl"/>
+								action="#{ledgerAccountBean.save}"
+								update=":form:dataTable,growl" />
+							<p:commandButton type="button" title="Edit" value="Edit"
+								icon="ui-icon-disk" />
 							<p:commandButton type="button" title="Delete" value="Delete"
 								icon="ui-icon-trash" disabled="true	" />
 							<p:commandButton type="button" title="Clear" value="Cancel"

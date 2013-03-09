@@ -13,6 +13,7 @@ import org.hibernate.id.IdentityGenerator.GetGeneratedKeysDelegate;
 
 import sun.security.action.GetLongAction;
 
+import accounts.app.bean.PreferencesBean;
 import accounts.app.service.BankAccountService;
 import accounts.model.entity.Address;
 import accounts.model.entity.BankAccount;
@@ -63,10 +64,13 @@ public class BankAccountBean {
 
 	private BankAccount selAccount;
 
+	private PreferencesBean prefBean;
+
 	@Inject
-	public BankAccountBean(CompanyBean companyBean, LedgerGroupBean ledGrpBean, BankAccountService service){
+	public BankAccountBean(CompanyBean companyBean, LedgerGroupBean ledGrpBean, BankAccountService service, PreferencesBean prefBean){
 		this.service =service;
 		this.setCompany(companyBean.getCompany());
+		this.setPrefBean(prefBean);
 
 	}
 
@@ -94,6 +98,7 @@ public class BankAccountBean {
 		cont.setPhoneNo(getContNo());
 		bnkAcc.setContact(cont);
 		bnkAcc.setBankDetails(bankdet);
+		bnkAcc.setUser(getPrefBean().getUser());
 		service.create(bnkAcc);
 		setGrowlMessage("Save", "Bank account created");
 	}
@@ -268,6 +273,14 @@ public class BankAccountBean {
 
 	public void setSelAccount(BankAccount selAccount) {
 		this.selAccount = selAccount;
+	}
+
+	public PreferencesBean getPrefBean() {
+		return prefBean;
+	}
+
+	public void setPrefBean(PreferencesBean prefBean) {
+		this.prefBean = prefBean;
 	}
 
 

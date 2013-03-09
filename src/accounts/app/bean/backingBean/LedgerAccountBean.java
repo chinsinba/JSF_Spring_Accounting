@@ -10,6 +10,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
+import accounts.app.bean.PreferencesBean;
 import accounts.app.service.LedgerAccountService;
 import accounts.model.entity.CompanyDetails;
 import accounts.model.entity.LedgerAccount;
@@ -39,12 +40,15 @@ public class LedgerAccountBean {
 
 	private LedgerAccount selAccount;
 
+	private PreferencesBean prefBean;
+
 
 	@Inject
-	public LedgerAccountBean(LedgerGroupBean bean, CompanyBean compBean, LedgerAccountService service) {
+	public LedgerAccountBean(LedgerGroupBean bean, CompanyBean compBean, LedgerAccountService service, PreferencesBean prefBean) {
 		this.group = bean.getSelSubGroup();
 		this.setComp(compBean.getCompany());
 		this.service = service;
+		this.setPrefBean(prefBean);
 	}
 
 	public String getAccName() {
@@ -101,6 +105,7 @@ public class LedgerAccountBean {
 		ledAccount.setCompany(getComp());
 		ledAccount.setDebit_Credit(getType());
 		ledAccount.setOpeningBalance(getOpenBalance());
+		ledAccount.setUser(getPrefBean().getUser());
 		service.create(ledAccount);
 		ledAccounts.add(ledAccount);
 		setGrowlMessage("Save", "Account created");
@@ -150,6 +155,14 @@ public class LedgerAccountBean {
 
 	public void setSelAccount(LedgerAccount selAccount) {
 		this.selAccount = selAccount;
+	}
+
+	public PreferencesBean getPrefBean() {
+		return prefBean;
+	}
+
+	public void setPrefBean(PreferencesBean prefBean) {
+		this.prefBean = prefBean;
 	}
 
 }

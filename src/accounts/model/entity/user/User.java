@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
@@ -13,6 +14,7 @@ import javax.persistence.TableGenerator;
 
 @Entity
 @Table(name="USER")
+@NamedQuery(name="User.findUser", query="SELECT usr FROM User usr WHERE usr.userName=:userName")
 public class User {
 	
 	@Id
@@ -28,22 +30,14 @@ public class User {
 		this.id = id;
 	}
 
-	private String name;
+	private String userName;
 	
 	private String password;
 	
-	private boolean isActive;
+	private boolean enabled;
 	
 	@OneToMany
 	private List<Roles> hasRoles;
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	public String getPassword() {
 		return password;
@@ -53,19 +47,28 @@ public class User {
 		this.password = password;
 	}
 
-	public boolean isActive() {
-		return isActive;
-	}
-
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
-	}
-
+	
 	public List<Roles> getHasRoles() {
 		return hasRoles;
 	}
 
 	public void setHasRoles(List<Roles> hasRoles) {
 		this.hasRoles = hasRoles;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 }

@@ -16,6 +16,8 @@
 						<p:toolbarGroup align="right">
 							<p:commandButton value="Save" icon="ui-icon-disk"
 								action="#{bankAccountBean.save}" update=":form:dataTable,growl" />
+							<p:commandButton type="button" title="Edit" value="Edit"
+								icon="ui-icon-disk" />
 							<p:commandButton type="button" title="Delete" value="Delete"
 								icon="ui-icon-trash" />
 							<p:commandButton type="button" title="Clear" value="Cancel"
@@ -26,19 +28,20 @@
 					<p:fieldset legend="Bank Account">
 						<h:panelGrid columns="5" cellpadding="5">
 							<h:outputText value="Company Name :" />
-							<p:inputText id="compNam"
-								value="#{companyBean.compName}" readonly="true"/>
+							<p:inputText id="compNam" value="#{companyBean.compName}"
+								readonly="true" />
 							<p:spacer width="15" />
 							<h:outputText value="Code :" />
-							<p:inputText id="CompCode" readonly="true"  value="#{companyBean.compCode}"/>
+							<p:inputText id="CompCode" readonly="true"
+								value="#{companyBean.compCode}" />
 
 						</h:panelGrid>
 						<p:separator></p:separator>
 
 						<h:panelGrid columns="4" cellpadding="5">
 							<h:outputText value=" Bank Name : " />
-							<p:inputText id="bnkName" value="#{bankAccountBean.bnkName}" required="true"
-							requiredMessage="Bank Name is required"/>
+							<p:inputText id="bnkName" value="#{bankAccountBean.bnkName}"
+								required="true" requiredMessage="Bank Name is required" />
 							<h:outputText value="Code : " />
 							<p:inputText id="code" value="#{bankAccountBean.bnkCode}" />
 
@@ -60,9 +63,8 @@
 							</p:selectOneMenu>
 
 							<h:outputText value=" Acc No : " />
-							<p:inputText id="accNo" value="#{bankAccountBean.bnkAccNo}" 
-							required="true"
-							requiredMessage=" Account No is required"/>
+							<p:inputText id="accNo" value="#{bankAccountBean.bnkAccNo}"
+								required="true" requiredMessage=" Account No is required" />
 							<h:outputText value="Branch : " />
 							<p:inputText id="branch" value="#{bankAccountBean.bnkBrName}" />
 
@@ -212,6 +214,8 @@
 						<p:toolbarGroup align="right">
 							<p:commandButton value="Save" icon="ui-icon-disk"
 								action="#{bankAccountBean.save}" update=":form:dataTable,growl" />
+							<p:commandButton type="button" title="Edit" value="Edit"
+								icon="ui-icon-disk" />
 							<p:commandButton type="button" title="Delete" value="Delete"
 								icon="ui-icon-trash" />
 							<p:commandButton type="button" title="Clear" value="Cancel"

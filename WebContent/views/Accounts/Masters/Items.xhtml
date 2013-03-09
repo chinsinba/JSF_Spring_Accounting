@@ -16,6 +16,8 @@
 						<p:toolbarGroup align="right">
 							<p:commandButton type="button" title="Save" value="Save"
 								icon="ui-icon-disk" />
+							<p:commandButton type="button" title="Edit" value="Edit"
+								icon="ui-icon-disk" />
 							<p:commandButton type="button" title="Delete" value="Delete"
 								icon="ui-icon-trash" />
 							<p:commandButton type="button" title="Clear" value="Cancel"
@@ -115,10 +117,10 @@
 							<p:spacer />
 							<h:outputText value="Mfg Date : " />
 							<p:calendar id="mfgDat" showButtonPanel="true"
-								pattern="dd/MM/yyyy" />
+								pattern="dd/MM/yyyy" showOn="button"/>
 							<h:outputText value="Exp Date : " />
 							<p:calendar id="expDat" showButtonPanel="true"
-								pattern="dd/MM/yyyy" />
+								pattern="dd/MM/yyyy" showOn="button" />
 							<p:commandButton value="Insert"
 								action="#{compStakeholderBean.save}" update="dataTable" />
 						</h:panelGrid>
@@ -189,6 +191,8 @@
 					<p:toolbar>
 						<p:toolbarGroup align="right">
 							<p:commandButton type="button" title="Save" value="Save"
+								icon="ui-icon-disk" />
+							<p:commandButton type="button" title="Edit" value="Edit"
 								icon="ui-icon-disk" />
 							<p:commandButton type="button" title="Delete" value="Delete"
 								icon="ui-icon-trash" />

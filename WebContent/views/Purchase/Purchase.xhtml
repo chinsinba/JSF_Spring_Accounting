@@ -12,202 +12,208 @@
 	</ui:define>
 	<ui:define name="content">
 		<body>
-			<div>
-				<p:toolbar>
-					<p:toolbarGroup align="right">
-						<p:commandButton type="button" title="Save" value="Save"
-							icon="ui-icon-disk" />
-						<p:commandButton type="button" title="Delete" value="Delete"
-							icon="ui-icon-trash" />
-						<p:commandButton type="button" title="Clear" value="Cancel"
-							icon="ui-icon-clear" />
-					</p:toolbarGroup>
-				</p:toolbar>
-				<h:form id="form">
+			<h:form id="form">
+				<div>
+					<p:toolbar>
+						<p:toolbarGroup align="right">
+							<p:commandButton type="button" title="Save" value="Save"
+								icon="ui-icon-disk" />
+							<p:commandButton type="button" title="Edit" value="Edit"
+								icon="ui-icon-disk" />
+							<p:commandButton type="button" title="Delete" value="Delete"
+								icon="ui-icon-trash" />
+							<p:commandButton type="button" title="Clear" value="Cancel"
+								icon="ui-icon-clear" />
+						</p:toolbarGroup>
+					</p:toolbar>
+					<h:form id="form">
 
-					<p:panel header="Purchase Entry">
-						<h:panelGrid columns="5">
-							<h:outputText value="Company Name :" />
-							<p:inputText id="compNam" />
-							<p:spacer width="15" />
-							<h:outputText value="Code :" />
-							<p:inputText id="CompCode" />
+						<p:panel header="Purchase Entry">
+							<h:panelGrid columns="5">
+								<h:outputText value="Company Name :" />
+								<p:inputText id="compNam" />
+								<p:spacer width="15" />
+								<h:outputText value="Code :" />
+								<p:inputText id="CompCode" />
 
-						</h:panelGrid>
-						<p:separator></p:separator>
-						<h:panelGrid columns="5">
-							<h:outputText value="Purchase Order :" />
-							<p:inputText id="purOrd" />
-							<p:spacer width="15" />
-							<h:outputText value="Purchase Date :" />
-							<p:calendar id="cal" showButtonPanel="true" pattern="dd/MM/yyyy" />
-							<h:outputText value="Supplier Code :" />
-							<p:inputText id="supCode" />
-							<p:spacer width="15" />
-							<h:outputText value="Address :" />
-							<p:inputTextarea id="supAddr" />
-							<h:outputText value="Supplier Name :" />
-							<p:inputText id="supName" />
-							<p:spacer width="15" />
-							<h:outputText value="City :" />
-							<p:inputText id="supCity" />
-							<h:outputText value="VAT/TIN :" />
-							<p:inputText id="supVat" />
-							<p:spacer width="15" />
-							<h:outputText value="Cont No :" />
-							<p:inputText id="ContNo" />
-							<h:outputText value="CST :" />
-							<p:inputText id="supCst" />
-
-
-
-						</h:panelGrid>
-					</p:panel>
+							</h:panelGrid>
+							<p:separator></p:separator>
+							<h:panelGrid columns="5">
+								<h:outputText value="Purchase Order :" />
+								<p:inputText id="purOrd" />
+								<p:spacer width="15" />
+								<h:outputText value="Purchase Date :" />
+								<p:calendar id="cal" showButtonPanel="true" pattern="dd/MM/yyyy" />
+								<h:outputText value="Supplier Code :" />
+								<p:inputText id="supCode" />
+								<p:spacer width="15" />
+								<h:outputText value="Address :" />
+								<p:inputTextarea id="supAddr" />
+								<h:outputText value="Supplier Name :" />
+								<p:inputText id="supName" />
+								<p:spacer width="15" />
+								<h:outputText value="City :" />
+								<p:inputText id="supCity" />
+								<h:outputText value="VAT/TIN :" />
+								<p:inputText id="supVat" />
+								<p:spacer width="15" />
+								<h:outputText value="Cont No :" />
+								<p:inputText id="ContNo" />
+								<h:outputText value="CST :" />
+								<p:inputText id="supCst" />
 
 
-					<p:panel header="Item Details">
-						<h:panelGrid columns="8">
 
-							<h:outputText value="Item Name :" />
-							<p:selectOneMenu value="#{buttonBean.number}">
-								<f:selectItem itemLabel="Select One" itemValue="" />
-								<f:selectItem itemLabel="Proprietary" itemValue="1" />
-								<f:selectItem itemLabel="Pvt ltd Co" itemValue="2" />
-								<f:selectItem itemLabel="Public ltd Co" itemValue="3" />
-								<f:selectItem itemLabel="Govt Enterprise" itemValue="4" />
-							</p:selectOneMenu>
-							<p:spacer width="15" />
+							</h:panelGrid>
+						</p:panel>
 
-							<h:outputText value="Item Group : " />
-							<p:selectOneMenu value="#{buttonBean.number}">
-								<f:selectItem itemLabel="Select One" itemValue="" />
-								<f:selectItem itemLabel="Proprietary" itemValue="1" />
-								<f:selectItem itemLabel="Pvt ltd Co" itemValue="2" />
-								<f:selectItem itemLabel="Public ltd Co" itemValue="3" />
-								<f:selectItem itemLabel="Govt Enterprise" itemValue="4" />
-							</p:selectOneMenu>
 
-							<p:spacer width="15" />
-							<h:outputText value="Sub Group : " />
-							<p:selectOneMenu value="#{buttonBean.number}">
-								<f:selectItem itemLabel="Select One" itemValue="" />
-								<f:selectItem itemLabel="Proprietary" itemValue="1" />
-								<f:selectItem itemLabel="Pvt ltd Co" itemValue="2" />
-								<f:selectItem itemLabel="Public ltd Co" itemValue="3" />
-								<f:selectItem itemLabel="Govt Enterprise" itemValue="4" />
-							</p:selectOneMenu>
-							<h:outputText value="Brand Name : " />
-							<p:selectOneMenu value="#{buttonBean.number}">
-								<f:selectItem itemLabel="Select One" itemValue="" />
-								<f:selectItem itemLabel="Proprietary" itemValue="1" />
-								<f:selectItem itemLabel="Pvt ltd Co" itemValue="2" />
-								<f:selectItem itemLabel="Public ltd Co" itemValue="3" />
-								<f:selectItem itemLabel="Govt Enterprise" itemValue="4" />
-							</p:selectOneMenu>
-							<p:spacer width="15" />
-							<h:outputText value="Quantity : " />
-							<p:inputText id="itemQty" />
-							<p:spacer width="15" />
-							<h:outputText value="Unit : " />
-							<p:inputText id="itemUnit" />
-							<h:outputText value="Rate : " />
-							<p:inputText id="itemRate" />
-							<p:spacer width="15" />
-							<h:outputText value="Amount :" />
-							<p:inputText id="item" />
+						<p:panel header="Item Details">
+							<h:panelGrid columns="8">
 
-						</h:panelGrid>
-						<p:separator></p:separator>
-						<p:dataTable id="dataTable" var="car" value="#{tableBean.cars}"
-							paginator="true" rows="10"
-							paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-							rowsPerPageTemplate="5,10,15">
-							<f:facet name="header"> Items</f:facet>
+								<h:outputText value="Item Name :" />
+								<p:selectOneMenu value="#{buttonBean.number}">
+									<f:selectItem itemLabel="Select One" itemValue="" />
+									<f:selectItem itemLabel="Proprietary" itemValue="1" />
+									<f:selectItem itemLabel="Pvt ltd Co" itemValue="2" />
+									<f:selectItem itemLabel="Public ltd Co" itemValue="3" />
+									<f:selectItem itemLabel="Govt Enterprise" itemValue="4" />
+								</p:selectOneMenu>
+								<p:spacer width="15" />
 
-							<p:column>
-								<f:facet name="header">
-									<h:outputText value="Sl No" />
+								<h:outputText value="Item Group : " />
+								<p:selectOneMenu value="#{buttonBean.number}">
+									<f:selectItem itemLabel="Select One" itemValue="" />
+									<f:selectItem itemLabel="Proprietary" itemValue="1" />
+									<f:selectItem itemLabel="Pvt ltd Co" itemValue="2" />
+									<f:selectItem itemLabel="Public ltd Co" itemValue="3" />
+									<f:selectItem itemLabel="Govt Enterprise" itemValue="4" />
+								</p:selectOneMenu>
+
+								<p:spacer width="15" />
+								<h:outputText value="Sub Group : " />
+								<p:selectOneMenu value="#{buttonBean.number}">
+									<f:selectItem itemLabel="Select One" itemValue="" />
+									<f:selectItem itemLabel="Proprietary" itemValue="1" />
+									<f:selectItem itemLabel="Pvt ltd Co" itemValue="2" />
+									<f:selectItem itemLabel="Public ltd Co" itemValue="3" />
+									<f:selectItem itemLabel="Govt Enterprise" itemValue="4" />
+								</p:selectOneMenu>
+								<h:outputText value="Brand Name : " />
+								<p:selectOneMenu value="#{buttonBean.number}">
+									<f:selectItem itemLabel="Select One" itemValue="" />
+									<f:selectItem itemLabel="Proprietary" itemValue="1" />
+									<f:selectItem itemLabel="Pvt ltd Co" itemValue="2" />
+									<f:selectItem itemLabel="Public ltd Co" itemValue="3" />
+									<f:selectItem itemLabel="Govt Enterprise" itemValue="4" />
+								</p:selectOneMenu>
+								<p:spacer width="15" />
+								<h:outputText value="Quantity : " />
+								<p:inputText id="itemQty" />
+								<p:spacer width="15" />
+								<h:outputText value="Unit : " />
+								<p:inputText id="itemUnit" />
+								<h:outputText value="Rate : " />
+								<p:inputText id="itemRate" />
+								<p:spacer width="15" />
+								<h:outputText value="Amount :" />
+								<p:inputText id="item" />
+
+							</h:panelGrid>
+							<p:separator></p:separator>
+							<p:dataTable id="dataTable" var="car" value="#{tableBean.cars}"
+								paginator="true" rows="10"
+								paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+								rowsPerPageTemplate="5,10,15">
+								<f:facet name="header"> Items</f:facet>
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Sl No" />
+									</f:facet>
+									<h:outputText value="#{car.model}" />
+								</p:column>
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Item Grp" />
+									</f:facet>
+									<h:outputText value="#{car.year}" />
+								</p:column>
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Item Name" />
+									</f:facet>
+									<h:outputText value="#{car.manufacturer}" />
+								</p:column>
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Sub-Grp" />
+									</f:facet>
+									<h:outputText value="#{car.color}" />
+								</p:column>
+
+								<p:column headerText="Brand">
+									<f:facet name="header">
+										<h:outputText value="Code" />
+									</f:facet>
+									<h:outputText value="#{car.color}" />
+								</p:column>
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Qty" />
+									</f:facet>
+									<h:outputText value="#{car.color}" />
+								</p:column>
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Unit" />
+									</f:facet>
+									<h:outputText value="#{car.color}" />
+								</p:column>
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Rate" />
+									</f:facet>
+									<h:outputText value="#{car.color}" />
+								</p:column>
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Amount" />
+									</f:facet>
+									<h:outputText value="#{car.color}" />
+								</p:column>
+
+								<f:facet name="footer">
+									<p:commandButton id="viewButton" value="Edit"
+										icon="ui-icon-edit" />
+									<p:commandButton id="addButton" value="New" icon="ui-icon-edit" />
+									<p:commandButton id="delButton" value="Delete"
+										icon="ui-icon-clear" />
 								</f:facet>
-								<h:outputText value="#{car.model}" />
-							</p:column>
-
-							<p:column>
-								<f:facet name="header">
-									<h:outputText value="Item Grp" />
-								</f:facet>
-								<h:outputText value="#{car.year}" />
-							</p:column>
-
-							<p:column>
-								<f:facet name="header">
-									<h:outputText value="Item Name" />
-								</f:facet>
-								<h:outputText value="#{car.manufacturer}" />
-							</p:column>
-
-							<p:column>
-								<f:facet name="header">
-									<h:outputText value="Sub-Grp" />
-								</f:facet>
-								<h:outputText value="#{car.color}" />
-							</p:column>
-
-							<p:column headerText="Brand">
-								<f:facet name="header">
-									<h:outputText value="Code" />
-								</f:facet>
-								<h:outputText value="#{car.color}" />
-							</p:column>
-
-							<p:column>
-								<f:facet name="header">
-									<h:outputText value="Qty" />
-								</f:facet>
-								<h:outputText value="#{car.color}" />
-							</p:column>
-
-							<p:column>
-								<f:facet name="header">
-									<h:outputText value="Unit" />
-								</f:facet>
-								<h:outputText value="#{car.color}" />
-							</p:column>
-
-							<p:column>
-								<f:facet name="header">
-									<h:outputText value="Rate" />
-								</f:facet>
-								<h:outputText value="#{car.color}" />
-							</p:column>
-
-							<p:column>
-								<f:facet name="header">
-									<h:outputText value="Amount" />
-								</f:facet>
-								<h:outputText value="#{car.color}" />
-							</p:column>
-
-							<f:facet name="footer">
-								<p:commandButton id="viewButton" value="Edit"
-									icon="ui-icon-edit" />
-								<p:commandButton id="addButton" value="New" icon="ui-icon-edit" />
-								<p:commandButton id="delButton" value="Delete"
-									icon="ui-icon-clear" />
-							</f:facet>
-						</p:dataTable>
-					</p:panel>
-				</h:form>
-				<p:toolbar>
-					<p:toolbarGroup align="right">
-						<p:commandButton type="button" title="Save" value="Save"
-							icon="ui-icon-disk" />
-						<p:commandButton type="button" title="Delete" value="Delete"
-							icon="ui-icon-trash" />
-						<p:commandButton type="button" title="Clear" value="Cancel"
-							icon="ui-icon-clear" />
-					</p:toolbarGroup>
-				</p:toolbar>
-			</div>
+							</p:dataTable>
+						</p:panel>
+					</h:form>
+					<p:toolbar>
+						<p:toolbarGroup align="right">
+							<p:commandButton type="button" title="Save" value="Save"
+								icon="ui-icon-disk" />
+							<p:commandButton type="button" title="Edit" value="Edit"
+								icon="ui-icon-disk" />
+							<p:commandButton type="button" title="Delete" value="Delete"
+								icon="ui-icon-trash" />
+							<p:commandButton type="button" title="Clear" value="Cancel"
+								icon="ui-icon-clear" />
+						</p:toolbarGroup>
+					</p:toolbar>
+				</div>
+			</h:form>
 		</body>
 	</ui:define>
 </ui:composition>
