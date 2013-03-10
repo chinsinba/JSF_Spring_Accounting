@@ -22,16 +22,16 @@
 						icon="ui-icon-clear" />
 				</p:toolbarGroup>
 			</p:toolbar>
-
-
-
-			<p:panel header="Payments">
-				<h:panelGrid columns="5">
+			<p:spacer height="10"></p:spacer>
+			<p:fieldset legend="Payments">
+			<h:panelGrid columns="5" cellpadding="5">
 					<h:outputText value="Company Name :" />
-					<p:inputText id="compNam" />
+					<p:inputText id="compNam" value="#{companyBean.compName}"
+						readonly="true" />
 					<p:spacer width="15" />
 					<h:outputText value="Code :" />
-					<p:inputText id="CompCode" />
+					<p:inputText id="CompCode" readonly="true"
+						value="#{companyBean.compCode}" />
 
 				</h:panelGrid>
 				<p:separator></p:separator>
@@ -89,88 +89,88 @@
 
 
 				</h:panelGrid>
-				<p:spacer height="10"></p:spacer>
-				<p:panel header="Payment Details">
-					<h:panelGrid columns="5" cellpadding="5">
-						<h:outputText value="Party/Accout Name :" />
-						<p:selectOneMenu value="#{buttonBean.number}">
-							<f:selectItem itemLabel="Select One" itemValue="" />
-							<f:selectItem itemLabel="Proprietary" itemValue="1" />
-							<f:selectItem itemLabel="Pvt ltd Co" itemValue="2" />
-							<f:selectItem itemLabel="Public ltd Co" itemValue="3" />
-							<f:selectItem itemLabel="Govt Enterprise" itemValue="4" />
-						</p:selectOneMenu>
-						<p:spacer width="5" />
-						<h:outputText value="Amount :" />
-						<p:inputText id="amount" />
 
-						<h:outputText value="Reference/Narration :" />
-						<p:inputText id="RefNar" style="width:300%" />
-						<p:spacer width="5" />
-						<p:spacer width="5" />
-						<p:spacer width="5" />
-						<h:outputText value="Chq/DD :" />
-						<p:inputText id="chqDd" />
-						<p:spacer width="5" />
-						<h:outputText value="Chq./DD Bank Name :" />
-						<p:inputText id="chqDdBnkNam" />
-						<h:outputText value="Chq/DD Date :" />
-						<p:calendar id="chqDdDat" showButtonPanel="true"
-							pattern="dd/MM/yyyy" />
-						<p:spacer width="15" />
-						<p:commandButton value="Insert"></p:commandButton>
-					</h:panelGrid>
+			</p:fieldset>
 
-					<p:dataTable id="dataTable" var="car" value="#{tableBean.cars}"
-						paginator="true" rows="5"
-						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-						rowsPerPageTemplate="5,10,15">
-						<f:facet name="header"></f:facet>
+			<p:spacer height="10"></p:spacer>
+			<p:fieldset legend="Payment Details">
+				<h:panelGrid columns="5" cellpadding="5">
+					<h:outputText value="Party/Accout Name :" />
+					<p:selectOneMenu value="#{buttonBean.number}">
+						<f:selectItem itemLabel="Select One" itemValue="" />
+						<f:selectItem itemLabel="Proprietary" itemValue="1" />
+						<f:selectItem itemLabel="Pvt ltd Co" itemValue="2" />
+						<f:selectItem itemLabel="Public ltd Co" itemValue="3" />
+						<f:selectItem itemLabel="Govt Enterprise" itemValue="4" />
+					</p:selectOneMenu>
+					<p:spacer width="5" />
+					<h:outputText value="Amount :" />
+					<p:inputText id="amount" />
 
-						<p:column headerText="Sl No">
-							<h:outputText value="#{car.model}" />
-						</p:column>
+					<h:outputText value="Reference/Narration :" />
+					<p:inputText id="RefNar" style="width:300%" />
+					<p:spacer width="5" />
+					<p:spacer width="5" />
+					<p:spacer width="5" />
+					<h:outputText value="Chq/DD :" />
+					<p:inputText id="chqDd" />
+					<p:spacer width="5" />
+					<h:outputText value="Chq./DD Bank Name :" />
+					<p:inputText id="chqDdBnkNam" />
+					<h:outputText value="Chq/DD Date :" />
+					<p:calendar id="chqDdDat" showButtonPanel="true"
+						pattern="dd/MM/yyyy" />
+					<p:spacer width="15" />
+					<p:commandButton value="Insert"></p:commandButton>
+				</h:panelGrid>
 
-						<p:column headerText="Party/Accont.Name">
-							<h:outputText value="#{car.year}" />
-						</p:column>
+				<p:dataTable id="dataTable" var="car" value="#{tableBean.cars}"
+					paginator="true" rows="5"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15">
+					<f:facet name="header"></f:facet>
 
-						<p:column headerText="Amount">
-							<h:outputText value="#{car.manufacturer}" />
-						</p:column>
+					<p:column headerText="Sl No">
+						<h:outputText value="#{car.model}" />
+					</p:column>
 
-						<p:column headerText="Chq/DD No">
-							<h:outputText value="#{car.color}" />
-						</p:column>
+					<p:column headerText="Party/Accont.Name">
+						<h:outputText value="#{car.year}" />
+					</p:column>
 
-						<p:column headerText="Bank Name">
-							<h:outputText value="#{car.color}" />
-						</p:column>
+					<p:column headerText="Amount">
+						<h:outputText value="#{car.manufacturer}" />
+					</p:column>
 
-						<p:column headerText="Chq/DD Date">
-							<h:outputText value="#{car.color}" />
-						</p:column>
-						<p:column headerText="Ref/Narration">
-							<h:outputText value="#{car.color}" />
-						</p:column>
+					<p:column headerText="Chq/DD No">
+						<h:outputText value="#{car.color}" />
+					</p:column>
 
-						<f:facet name="footer">
-							<p:commandButton id="viewButton" value="Edit" />
-							<p:commandButton id="delButton" value="Delete" />
-						</f:facet>
-					</p:dataTable>
-					<h:panelGrid cellpadding="5">
-						<h:panelGroup>
-							<strong> <h:outputText value="Total : " />
-							</strong>
-							<p:inputText id="recTot" />
-						</h:panelGroup>
-					</h:panelGrid>
+					<p:column headerText="Bank Name">
+						<h:outputText value="#{car.color}" />
+					</p:column>
 
-				</p:panel>
-			</p:panel>
+					<p:column headerText="Chq/DD Date">
+						<h:outputText value="#{car.color}" />
+					</p:column>
+					<p:column headerText="Ref/Narration">
+						<h:outputText value="#{car.color}" />
+					</p:column>
 
+					<f:facet name="footer">
+						<p:commandButton id="viewButton" value="Edit" />
+						<p:commandButton id="delButton" value="Delete" />
+					</f:facet>
+				</p:dataTable>
+				<h:panelGrid cellpadding="5">
+					<h:panelGroup>
+						<strong> <h:outputText value="Total : " />
+						</strong>
+						<p:inputText id="recTot" />
+					</h:panelGroup>
+				</h:panelGrid>
 
+			</p:fieldset>
 
 			<p:toolbar>
 				<p:toolbarGroup align="right">

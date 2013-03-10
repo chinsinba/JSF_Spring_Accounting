@@ -27,14 +27,16 @@
 						</p:toolbarGroup>
 					</p:toolbar>
 					<h:form id="form">
-
-						<p:panel header="Purchase Entry">
-							<h:panelGrid columns="5">
+						<p:spacer height="10"></p:spacer>
+						<p:fieldset legend="Purchase Entry">
+							<h:panelGrid columns="5" cellpadding="5">
 								<h:outputText value="Company Name :" />
-								<p:inputText id="compNam" />
+								<p:inputText id="compNam" value="#{companyBean.compName}"
+									readonly="true" />
 								<p:spacer width="15" />
 								<h:outputText value="Code :" />
-								<p:inputText id="CompCode" />
+								<p:inputText id="CompCode" readonly="true"
+									value="#{companyBean.compCode}" />
 
 							</h:panelGrid>
 							<p:separator></p:separator>
@@ -65,10 +67,10 @@
 
 
 							</h:panelGrid>
-						</p:panel>
+						</p:fieldset>
+						<p:spacer height="10"></p:spacer>
 
-
-						<p:panel header="Item Details">
+						<p:fieldset legend="Item Details">
 							<h:panelGrid columns="8">
 
 								<h:outputText value="Item Name :" />
@@ -198,7 +200,7 @@
 										icon="ui-icon-clear" />
 								</f:facet>
 							</p:dataTable>
-						</p:panel>
+						</p:fieldset>
 					</h:form>
 					<p:toolbar>
 						<p:toolbarGroup align="right">

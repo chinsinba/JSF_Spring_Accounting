@@ -26,14 +26,16 @@
 			</p:toolbar>
 
 
-
-			<p:panel header="Contra Entry">
-				<h:panelGrid columns="5">
+			<p:spacer height="10"></p:spacer>
+			<p:fieldset legend="Contra Entry">
+				<h:panelGrid columns="5" cellpadding="5">
 					<h:outputText value="Company Name :" />
-					<p:inputText id="compNam" />
+					<p:inputText id="compNam" value="#{companyBean.compName}"
+						readonly="true" />
 					<p:spacer width="15" />
 					<h:outputText value="Code :" />
-					<p:inputText id="CompCode" />
+					<p:inputText id="CompCode" readonly="true"
+						value="#{companyBean.compCode}" />
 
 				</h:panelGrid>
 				<p:separator></p:separator>
@@ -135,7 +137,7 @@
 
 				<h:outputText value="Note : " />
 				<p:inputTextarea id="contraNote" style="width:100%" />
-			</p:panel>
+			</p:fieldset>
 
 
 
