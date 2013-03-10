@@ -1,25 +1,16 @@
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui"
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
-	template="/views/template/Welcome.xhtml">
-
-
-	<ui:define name="metadata">
-	</ui:define>
-	<ui:define name="header">
-		<ui:include src="/views/template/header.xhtml" />
-	</ui:define>
-	<ui:define name="menu">
-		<ui:include src="/views/Company/menu.xhtml" />
-	</ui:define>
-
-	<ui:define name="content">
-
-		<h:form id="compForm">
-			<p:growl id="growl" showDetail="true" sticky="false" />
-			<!-- 	<p:toolbar>
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</h:head>
+<body>
+	<h:form id="compForm">
+		<p:growl id="growl" showDetail="true" sticky="false" />
+		<!-- 	<p:toolbar>
 				<p:toolbarGroup align="right">
 					<p:commandButton value="Save" icon="ui-icon-disk"
 						action="#{companyBean.save}" />
@@ -30,187 +21,187 @@
 				</p:toolbarGroup>
 			</p:toolbar>
  -->
-			<div align="left">
+		<div align="left">
 
-				<p:panel id="insertPanel">
-					<p:fieldset legend="StakeHolder">
-						<h:panelGrid columns="4" cellpadding="5">
-							<h:outputText value="Company Name :" />
-							<p:inputText id="compNam" readonly="true"
-								value="#{compStakeholderBean.compName}" />
-							<h:outputText value="Code :" />
-							<p:inputText id="CompCode" readonly="true"
-								value="#{compStakeholderBean.compCode}" />
+			<p:panel id="insertPanel">
+				<p:fieldset legend="StakeHolder">
+					<h:panelGrid columns="4" cellpadding="5">
+						<h:outputText value="Company Name :" />
+						<p:inputText id="compNam" readonly="true"
+							value="#{compStakeholderBean.compName}" />
+						<h:outputText value="Code :" />
+						<p:inputText id="CompCode" readonly="true"
+							value="#{compStakeholderBean.compCode}" />
 
-						</h:panelGrid>
-						<p:separator />
-						<h:panelGrid id="display" columns="6" cellpadding="5">
-							<h:outputText value="Stakeholder Name: " />
-							<p:inputText id="stkHldName"
-								value="#{compStakeholderBean.stakeHoldName}" required="true"
-								requiredMessage="StakeHolder Name is required" />
-							<p:spacer width="15" />
-							<h:outputText value="DOB: " />
-							<p:calendar id="stlDob" showButtonPanel="true"
-								pattern="dd/MM/yyyy" value="#{compStakeholderBean.stakeHoldDob}"
-								navigator="true" showOn="button" />
-							<p:spacer />
-							<h:outputText value="Address : " />
-							<p:inputTextarea id="stkaddr"
-								value="#{compStakeholderBean.stakeHoldAddr}" />
-							<p:spacer width="15" />
-							<h:outputText value="Contact No : " />
-							<p:inputText id="stkcont"
-								value="#{compStakeholderBean.stakeHoldPhNo}" />
-							<p:spacer />
-							<h:outputText value="Email : " />
-							<p:inputText id="stkemail"
-								value="#{compStakeholderBean.stakeHoldEmail}"
-								validatorMessage="Email is not well formed">
-								<f:validateRegex pattern="[a-zA-Z0-9]+@[a-zA-Z]+.[a-zA-Z]{2,3}"></f:validateRegex>
-							</p:inputText>
-							<p:spacer width="15" />
-							<h:outputText value="PAN : " />
-							<p:inputText id="stkpan"
-								value="#{compStakeholderBean.stakeHoldPan}" required="true"
-								requiredMessage="PAN No is required" />
-							<p:commandButton value="Insert"
-								action="#{compStakeholderBean.save}"
-								update="dataTable,insertPanel,growl" />
-						</h:panelGrid>
-						<p:separator />
-
-
-						<p:dataTable id="dataTable" var="car"
-							value="#{compStakeholderBean.stakeHolder}" paginator="true"
-							rows="5"
-							paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-							rowsPerPageTemplate="5,10,15" lazy="false"
-							selection="#{compStakeholderBean.selectedStakeHolder}"
-							selectionMode="single" rowKey="#{car.id}" resizableColumns="true">
-							<f:facet name="header"> Stakeholder </f:facet>
-
-							<p:column>
-								<f:facet name="header">
-									<h:outputText value="Name" />
-								</f:facet>
-								<h:outputText id="col1" value="#{car.stakeHolderName}" />
-								<p:tooltip for="col1" value="#{car.stakeHolderName}"
-									showEffect="clip" hideEffect="clip" />
-							</p:column>
-
-							<p:column>
-								<f:facet name="header">
-									<h:outputText value="DOB" />
-								</f:facet>
-								<h:outputText id="col2" value="#{car.dob}" />
-								<p:tooltip for="col2" value="#{car.dob}" showEffect="clip"
-									hideEffect="clip" />
-							</p:column>
-
-							<p:column>
-								<f:facet name="header">
-									<h:outputText value="Address" />
-								</f:facet>
-								<h:outputText id="col3" value="#{car.address}" />
-								<p:tooltip for="col3" value="#{car.address}" showEffect="clip"
-									hideEffect="clip" />
-							</p:column>
-
-							<p:column>
-								<f:facet name="header">
-									<h:outputText value="Contact No" />
-								</f:facet>
-								<h:outputText id="col4" value="#{car.phNo}" />
-								<p:tooltip for="col4" value="#{car.phNo}" showEffect="clip"
-									hideEffect="clip" />
-							</p:column>
-							<p:column>
-								<f:facet name="header">
-									<h:outputText value="Email" />
-								</f:facet>
-								<h:outputText id="col5" value="#{car.email}" />
-								<p:tooltip for="col5" value="#{car.email}" showEffect="clip"
-									hideEffect="clip" />
-							</p:column>
-
-							<p:column>
-								<f:facet name="header">
-									<h:outputText value="PAN" />
-								</f:facet>
-								<h:outputText id="col6" value="#{car.panNo}" />
-								<p:tooltip for="col6" value="#{car.panNo}" showEffect="clip"
-									hideEffect="clip" />
-							</p:column>
-
-							<p:column>
-								<f:facet name="header">
-									<h:outputText value="Partner Type" />
-								</f:facet>
-								<h:outputText id="col7" value="#{car.panNo}" />
-								<p:tooltip for="col7" value="#{car.panNo}" showEffect="clip"
-									hideEffect="clip" />
-							</p:column>
-
-							<p:column>
-								<f:facet name="header">
-									<h:outputText value="User Name" />
-								</f:facet>
-								<h:outputText id="col8" value="#{car.panNo}" />
-								<p:tooltip for="col8" value="#{car.panNo}" showEffect="clip"
-									hideEffect="clip" />
-							</p:column>
-
-							<p:column>
-								<f:facet name="header">
-									<h:outputText value="Password" />
-								</f:facet>
-								<h:outputText id="col9" value="#{car.panNo}" />
-								<p:tooltip for="col9" value="#{car.panNo}" showEffect="clip"
-									hideEffect="clip" />
-							</p:column>
-
-							<f:facet name="footer">
-								<p:commandButton id="editButton" value="Edit"
-									icon="ui-icon-edit" action="#{compStakeholderBean.edit}"
-									update=":compForm:editDisplay,:compForm:growl"
-									oncomplete="carDialog.show()" />
-								<p:commandButton id="delButton" value="Delete"
-									update="dataTable,:compForm:growl"
-									action="#{compStakeholderBean.delete}" icon="ui-icon-trash" />
-							</f:facet>
-						</p:dataTable>
-					</p:fieldset>
-
-				</p:panel>
-				<p:dialog id="editDialog" header="Car Detail" widgetVar="carDialog"
-					resizable="true" showEffect="clip" hideEffect="fold">
-
-					<h:panelGrid id="editDisplay" columns="6" cellpadding="5">
+					</h:panelGrid>
+					<p:separator />
+					<h:panelGrid id="display" columns="6" cellpadding="5">
 						<h:outputText value="Stakeholder Name: " />
-						<p:inputText value="#{compStakeholderBean.selstakeHoldName}" />	
+						<p:inputText id="stkHldName"
+							value="#{compStakeholderBean.stakeHoldName}" required="true"
+							requiredMessage="StakeHolder Name is required" />
 						<p:spacer width="15" />
 						<h:outputText value="DOB: " />
-						<p:calendar showButtonPanel="true" pattern="dd/MM/yyyy"
-							value="#{compStakeholderBean.selstakeHoldDob}" />
+						<p:calendar id="stlDob" showButtonPanel="true"
+							pattern="dd/MM/yyyy" value="#{compStakeholderBean.stakeHoldDob}"
+							navigator="true" showOn="button" />
 						<p:spacer />
 						<h:outputText value="Address : " />
-						<p:inputTextarea value="#{compStakeholderBean.selstakeHoldAddr}" />
+						<p:inputTextarea id="stkaddr"
+							value="#{compStakeholderBean.stakeHoldAddr}" />
 						<p:spacer width="15" />
 						<h:outputText value="Contact No : " />
-						<p:inputText value="#{compStakeholderBean.selstakeHoldPhNo}" />
+						<p:inputText id="stkcont"
+							value="#{compStakeholderBean.stakeHoldPhNo}" />
 						<p:spacer />
 						<h:outputText value="Email : " />
-						<p:inputText value="#{compStakeholderBean.selstakeHoldEmail}" />
+						<p:inputText id="stkemail"
+							value="#{compStakeholderBean.stakeHoldEmail}"
+							validatorMessage="Email is not well formed">
+							<f:validateRegex pattern="[a-zA-Z0-9]+@[a-zA-Z]+.[a-zA-Z]{2,3}"></f:validateRegex>
+						</p:inputText>
 						<p:spacer width="15" />
 						<h:outputText value="PAN : " />
-						<p:inputText value="#{compStakeholderBean.selstakeHoldPan}"/>
-						<p:commandButton value="update"
-							action="#{compStakeholderBean.update}" update="dataTable,growl" />
+						<p:inputText id="stkpan"
+							value="#{compStakeholderBean.stakeHoldPan}" required="true"
+							requiredMessage="PAN No is required" />
+						<p:commandButton value="Insert"
+							action="#{compStakeholderBean.save}"
+							update="dataTable,insertPanel,growl" />
 					</h:panelGrid>
-				</p:dialog>
-			</div>
-			<!-- <p:toolbar>
+					<p:separator />
+
+
+					<p:dataTable id="dataTable" var="car"
+						value="#{compStakeholderBean.stakeHolder}" paginator="true"
+						rows="5"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						rowsPerPageTemplate="5,10,15" lazy="false"
+						selection="#{compStakeholderBean.selectedStakeHolder}"
+						selectionMode="single" rowKey="#{car.id}" resizableColumns="true">
+						<f:facet name="header"> Stakeholder </f:facet>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Name" />
+							</f:facet>
+							<h:outputText id="col1" value="#{car.stakeHolderName}" />
+							<p:tooltip for="col1" value="#{car.stakeHolderName}"
+								showEffect="clip" hideEffect="clip" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="DOB" />
+							</f:facet>
+							<h:outputText id="col2" value="#{car.dob}" />
+							<p:tooltip for="col2" value="#{car.dob}" showEffect="clip"
+								hideEffect="clip" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Address" />
+							</f:facet>
+							<h:outputText id="col3" value="#{car.address}" />
+							<p:tooltip for="col3" value="#{car.address}" showEffect="clip"
+								hideEffect="clip" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Contact No" />
+							</f:facet>
+							<h:outputText id="col4" value="#{car.phNo}" />
+							<p:tooltip for="col4" value="#{car.phNo}" showEffect="clip"
+								hideEffect="clip" />
+						</p:column>
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Email" />
+							</f:facet>
+							<h:outputText id="col5" value="#{car.email}" />
+							<p:tooltip for="col5" value="#{car.email}" showEffect="clip"
+								hideEffect="clip" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="PAN" />
+							</f:facet>
+							<h:outputText id="col6" value="#{car.panNo}" />
+							<p:tooltip for="col6" value="#{car.panNo}" showEffect="clip"
+								hideEffect="clip" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Partner Type" />
+							</f:facet>
+							<h:outputText id="col7" value="#{car.panNo}" />
+							<p:tooltip for="col7" value="#{car.panNo}" showEffect="clip"
+								hideEffect="clip" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="User Name" />
+							</f:facet>
+							<h:outputText id="col8" value="#{car.panNo}" />
+							<p:tooltip for="col8" value="#{car.panNo}" showEffect="clip"
+								hideEffect="clip" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Password" />
+							</f:facet>
+							<h:outputText id="col9" value="#{car.panNo}" />
+							<p:tooltip for="col9" value="#{car.panNo}" showEffect="clip"
+								hideEffect="clip" />
+						</p:column>
+
+						<f:facet name="footer">
+							<p:commandButton id="editButton" value="Edit" icon="ui-icon-edit"
+								action="#{compStakeholderBean.edit}"
+								update=":compForm:editDisplay,:compForm:growl"
+								oncomplete="carDialog.show()" />
+							<p:commandButton id="delButton" value="Delete"
+								update="dataTable,:compForm:growl"
+								action="#{compStakeholderBean.delete}" icon="ui-icon-trash" />
+						</f:facet>
+					</p:dataTable>
+				</p:fieldset>
+
+			</p:panel>
+			<p:dialog id="editDialog" header="Car Detail" widgetVar="carDialog"
+				resizable="true" showEffect="clip" hideEffect="fold">
+
+				<h:panelGrid id="editDisplay" columns="6" cellpadding="5">
+					<h:outputText value="Stakeholder Name: " />
+					<p:inputText value="#{compStakeholderBean.selstakeHoldName}" />
+					<p:spacer width="15" />
+					<h:outputText value="DOB: " />
+					<p:calendar showButtonPanel="true" pattern="dd/MM/yyyy"
+						value="#{compStakeholderBean.selstakeHoldDob}" />
+					<p:spacer />
+					<h:outputText value="Address : " />
+					<p:inputTextarea value="#{compStakeholderBean.selstakeHoldAddr}" />
+					<p:spacer width="15" />
+					<h:outputText value="Contact No : " />
+					<p:inputText value="#{compStakeholderBean.selstakeHoldPhNo}" />
+					<p:spacer />
+					<h:outputText value="Email : " />
+					<p:inputText value="#{compStakeholderBean.selstakeHoldEmail}" />
+					<p:spacer width="15" />
+					<h:outputText value="PAN : " />
+					<p:inputText value="#{compStakeholderBean.selstakeHoldPan}" />
+					<p:commandButton value="update"
+						action="#{compStakeholderBean.update}" update="dataTable,growl" />
+				</h:panelGrid>
+			</p:dialog>
+		</div>
+		<!-- <p:toolbar>
 				<p:toolbarGroup align="right">
 					<p:commandButton value="Save" icon="ui-icon-disk"
 						action="#{companyBean.save}" />
@@ -220,6 +211,6 @@
 						icon="ui-icon-clear" />
 				</p:toolbarGroup>
 			</p:toolbar> -->
-		</h:form>
-	</ui:define>
-</ui:composition>
+	</h:form>
+</body>
+</html>

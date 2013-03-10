@@ -1,207 +1,203 @@
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui"
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
-	template="/views/template/Welcome.xhtml">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</h:head>
+<body>
+	<div>
+		<h:form id="form">
+			<p:growl id="growl" showDetail="true" sticky="false" />
+			<p:toolbar>
+				<p:toolbarGroup align="right">
+					<p:commandButton type="button" title="Save" value="Save"
+						icon="ui-icon-disk" />
+					<p:commandButton type="button" title="Edit" value="Edit"
+						icon="ui-icon-disk" />
+					<p:commandButton type="button" title="Delete" value="Delete"
+						icon="ui-icon-trash" />
+					<p:commandButton type="button" title="Clear" value="Cancel"
+						icon="ui-icon-clear" />
+				</p:toolbarGroup>
+			</p:toolbar>
+			<p:spacer height="10" />
+			<p:fieldset legend="Item Creation">
+				<h:panelGrid columns="5" cellpadding="5">
+					<h:outputText value="Company Name :" />
+					<p:inputText id="compNam" value="#{companyBean.compName}"
+						readonly="true" />
+					<p:spacer width="15" />
+					<h:outputText value="Code :" />
+					<p:inputText id="CompCode" value="#{companyBean.compCode}"
+						readonly="true" />
 
-	<ui:define name="metadata">
-	</ui:define>
-	<ui:define name="content">
-		<body>
-			<div>
-				<h:form id="form">
-					<p:growl id="growl" showDetail="true" sticky="false" />
-					<p:toolbar>
-						<p:toolbarGroup align="right">
-							<p:commandButton type="button" title="Save" value="Save"
-								icon="ui-icon-disk" />
-							<p:commandButton type="button" title="Edit" value="Edit"
-								icon="ui-icon-disk" />
-							<p:commandButton type="button" title="Delete" value="Delete"
-								icon="ui-icon-trash" />
-							<p:commandButton type="button" title="Clear" value="Cancel"
+				</h:panelGrid>
+				<p:separator></p:separator>
+				<h:panelGrid columns="5" cellpadding="5">
+
+					<h:outputText value="Item Name " />
+					<p:inputText id="itemNam" value="#{itemBean.itemName}" />
+					<p:spacer width="15" />
+
+					<h:outputText value="Item Code: " />
+					<p:inputText id="itemCod" value="#{itemBean.code}" />
+
+
+					<h:outputText value="Item Group: " />
+					<p:selectOneMenu id="groupList"
+						value="#{itemCategoryBean.selSubGroup}"
+						converter="#{itemGroupConverter}">
+						<f:selectItems value="#{itemCategoryBean.subGroups}"
+							var="typecode" itemLabel="#{typecode.categoryName}"
+							itemValue="#{typecode}" />
+						<p:ajax listener="#{itemCategoryBean.subGroupChanged}"
+							update="mainGrpName" />
+					</p:selectOneMenu>
+					<p:spacer width="15" />
+					<h:outputText value="Main Category : " />
+
+					<p:inputText id="mainGrpName"
+						value="#{itemCategoryBean.mainGroup.categoryName}" readonly="true" />
+
+					<h:outputText value="Opening Stock(Qty): " />
+					<p:inputText id="opStck" value="#{itemBean.quantity}" />
+					<p:spacer width="15" />
+					<h:outputText value="Unit : " />
+					<p:inputText id="opStckUnit" value="#{itemBean.openingStockUnit}" />
+
+					<h:outputText value="Opening Stock(Value) : " />
+					<p:inputText id="opStckValue" value="#{itemBean.valuation}" />
+					<p:spacer width="15" />
+					<h:outputText value="Account :" />
+					<p:selectOneMenu value="#{itemBean.account}">
+						<f:selectItems value="#{itemBean.accounts}" var="typecode"
+							itemLabel="#{typecode}" itemValue="#{typecode}" />
+					</p:selectOneMenu>
+
+				</h:panelGrid>
+			</p:fieldset>
+			<p:spacer height="10" />
+			<p:fieldset legend="Tax Details">
+				<h:panelGrid columns="5" cellpadding="5">
+					<h:outputText value="Purchase/Inward Tax: " />
+					<p:selectOneMenu value="#{itemBean.purTax}"
+						converter="#{ledgerAccountConverter}">
+						<f:selectItems value="#{ledgerAccountBean.ledAccounts}"
+							var="typecode" itemLabel="#{typecode.accountName}"
+							itemValue="#{typecode}" />
+					</p:selectOneMenu>
+					<p:spacer width="15" />
+					<h:outputText value="Percentage : " />
+					<p:inputText id="inTaxPercent" />
+
+					<h:outputText value="Sales/Outward Tax: " />
+					<p:selectOneMenu value="#{itemBean.salTax}"
+						converter="#{ledgerAccountConverter}">
+						<f:selectItems value="#{ledgerAccountBean.ledAccounts}"
+							var="typecode" itemLabel="#{typecode.accountName}"
+							itemValue="#{typecode}" />
+					</p:selectOneMenu>
+					<p:spacer width="15" />
+					<h:outputText value="Percentage : " />
+					<p:inputText id="outTaxPercent" />
+				</h:panelGrid>
+			</p:fieldset>
+			<p:spacer height="10" />
+			<p:fieldset legend="Required Details">
+				<h:panelGrid columns="5" cellpadding="5">
+					<h:outputText value="Batch No : " />
+					<p:inputText id="batch" />
+					<p:spacer />
+					<p:spacer />
+					<p:spacer />
+					<h:outputText value="Mfg Date : " />
+					<p:calendar id="mfgDat" showButtonPanel="true" pattern="dd/MM/yyyy"
+						showOn="button" />
+					<h:outputText value="Exp Date : " />
+					<p:calendar id="expDat" showButtonPanel="true" pattern="dd/MM/yyyy"
+						showOn="button" />
+					<p:commandButton value="Insert"
+						action="#{compStakeholderBean.save}" update="dataTable" />
+				</h:panelGrid>
+				<p:separator></p:separator>
+				<p:dataTable id="dataTable" var="car" value="#{tableBean.cars}"
+					paginator="true" rows="10"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15" resizableColumns="true">
+					<f:facet name="header"> Items</f:facet>
+
+					<p:column headerText="Name">
+						<h:outputText value="#{car.model}" />
+					</p:column>
+
+					<p:column headerText="Code">
+						<h:outputText value="#{car.year}" />
+					</p:column>
+
+					<p:column headerText="Op Stock Unit">
+						<h:outputText value="#{car.manufacturer}" />
+					</p:column>
+
+					<p:column headerText="Op Stock Qty">
+						<h:outputText value="#{car.color}" />
+					</p:column>
+
+					<p:column headerText="Value">
+						<h:outputText value="#{car.color}" />
+					</p:column>
+
+					<p:column headerText="Acc Name">
+						<h:outputText value="#{car.color}" />
+					</p:column>
+
+					<p:column headerText="Inward Tax Acc">
+						<h:outputText value="#{car.color}" />
+					</p:column>
+
+					<p:column headerText="Outward Tax Acc">
+						<h:outputText value="#{car.color}" />
+					</p:column>
+
+					<p:column headerText="Batch No">
+						<h:outputText value="#{car.color}" />
+					</p:column>
+
+					<p:column headerText="Mfg Date">
+						<h:outputText value="#{car.color}" />
+					</p:column>
+
+					<p:column headerText="Exp Date">
+						<h:outputText value="#{car.color}" />
+					</p:column>
+
+					<f:facet name="footer">
+						<div>
+							<p:commandButton id="viewButton" value="Edit" icon="ui-icon-edit" />
+							<p:commandButton id="delButton" value="Delete"
 								icon="ui-icon-clear" />
-						</p:toolbarGroup>
-					</p:toolbar>
-					<p:spacer height="10" />
-					<p:fieldset legend="Item Creation">
-						<h:panelGrid columns="5" cellpadding="5">
-							<h:outputText value="Company Name :" />
-							<p:inputText id="compNam" value="#{companyBean.compName}"
-								readonly="true" />
-							<p:spacer width="15" />
-							<h:outputText value="Code :" />
-							<p:inputText id="CompCode" value="#{companyBean.compCode}"
-								readonly="true" />
+						</div>
+					</f:facet>
+				</p:dataTable>
 
-						</h:panelGrid>
-						<p:separator></p:separator>
-						<h:panelGrid columns="5" cellpadding="5">
-
-							<h:outputText value="Item Name " />
-							<p:inputText id="itemNam" value="#{itemBean.itemName}" />
-							<p:spacer width="15" />
-
-							<h:outputText value="Item Code: " />
-							<p:inputText id="itemCod" value="#{itemBean.code}" />
+			</p:fieldset>
 
 
-							<h:outputText value="Item Group: " />
-							<p:selectOneMenu id="groupList"
-								value="#{itemCategoryBean.selSubGroup}"
-								converter="#{itemGroupConverter}">
-								<f:selectItems value="#{itemCategoryBean.subGroups}"
-									var="typecode" itemLabel="#{typecode.categoryName}"
-									itemValue="#{typecode}" />
-								<p:ajax listener="#{itemCategoryBean.subGroupChanged}"
-									update="mainGrpName" />
-							</p:selectOneMenu>
-							<p:spacer width="15" />
-							<h:outputText value="Main Category : " />
-
-							<p:inputText id="mainGrpName"
-								value="#{itemCategoryBean.mainGroup.categoryName}"
-								readonly="true" />
-
-							<h:outputText value="Opening Stock(Qty): " />
-							<p:inputText id="opStck" value="#{itemBean.quantity}" />
-							<p:spacer width="15" />
-							<h:outputText value="Unit : " />
-							<p:inputText id="opStckUnit" value="#{itemBean.openingStockUnit}" />
-
-							<h:outputText value="Opening Stock(Value) : " />
-							<p:inputText id="opStckValue" value="#{itemBean.valuation}" />
-							<p:spacer width="15" />
-							<h:outputText value="Account :" />
-							<p:selectOneMenu value="#{itemBean.account}">
-								<f:selectItems value="#{itemBean.accounts}" var="typecode"
-									itemLabel="#{typecode}" itemValue="#{typecode}" />
-							</p:selectOneMenu>
-
-						</h:panelGrid>
-					</p:fieldset>
-					<p:spacer height="10" />
-					<p:fieldset legend="Tax Details">
-						<h:panelGrid columns="5" cellpadding="5">
-							<h:outputText value="Purchase/Inward Tax: " />
-							<p:selectOneMenu value="#{itemBean.purTax}"
-								converter="#{ledgerAccountConverter}">
-								<f:selectItems value="#{ledgerAccountBean.ledAccounts}"
-									var="typecode" itemLabel="#{typecode.accountName}"
-									itemValue="#{typecode}" />
-							</p:selectOneMenu>
-							<p:spacer width="15" />
-							<h:outputText value="Percentage : " />
-							<p:inputText id="inTaxPercent" />
-
-							<h:outputText value="Sales/Outward Tax: " />
-							<p:selectOneMenu value="#{itemBean.salTax}"
-								converter="#{ledgerAccountConverter}">
-								<f:selectItems value="#{ledgerAccountBean.ledAccounts}"
-									var="typecode" itemLabel="#{typecode.accountName}"
-									itemValue="#{typecode}" />
-							</p:selectOneMenu>
-							<p:spacer width="15" />
-							<h:outputText value="Percentage : " />
-							<p:inputText id="outTaxPercent" />
-						</h:panelGrid>
-					</p:fieldset>
-					<p:spacer height="10" />
-					<p:fieldset legend="Required Details">
-						<h:panelGrid columns="5" cellpadding="5">
-							<h:outputText value="Batch No : " />
-							<p:inputText id="batch" />
-							<p:spacer />
-							<p:spacer />
-							<p:spacer />
-							<h:outputText value="Mfg Date : " />
-							<p:calendar id="mfgDat" showButtonPanel="true"
-								pattern="dd/MM/yyyy" showOn="button"/>
-							<h:outputText value="Exp Date : " />
-							<p:calendar id="expDat" showButtonPanel="true"
-								pattern="dd/MM/yyyy" showOn="button" />
-							<p:commandButton value="Insert"
-								action="#{compStakeholderBean.save}" update="dataTable" />
-						</h:panelGrid>
-						<p:separator></p:separator>
-						<p:dataTable id="dataTable" var="car" value="#{tableBean.cars}"
-							paginator="true" rows="10"
-							paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-							rowsPerPageTemplate="5,10,15" resizableColumns="true">
-							<f:facet name="header"> Items</f:facet>
-
-							<p:column headerText="Name">
-								<h:outputText value="#{car.model}" />
-							</p:column>
-
-							<p:column headerText="Code">
-								<h:outputText value="#{car.year}" />
-							</p:column>
-
-							<p:column headerText="Op Stock Unit">
-								<h:outputText value="#{car.manufacturer}" />
-							</p:column>
-
-							<p:column headerText="Op Stock Qty">
-								<h:outputText value="#{car.color}" />
-							</p:column>
-
-							<p:column headerText="Value">
-								<h:outputText value="#{car.color}" />
-							</p:column>
-
-							<p:column headerText="Acc Name">
-								<h:outputText value="#{car.color}" />
-							</p:column>
-
-							<p:column headerText="Inward Tax Acc">
-								<h:outputText value="#{car.color}" />
-							</p:column>
-
-							<p:column headerText="Outward Tax Acc">
-								<h:outputText value="#{car.color}" />
-							</p:column>
-
-							<p:column headerText="Batch No">
-								<h:outputText value="#{car.color}" />
-							</p:column>
-
-							<p:column headerText="Mfg Date">
-								<h:outputText value="#{car.color}" />
-							</p:column>
-
-							<p:column headerText="Exp Date">
-								<h:outputText value="#{car.color}" />
-							</p:column>
-
-							<f:facet name="footer">
-								<div>
-									<p:commandButton id="viewButton" value="Edit"
-										icon="ui-icon-edit" />
-									<p:commandButton id="delButton" value="Delete"
-										icon="ui-icon-clear" />
-								</div>
-							</f:facet>
-						</p:dataTable>
-
-					</p:fieldset>
-
-
-					<p:toolbar>
-						<p:toolbarGroup align="right">
-							<p:commandButton type="button" title="Save" value="Save"
-								icon="ui-icon-disk" />
-							<p:commandButton type="button" title="Edit" value="Edit"
-								icon="ui-icon-disk" />
-							<p:commandButton type="button" title="Delete" value="Delete"
-								icon="ui-icon-trash" />
-							<p:commandButton type="button" title="Clear" value="Cancel"
-								icon="ui-icon-clear" />
-						</p:toolbarGroup>
-					</p:toolbar>
-				</h:form>
-			</div>
-		</body>
-	</ui:define>
-</ui:composition>
+			<p:toolbar>
+				<p:toolbarGroup align="right">
+					<p:commandButton type="button" title="Save" value="Save"
+						icon="ui-icon-disk" />
+					<p:commandButton type="button" title="Edit" value="Edit"
+						icon="ui-icon-disk" />
+					<p:commandButton type="button" title="Delete" value="Delete"
+						icon="ui-icon-trash" />
+					<p:commandButton type="button" title="Clear" value="Cancel"
+						icon="ui-icon-clear" />
+				</p:toolbarGroup>
+			</p:toolbar>
+		</h:form>
+	</div>
+</body>
+</html>

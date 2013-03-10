@@ -1,51 +1,49 @@
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui"
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
-	template="/views/template/Welcome.xhtml">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</h:head>
+<body>
+	<h:form id="form">
 
-	<ui:define name="metadata">
-	</ui:define>
-	<ui:define name="content">
-		<body>
+		<div>
+			<p:toolbar>
+				<p:toolbarGroup align="right">
+					<p:commandButton type="button" title="Save" value="Save"
+						icon="ui-icon-disk" />
+					<p:commandButton type="button" title="Edit" value="Edit"
+						icon="ui-icon-disk" />
+					<p:commandButton type="button" title="Delete" value="Delete"
+						icon="ui-icon-trash" />
+					<p:commandButton type="button" title="Clear" value="Cancel"
+						icon="ui-icon-clear" />
+				</p:toolbarGroup>
+			</p:toolbar>
 			<h:form id="form">
-
-				<div>
-					<p:toolbar>
-						<p:toolbarGroup align="right">
-							<p:commandButton type="button" title="Save" value="Save"
-								icon="ui-icon-disk" />
-							<p:commandButton type="button" title="Edit" value="Edit"
-								icon="ui-icon-disk" />
-							<p:commandButton type="button" title="Delete" value="Delete"
-								icon="ui-icon-trash" />
-							<p:commandButton type="button" title="Clear" value="Cancel"
-								icon="ui-icon-clear" />
-						</p:toolbarGroup>
-					</p:toolbar>
-					<h:form id="form">
-						<div align="center">
-							<b>This page is under construction</b>
-						</div>
-					</h:form>
-
-
-
-					<p:toolbar>
-						<p:toolbarGroup align="right">
-							<p:commandButton type="button" title="Save" value="Save"
-								icon="ui-icon-disk" />
-							<p:commandButton type="button" title="Edit" value="Edit"
-								icon="ui-icon-disk" />
-							<p:commandButton type="button" title="Delete" value="Delete"
-								icon="ui-icon-trash" />
-							<p:commandButton type="button" title="Clear" value="Cancel"
-								icon="ui-icon-clear" />
-						</p:toolbarGroup>
-					</p:toolbar>
+				<div align="center">
+					<b>This page is under construction</b>
 				</div>
 			</h:form>
-		</body>
-	</ui:define>
-</ui:composition>
+
+
+
+			<p:toolbar>
+				<p:toolbarGroup align="right">
+					<p:commandButton type="button" title="Save" value="Save"
+						icon="ui-icon-disk" />
+					<p:commandButton type="button" title="Edit" value="Edit"
+						icon="ui-icon-disk" />
+					<p:commandButton type="button" title="Delete" value="Delete"
+						icon="ui-icon-trash" />
+					<p:commandButton type="button" title="Clear" value="Cancel"
+						icon="ui-icon-clear" />
+				</p:toolbarGroup>
+			</p:toolbar>
+		</div>
+	</h:form>
+</body>
+</html>

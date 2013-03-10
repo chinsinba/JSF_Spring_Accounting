@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</h:head>
+<body>
+	<h:form id="compForm">
+
+		<p:toolbar>
+			<p:toolbarGroup align="right">
+				<p:commandButton value="Save" icon="ui-icon-disk"
+					action="#{companyBean.save}" disabled="#{companyBean.saveEnabled}"
+					update="compFin,compInfo,compReg,compForm,growl" />
+				<p:commandButton title="Edit" value="Edit" icon="ui-icon-trash"
+					action="#{companyBean.edit}"
+					update="compFin,compInfo,compReg,compForm,growl" />
+				<!-- 	<p:commandButton action="#{companyBean.delete}" title="Delete"
+						value="Delete" icon="ui-icon-trash"
+						update="compFin,compInfo,compReg,compForm,growl" /> -->
+				<p:commandButton type="button" title="Clear" value="Cancel"
+					icon="ui-icon-cancel" />
+			</p:toolbarGroup>
+		</p:toolbar>
+		<p:growl id="growl" showDetail="true" sticky="false" />
+
+		<div align="left">
+			<p:spacer height="10" />
+			<p:fieldset id="compInfo" legend="Company Info">
+				<h:panelGrid columns="5" cellpadding="5">
+					<h:outputText value="Company Name: " />
+					<p:inputText id="companyName" value="#{companyBean.compName}"
+						required="true" readonly="#{companyBean.editable}"
+						requiredMessage="Company name cannot be empty">
+					</p:inputText>
+
+					<h:outputText value="Company code " />
+					<p:inputText id="companyCode" value="#{companyBean.compCode}"
+						required="true" readonly="#{companyBean.editable}"
+						requiredMessage="Company Code cannot be empty" />
+					<p:spacer width="15" />
+					<h:outputText value="PAN: " />
+					<p:inputText id="pan" value="#{companyBean.panNo}"
+						readonly="#{companyBean.editable}" required="true"
+						requiredMessage="PAN no cannnot be empty">
+					</p:inputText>
+					<h:outputText value="Address Line1 : " />
+					<p:inputText id="address1" value="#{companyBean.addrLine1}"
+						readonly="#{companyBean.editable}" />
+					<p:spacer width="15" />
+					<h:outputText value="Address Line2: " />
+					<p:inputText id="address2" value="#{companyBean.addrLine2}"
+						readonly="#{companyBean.editable}" />
+					<h:outputText value="Address Line3: " />
+					<p:inputText id="address3" value="#{companyBean.addrLine3}"
+						readonly="#{companyBean.editable}" />
+					<p:spacer width="15" />
+					<h:outputText value="Address Line4: " />
+					<p:inputText id="address4" value="#{companyBean.addrLine4}"
+						readonly="#{companyBean.editable}" />
+					<h:outputText value="City: " />
+					<p:inputText id="city" value="#{companyBean.city}"
+						readonly="#{companyBean.editable}" />
+					<p:spacer width="15" />
+					<h:outputText value="District: " />
+					<p:inputText id="district" value="#{companyBean.district}"
+						readonly="#{companyBean.editable}" />
+					<h:outputText value="Hobli/Gram : " />
+					<p:inputText id="hobli" value="#{companyBean.hobliGram}"
+						readonly="#{companyBean.editable}" />
+					<p:spacer width="15" />
+					<h:outputText value="State : " />
+					<p:inputText id="state" value="#{companyBean.state}"
+						readonly="#{companyBean.editable}" />
+					<h:outputText value="Country : " />
+					<p:inputText id="country" value="#{companyBean.country}"
+						readonly="#{companyBean.editable}" />
+					<p:spacer width="15" />
+					<h:outputText value="Contact No : " />
+					<p:inputText id="contact" value="#{companyBean.contactNo}"
+						maxlength="10" readonly="#{companyBean.editable}" />
+					<h:outputText value="Email : " />
+					<p:inputText id="email" value="#{companyBean.email}"
+						readonly="#{companyBean.editable}"
+						validatorMessage="Email is not well formed">
+						<f:validateRegex pattern="[a-zA-Z0-9]+@[a-zA-Z]+.[a-zA-Z]{2,3}"></f:validateRegex>
+					</p:inputText>
+
+				</h:panelGrid>
+			</p:fieldset>
+
+			<p:spacer height="10" />
+
+			<p:fieldset id="compReg" legend="Registration Info">
+				<h:panelGrid columns="2" cellpadding="5">
+					<h:outputText value="Company Type: " />
+					<p:selectOneMenu value="#{companyBean.typeCode}"
+						disabled="#{companyBean.editable}">
+						<f:selectItems value="#{companyBean.typeCodes}" var="typecode"
+							itemLabel="#{typecode}" itemValue="#{typecode}" />
+					</p:selectOneMenu>
+				</h:panelGrid>
+
+				<h:panelGrid columns="6" cellpadding="5">
+					<h:outputText value="Reg Name : " />
+					<p:inputText id="regName" value="#{companyBean.regName}"
+						readonly="#{companyBean.editable}" required="true"
+						requiredMessage="Registration name is required" />
+					<h:outputText value="Reg No : " />
+					<p:inputText id="regNo" value="#{companyBean.regNo}"
+						readonly="#{companyBean.editable}" required="true"
+						requiredMessage="Registration No is required" />
+					<h:outputText value="Reg Date:" />
+					<p:calendar id="cal" showButtonPanel="true" pattern="dd/MM/yyyy"
+						value="#{companyBean.regDate}" disabled="#{companyBean.editable}"
+						required="true" navigator="true" showOn="button"
+						requiredMessage="Registration Date is required" />
+				</h:panelGrid>
+			</p:fieldset>
+
+			<p:spacer height="10" />
+			<p:fieldset id="compFin" legend="Financial Year">
+				<h:panelGrid columns="6" cellpadding="5">
+					<h:outputText value="Fin Yr Start:" />
+					<p:calendar id="finstartDate" showButtonPanel="true"
+						pattern="dd/MM/yyyy" value="#{companyBean.finStartDate}"
+						disabled="#{companyBean.editable}" required="true" showOn="button"
+						navigator="true"
+						requiredMessage="Financial year start date is required" />
+					<h:outputText value="Fin Yr End:" />
+					<p:calendar id="finEndDate" showButtonPanel="true"
+						pattern="dd/MM/yyyy" value="#{companyBean.finEndDate}"
+						disabled="#{companyBean.editable}" required="true" showOn="button"
+						navigator="true"
+						requiredMessage="Financial year end date is required" />
+					<h:outputText value="Books Start:" />
+					<p:calendar id="booksStartDate" showButtonPanel="true"
+						pattern="dd/MM/yyyy" value="#{companyBean.bookStartDate}"
+						disabled="#{companyBean.editable}" required="true" showOn="button"
+						navigator="true" requiredMessage="Books start date is required" />
+				</h:panelGrid>
+
+			</p:fieldset>
+		</div>
+		<p:toolbar>
+			<p:toolbarGroup align="right">
+				<p:commandButton value="Save" icon="ui-icon-disk"
+					action="#{companyBean.save}" disabled="#{companyBean.saveEnabled}"
+					update="compFin,compInfo,compReg,compForm,growl" />
+				<p:commandButton title="Edit" value="Edit" icon="ui-icon-trash"
+					action="#{companyBean.edit}"
+					update="compFin,compInfo,compReg,compForm,growl" />
+				<!-- <p:commandButton action="#{companyBean.delete}" title="Delete"
+						value="Delete" icon="ui-icon-trash"
+						update="compFin,compInfo,compReg,compForm,growl" /> -->
+				<p:commandButton type="button" title="Clear" value="Cancel"
+					icon="ui-icon-cancel" />
+			</p:toolbarGroup>
+		</p:toolbar>
+	</h:form>
+
+</body>
+</html>

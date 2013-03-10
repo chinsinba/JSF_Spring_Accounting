@@ -1,155 +1,148 @@
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui"
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
-	template="/views/template/Welcome.xhtml">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</h:head>
+<body>
+	<h:form id="form">
+		<div>
+			<p:growl id="growl" showDetail="true" sticky="false" />
+			<p:toolbar>
+				<p:toolbarGroup align="right">
+					<p:commandButton value="Save" icon="ui-icon-disk"
+						action="#{ledgerAccountBean.save}" update=":form:dataTable,growl" />
+					<p:commandButton type="button" title="Edit" value="Edit"
+						icon="ui-icon-disk" />
+					<p:commandButton type="button" title="Delete" value="Delete"
+						icon="ui-icon-trash" />
+					<p:commandButton type="button" title="Clear" value="Cancel"
+						icon="ui-icon-clear" />
+				</p:toolbarGroup>
+			</p:toolbar>
+			<p:spacer height="10" />
+			<p:fieldset legend="Ledger Account">
+				<h:panelGrid columns="5" cellpadding="5">
+					<h:outputText value="Company Name :" />
+					<p:inputText id="compNam" value="#{companyBean.compName}"
+						readonly="true" />
+					<p:spacer width="15" />
+					<h:outputText value="Code :" />
+					<p:inputText id="CompCode" value="#{companyBean.compCode}"
+						readonly="true" />
 
-	<ui:define name="metadata">
-	</ui:define>
-	<ui:define name="content">
-		<body>
-			<h:form id="form">
-				<div>
-					<p:growl id="growl" showDetail="true" sticky="false" />
-					<p:toolbar>
-						<p:toolbarGroup align="right">
-							<p:commandButton value="Save" icon="ui-icon-disk"
-								action="#{ledgerAccountBean.save}"
-								update=":form:dataTable,growl" />
-							<p:commandButton type="button" title="Edit" value="Edit"
-								icon="ui-icon-disk" />
-							<p:commandButton type="button" title="Delete" value="Delete"
-								icon="ui-icon-trash" />
-							<p:commandButton type="button" title="Clear" value="Cancel"
-								icon="ui-icon-clear" />
-						</p:toolbarGroup>
-					</p:toolbar>
-					<p:spacer height="10" />
-					<p:fieldset legend="Ledger Account">
-						<h:panelGrid columns="5" cellpadding="5">
-							<h:outputText value="Company Name :" />
-							<p:inputText id="compNam" value="#{companyBean.compName}"
-								readonly="true" />
-							<p:spacer width="15" />
-							<h:outputText value="Code :" />
-							<p:inputText id="CompCode" value="#{companyBean.compCode}"
-								readonly="true" />
+				</h:panelGrid>
+				<p:separator></p:separator>
 
-						</h:panelGrid>
-						<p:separator></p:separator>
+				<h:panelGrid columns="4" cellpadding="5">
+					<h:outputText value="Account Name : " />
+					<p:inputText id="ledName" value="#{ledgerAccountBean.accName}"
+						required="true" requiredMessage="Account Name is required" />
+					<h:outputText value="Account Code : " />
+					<p:inputText id="code" value="#{ledgerAccountBean.accCode}"
+						required="true" requiredMessage="Account Code is required" />
+					<h:outputText value="Sub Group : " />
+					<p:selectOneMenu id="groupList"
+						value="#{ledgerGroupBean.selSubGroup}"
+						converter="#{ledgerGroupConverter}">
+						<f:selectItems value="#{ledgerGroupBean.subGroups}" var="typecode"
+							itemLabel="#{typecode.groupName}" itemValue="#{typecode}" />
+						<p:ajax listener="#{ledgerGroupBean.subGroupChanged}"
+							update="mainGrpName" />
+					</p:selectOneMenu>
+					<h:outputText value="Main Group : " />
+					<p:inputText id="mainGrpName"
+						value="#{ledgerGroupBean.mainGroup.groupName}" readonly="true" />
+					<h:outputText value="Opening Balance : " />
+					<p:inputText id="opBal" value="#{ledgerAccountBean.openBalance}" />
+					<h:outputText value="Type : " />
+					<p:selectOneMenu value="#{ledgerAccountBean.type}">
+						<f:selectItems value="#{ledgerAccountBean.types}" var="typecode"
+							itemLabel="#{typecode}" itemValue="#{typecode}" />
+					</p:selectOneMenu>
 
-						<h:panelGrid columns="4" cellpadding="5">
-							<h:outputText value="Account Name : " />
-							<p:inputText id="ledName" value="#{ledgerAccountBean.accName}"
-								required="true" requiredMessage="Account Name is required" />
-							<h:outputText value="Account Code : " />
-							<p:inputText id="code" value="#{ledgerAccountBean.accCode}"
-								required="true" requiredMessage="Account Code is required" />
-							<h:outputText value="Sub Group : " />
-							<p:selectOneMenu id="groupList"
-								value="#{ledgerGroupBean.selSubGroup}"
-								converter="#{ledgerGroupConverter}">
-								<f:selectItems value="#{ledgerGroupBean.subGroups}"
-									var="typecode" itemLabel="#{typecode.groupName}"
-									itemValue="#{typecode}" />
-								<p:ajax listener="#{ledgerGroupBean.subGroupChanged}"
-									update="mainGrpName" />
-							</p:selectOneMenu>
-							<h:outputText value="Main Group : " />
-							<p:inputText id="mainGrpName"
-								value="#{ledgerGroupBean.mainGroup.groupName}" readonly="true" />
-							<h:outputText value="Opening Balance : " />
-							<p:inputText id="opBal" value="#{ledgerAccountBean.openBalance}" />
-							<h:outputText value="Type : " />
-							<p:selectOneMenu value="#{ledgerAccountBean.type}">
-								<f:selectItems value="#{ledgerAccountBean.types}" var="typecode"
-									itemLabel="#{typecode}" itemValue="#{typecode}" />
-							</p:selectOneMenu>
+					<p:commandButton value="Insert" action="#{ledgerAccountBean.save}"
+						update=":form:dataTable,growl" />
+				</h:panelGrid>
+				<p:separator></p:separator>
+				<p:dataTable id="dataTable" var="car"
+					value="#{ledgerAccountBean.ledAccounts}" paginator="true" rows="5"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15" lazy="false"
+					selection="#{ledgerAccountBean.selAccount}" selectionMode="single"
+					rowKey="#{car.id}" resizableColumns="true">
+					<f:facet name="header"> Ledger Accounts </f:facet>
 
-							<p:commandButton value="Insert"
-								action="#{ledgerAccountBean.save}"
-								update=":form:dataTable,growl" />
-						</h:panelGrid>
-						<p:separator></p:separator>
-						<p:dataTable id="dataTable" var="car"
-							value="#{ledgerAccountBean.ledAccounts}" paginator="true"
-							rows="5"
-							paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-							rowsPerPageTemplate="5,10,15" lazy="false"
-							selection="#{ledgerAccountBean.selAccount}"
-							selectionMode="single" rowKey="#{car.id}" resizableColumns="true">
-							<f:facet name="header"> Ledger Accounts </f:facet>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Account Name" />
+						</f:facet>
+						<h:outputText id="col1" value="#{car.accountName}" />
+						<p:tooltip for="col1" value="#{car.accountName}" showEffect="clip"
+							hideEffect="clip" />
+					</p:column>
 
-							<p:column>
-								<f:facet name="header">
-									<h:outputText value="Account Name" />
-								</f:facet>
-								<h:outputText id="col1" value="#{car.accountName}" />
-								<p:tooltip for="col1" value="#{car.accountName}"
-									showEffect="clip" hideEffect="clip" />
-							</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Code" />
+						</f:facet>
+						<h:outputText id="col2" value="#{car.accountCode}" />
+						<p:tooltip for="col2" value="#{car.accountCode}" showEffect="clip"
+							hideEffect="clip" />
+					</p:column>
 
-							<p:column>
-								<f:facet name="header">
-									<h:outputText value="Code" />
-								</f:facet>
-								<h:outputText id="col2" value="#{car.accountCode}" />
-								<p:tooltip for="col2" value="#{car.accountCode}"
-									showEffect="clip" hideEffect="clip" />
-							</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Ledger Group" />
+						</f:facet>
+						<h:outputText id="col3" value="#{car.ledgerGroup}"
+							converter="#{ledgerGroupConverter}" />
+						<p:tooltip for="col3" value="#{car.ledgerGroup}" showEffect="clip"
+							hideEffect="clip" />
+					</p:column>
 
-							<p:column>
-								<f:facet name="header">
-									<h:outputText value="Ledger Group" />
-								</f:facet>
-								<h:outputText id="col3" value="#{car.ledgerGroup}"
-									converter="#{ledgerGroupConverter}" />
-								<p:tooltip for="col3" value="#{car.ledgerGroup}"
-									showEffect="clip" hideEffect="clip" />
-							</p:column>
-
-							<p:column>
-								<f:facet name="header">
-									<h:outputText value="Opening Balance" />
-								</f:facet>
-								<h:outputText id="col4" value="#{car.openingBalance}" />
-								<p:tooltip for="col4" value="#{car.openingBalance}"
-									showEffect="clip" hideEffect="clip" />
-							</p:column>
-							<p:column>
-								<f:facet name="header">
-									<h:outputText value="Type" />
-								</f:facet>
-								<h:outputText id="col5" value="#{car.debit_Credit}" />
-								<p:tooltip for="col5" value="#{car.debit_Credit}"
-									showEffect="clip" hideEffect="clip" />
-							</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Opening Balance" />
+						</f:facet>
+						<h:outputText id="col4" value="#{car.openingBalance}" />
+						<p:tooltip for="col4" value="#{car.openingBalance}"
+							showEffect="clip" hideEffect="clip" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Type" />
+						</f:facet>
+						<h:outputText id="col5" value="#{car.debit_Credit}" />
+						<p:tooltip for="col5" value="#{car.debit_Credit}"
+							showEffect="clip" hideEffect="clip" />
+					</p:column>
 
 
-							<f:facet name="footer">
-								<p:commandButton id="editButton" value="Edit"
-									icon="ui-icon-edit" action="#{compStakeholderBean.edit}" />
-								<p:commandButton id="delButton" value="Delete"
-									action="#{compStakeholderBean.delete}" icon="ui-icon-trash" />
-							</f:facet>
-						</p:dataTable>
-					</p:fieldset>
-					<p:toolbar>
-						<p:toolbarGroup align="right">
-							<p:commandButton value="Save" icon="ui-icon-disk"
-								action="#{ledgerAccountBean.save}"
-								update=":form:dataTable,growl" />
-							<p:commandButton type="button" title="Edit" value="Edit"
-								icon="ui-icon-disk" />
-							<p:commandButton type="button" title="Delete" value="Delete"
-								icon="ui-icon-trash" disabled="true	" />
-							<p:commandButton type="button" title="Clear" value="Cancel"
-								icon="ui-icon-clear" />
-						</p:toolbarGroup>
-					</p:toolbar>
-				</div>
-			</h:form>
-		</body>
-	</ui:define>
-</ui:composition>
+					<f:facet name="footer">
+						<p:commandButton id="editButton" value="Edit" icon="ui-icon-edit"
+							action="#{compStakeholderBean.edit}" />
+						<p:commandButton id="delButton" value="Delete"
+							action="#{compStakeholderBean.delete}" icon="ui-icon-trash" />
+					</f:facet>
+				</p:dataTable>
+			</p:fieldset>
+			<p:toolbar>
+				<p:toolbarGroup align="right">
+					<p:commandButton value="Save" icon="ui-icon-disk"
+						action="#{ledgerAccountBean.save}" update=":form:dataTable,growl" />
+					<p:commandButton type="button" title="Edit" value="Edit"
+						icon="ui-icon-disk" />
+					<p:commandButton type="button" title="Delete" value="Delete"
+						icon="ui-icon-trash" disabled="true	" />
+					<p:commandButton type="button" title="Clear" value="Cancel"
+						icon="ui-icon-clear" />
+				</p:toolbarGroup>
+			</p:toolbar>
+		</div>
+	</h:form>
+</body>
+</html>
