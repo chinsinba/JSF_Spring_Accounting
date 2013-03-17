@@ -17,16 +17,23 @@
 				<p:submenu label="Company">
 					<p:menuitem value="Details" icon="ui-icon-disk"
 						actionListener="#{companyMenuBean.setCenterPage('/views/Company/Details.xhtml')}"
-						update=":contentpanel">
+						update=":contentpanel" onstart="statusDialog.show();"
+						onsuccess="statusDialog.hide();">
 					</p:menuitem>
 					<p:menuitem value="StakeHolders" icon="ui-icon-disk"
 						actionListener="#{companyMenuBean.setCenterPage('/views/Company/StakeHolder.xhtml')}"
-						update=":contentpanel" />
+						update=":contentpanel" onstart="statusDialog.show();"
+						onsuccess="statusDialog.hide();" />
 					<p:menuitem value="Branches" icon="ui-icon-disk"
 						actionListener="#{companyMenuBean.setCenterPage('/views/Company/Branch.xhtml')}"
-						update=":contentpanel" />
+						update=":contentpanel" onstart="statusDialog.show();"
+						onsuccess="statusDialog.hide();" />
 				</p:submenu>
 			</p:panelMenu>
+
+			<p:dialog modal="true" widgetVar="statusDialog" showHeader="false">
+				<p:graphicImage value="/resource/images/ajax-loader.gif" />
+			</p:dialog>
 		</h:form>
 	</ui:define>
 	<ui:define name="content">

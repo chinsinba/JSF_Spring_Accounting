@@ -16,104 +16,134 @@
 					<p:submenu label="Item">
 						<p:menuitem value="Item Creation" icon="ui-icon-disk"
 							actionListener="#{accountMenuBean.setCenterPage('/views/Accounts/Masters/Items.xhtml' )}"
-							update=":contentpanel" />
+							update=":contentpanel" onstart="statusDialog.show();"
+							onsuccess="statusDialog.hide();" />
 						<p:menuitem value="Item Category" icon="ui-icon-disk"
 							actionListener="#{accountMenuBean.setCenterPage('/views/Accounts/Masters/ItemsCategory.xhtml')}"
-							update=":contentpanel" />
+							update=":contentpanel" onstart="statusDialog.show();"
+							onsuccess="statusDialog.hide();" />
 						<p:menuitem value="Unit Creation" icon="ui-icon-disk"
 							actionListener="#{accountMenuBean.setCenterPage('/views/Accounts/Masters/Unit.xhtml')}"
-							update=":contentpanel" />
+							update=":contentpanel" onstart="statusDialog.show();"
+							onsuccess="statusDialog.hide();" />
 					</p:submenu>
 					<p:submenu label="Accounts">
 						<p:menuitem value="Bank" icon="ui-icon-disk"
 							actionListener="#{accountMenuBean.setCenterPage('/views/Accounts/Masters/BankAccount.xhtml')}"
-							update=":contentpanel" />
+							update=":contentpanel" onstart="statusDialog.show();"
+							onsuccess="statusDialog.hide();" />
 						<p:menuitem value="Ledger" icon="ui-icon-disk"
 							actionListener="#{accountMenuBean.setCenterPage('/views/Accounts/Masters/LedgerAccount.xhtml')}"
-							update=":contentpanel" />
+							update=":contentpanel" onstart="statusDialog.show();"
+							onsuccess="statusDialog.hide();" />
 						<p:menuitem value="Ledger Group" icon="ui-icon-disk"
 							actionListener="#{accountMenuBean.setCenterPage('/views/Accounts/Masters/LegerGroup.xhtml')}"
-							update=":contentpanel" />
+							update=":contentpanel" onstart="statusDialog.show();"
+							onsuccess="statusDialog.hide();" />
 						<p:menuitem value="Customer" icon="ui-icon-disk"
 							actionListener="#{accountMenuBean.setCenterPage('/views/Accounts/Masters/CustomerAccount.xhtml')}"
-							update=":contentpanel" />
+							update=":contentpanel" onstart="statusDialog.show();"
+							onsuccess="statusDialog.hide();" />
 						<p:menuitem value="Supplier" icon="ui-icon-disk"
 							actionListener="#{accountMenuBean.setCenterPage('/views/Accounts/Masters/SupplierAccount.xhtml')}"
-							update=":contentpanel" />
+							update=":contentpanel" onstart="statusDialog.show();"
+							onsuccess="statusDialog.hide();" />
 						<p:menuitem value="Other" icon="ui-icon-disk"
 							actionListener="#{accountMenuBean.setCenterPage('/views/Accounts/Masters/OtherAccount.xhtml')}"
-							update=":contentpanel" />
+							update=":contentpanel" onstart="statusDialog.show();"
+							onsuccess="statusDialog.hide();" />
 
 					</p:submenu>
 					<p:menuitem value="Other Settings"
 						actionListener="#{accountMenuBean.setCenterPage('/PageUnderConstr.xhtml')}"
-						update=":contentpanel" />
+						update=":contentpanel" onstart="statusDialog.show();"
+						onsuccess="statusDialog.hide();" />
 					<p:menuitem value="Ledger Opening Balance"
 						actionListener="#{accountMenuBean.setCenterPage('/PageUnderConstr.xhtml')}"
-						update=":contentpanel" />
+						update=":contentpanel" onstart="statusDialog.show();"
+						onsuccess="statusDialog.hide();" />
 					<p:menuitem value="Stock Opening Balance"
 						actionListener="#{accountMenuBean.setCenterPage('/PageUnderConstr.xhtml')}"
-						update=":contentpanel" />
+						update=":contentpanel" onstart="statusDialog.show();"
+						onsuccess="statusDialog.hide();" />
 				</p:submenu>
 				<p:separator />
 				<p:submenu label="Entries/Trans">
 					<p:menuitem value="Reciepts" icon="ui-icon-disk"
 						actionListener="#{accountMenuBean.setCenterPage('/views/Accounts/EntryTrans/Reciepts.xhtml')}"
-						update=":contentpanel" />
+						update=":contentpanel" onstart="statusDialog.show();"
+						onsuccess="statusDialog.hide();" />
 					<p:menuitem value="Payments" icon="ui-icon-arrowrefresh-1-w"
 						actionListener="#{accountMenuBean.setCenterPage('/views/Accounts/EntryTrans/Payments.xhtml')}"
-						update=":contentpanel" />
+						update=":contentpanel" onstart="statusDialog.show();"
+						onsuccess="statusDialog.hide();" />
 					<p:menuitem value="Journal" icon="ui-icon-disk"
 						actionListener="#{accountMenuBean.setCenterPage('/views/Accounts/EntryTrans/Journal.xhtml')}"
-						update=":contentpanel" />
+						update=":contentpanel" onstart="statusDialog.show();"
+						onsuccess="statusDialog.hide();" />
 					<p:menuitem value="Contra" icon="ui-icon-disk"
 						actionListener="#{accountMenuBean.setCenterPage('/views/Accounts/EntryTrans/Contra.xhtml')}"
-						update=":contentpanel" />
+						update=":contentpanel" onstart="statusDialog.show();"
+						onsuccess="statusDialog.hide();" />
 					<p:menuitem value="Debit Note" icon="ui-icon-disk"
 						actionListener="#{accountMenuBean.setCenterPage('/PageUnderConstr.xhtml')}"
-						update=":contentpanel" />
+						update=":contentpanel" onstart="statusDialog.show();"
+						onsuccess="statusDialog.hide();" />
 					<p:menuitem value="Credit Note" icon="ui-icon-disk"
 						actionListener="#{accountMenuBean.setCenterPage('/views/Accounts/EntryTrans/Journal.xhtml')}"
-						update=":contentpanel" />
+						update=":contentpanel" onstart="statusDialog.show();"
+						onsuccess="statusDialog.hide();" />
 				</p:submenu>
 				<p:separator />
 				<p:submenu label="Ledgers">
 					<p:menuitem value="Cash Books" icon="ui-icon-disk"
 						actionListener="#{accountMenuBean.setCenterPage('/PageUnderConstr.xhtml')}"
-						update=":contentpanel" />
+						update=":contentpanel" onstart="statusDialog.show();"
+						onsuccess="statusDialog.hide();" />
 					<p:menuitem value="Bank Ledgers" icon="ui-icon-arrowrefresh-1-w"
 						actionListener="#{accountMenuBean.setCenterPage('/PageUnderConstr.xhtml')}"
-						update=":contentpanel" />
+						update=":contentpanel" onstart="statusDialog.show();"
+						onsuccess="statusDialog.hide();" />
 					<p:menuitem value="Ledgers" icon="ui-icon-disk"
 						actionListener="#{accountMenuBean.setCenterPage('/PageUnderConstr.xhtml')}"
-						update=":contentpanel" />
+						update=":contentpanel" onstart="statusDialog.show();"
+						onsuccess="statusDialog.hide();" />
 					<p:menuitem value="Trial Balance" icon="ui-icon-disk"
 						actionListener="#{accountMenuBean.setCenterPage('/PageUnderConstr.xhtml')}"
-						update=":contentpanel" />
+						update=":contentpanel" onstart="statusDialog.show();"
+						onsuccess="statusDialog.hide();" />
 					<p:menuitem value="Profit/Loss Account" icon="ui-icon-disk"
 						actionListener="#{accountMenuBean.setCenterPage('/PageUnderConstr.xhtml')}"
-						update=":contentpanel" />
+						update=":contentpanel" onstart="statusDialog.show();"
+						onsuccess="statusDialog.hide();" />
 					<p:menuitem value="Balance" icon="ui-icon-disk"
 						actionListener="#{accountMenuBean.setCenterPage('/PageUnderConstr.xhtml')}"
-						update=":contentpanel" />
+						update=":contentpanel" onstart="statusDialog.show();"
+						onsuccess="statusDialog.hide();" />
 					<p:menuitem value="Register" icon="ui-icon-disk"
 						actionListener="#{accountMenuBean.setCenterPage('/PageUnderConstr.xhtml')}"
-						update=":contentpanel" />
+						update=":contentpanel" onstart="statusDialog.show();"
+						onsuccess="statusDialog.hide();" />
 				</p:submenu>
 				<p:separator />
 				<p:submenu label="Inventories">
 					<p:menuitem value="Stock" icon="ui-icon-disk"
 						actionListener="#{accountMenuBean.setCenterPage('/PageUnderConstr.xhtml')}"
-						update=":contentpanel" />
+						update=":contentpanel" onstart="statusDialog.show();"
+						onsuccess="statusDialog.hide();" />
 					<p:menuitem value="Branch Wise" icon="ui-icon-arrowrefresh-1-w"
 						actionListener="#{accountMenuBean.setCenterPage('/PageUnderConstr.xhtml')}"
-						update=":contentpanel" />
+						update=":contentpanel" onstart="statusDialog.show();"
+						onsuccess="statusDialog.hide();" />
 					<p:menuitem value="Item Wise" icon="ui-icon-disk"
 						actionListener="#{accountMenuBean.setCenterPage('/PageUnderConstr.xhtml')}"
-						update=":contentpanel" />
+						update=":contentpanel" onstart="statusDialog.show();"
+						onsuccess="statusDialog.hide();" />
 				</p:submenu>
 			</p:panelMenu>
-
+			<p:dialog modal="true" widgetVar="statusDialog" showHeader="false">
+				<p:graphicImage value="/resource/images/ajax-loader.gif" />
+			</p:dialog>
 		</h:form>
 	</ui:define>
 	<ui:define name="content">
